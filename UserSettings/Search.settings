@@ -7,7 +7,7 @@ onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.785D90A9" = "dung"
+	"last_search.785D90A9" = "hub"
 	"InspectorPreview.785D90A9" = "0"
 	"currentGroup.785D90A9" = "all"
 	"last_search.7F95D817" = ""
@@ -52,6 +52,7 @@ providers = {
 	}
 }
 recentSearches = [
+	"hub"
 	"dung"
 	"dungeon"
 	"tri"
@@ -61,7 +62,6 @@ recentSearches = [
 	"networkplayer"
 	"animc"
 	"mainmenu"
-	"hub"
 	"mainscene"
 ]
 searchItemFavorites = [
