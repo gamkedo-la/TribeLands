@@ -158,7 +158,7 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void BecomeHost(NetworkAvatar a)
     {
-        Debug.Log($"Become host to {a.gameObject.name}");
+        Debug.Log($"{name} becoming host to {a.gameObject.name}");
         if (avatar)
         {
             DeactivateCurrentAvatar();
