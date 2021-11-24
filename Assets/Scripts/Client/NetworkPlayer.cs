@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Client;
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
@@ -25,45 +26,14 @@ public class NetworkPlayer : NetworkBehaviour
     private CinemachineVirtualCamera virtualCamera;
     private bool cameraChanged;
 
-    [SerializeField] private Transform avatarSlot;
     private NetworkAvatar avatar;
+    private NetworkAvatarController avatarController;
 
     private NetworkAvatar[] avatars;
     
     private void Start()
     {
-        // cam = GetComponent<PlayerInput>().camera ?? Camera.main;
-        // if (!cam)
         cam = Camera.main;
-        // animator = GetComponentInChildren<Animator>();
-        // navAgent = GetComponent<NavMeshAgent>();
-    }
-
-    public override void OnStartClient()
-    {
-        base.OnStartClient();
-        
-        // var avatarObjs = GameObject.FindGameObjectsWithTag("Avatar");
-        // avatars = new NetworkAvatar[avatarObjs.Length];
-        // for (var i = 0; i < avatarObjs.Length; i++)
-        // {
-        //     avatars[i] = avatarObjs[i].GetComponent<NetworkAvatar>();
-        //     avatars[i].isControlled = false;
-        // }
-        //
-        // if (avatars.Length > 0)
-        // {
-        //     BecomeHost(avatars[0]);
-        // }
-    }
-
-    private void Awake()
-    {
-        if (!isLocalPlayer) return;
-        
-        // cam = Camera.main;
-        // GetComponentInChildren<CinemachineTargetGroup>().enabled = true;
-        // GetComponentInChildren<CinemachineVirtualCamera>().enabled = true;
     }
 
     private void Update()
@@ -87,7 +57,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Move()
     {
-        if (avatar == null) return;
+        if (avatarController == null) return;
         
         var cameraTransform = cam.transform;
         var right = cameraTransform.right;
@@ -96,10 +66,7 @@ public class NetworkPlayer : NetworkBehaviour
         var vMovement = new Vector3(forward.x, 0f, forward.z) * movementInput.y;
         var moveDir = (hMovement + vMovement).normalized;
 
-        if (NavMesh.SamplePosition(avatar.transform.position + moveDir, out var navMeshHit, 100f, NavMesh.AllAreas))
-        {
-            navAgent.SetDestination(navMeshHit.position);
-        }
+        avatarController.Move(moveDir);
     }
 
     [Command]
@@ -118,7 +85,8 @@ public class NetworkPlayer : NetworkBehaviour
         // Only do this on press, not release.
         if (ctx.started)
         {
-            CmdAttack();
+            avatarController.Attack();
+            // CmdAttack();
         }
     }
 
@@ -175,6 +143,7 @@ public class NetworkPlayer : NetworkBehaviour
         
         // Save reference
         avatar = a;
+        avatarController = a.GetComponent<NetworkAvatarController>();
         
         // Change navmeshagent reference
         navAgent = avatar.navMeshAgent;
