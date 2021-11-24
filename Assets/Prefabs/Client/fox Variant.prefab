@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
+  fireFrom: {fileID: 4354299289913673354}
 --- !u!1001 &2664587169635685600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28,6 +30,18 @@ PrefabInstance:
     - target: {fileID: -8608736776396367366, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_AssetId
       value: d6da4f139ef90394ab4566a987504aa0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771911141492560490, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771911141492560490, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.398
+      objectReference: {fileID: 0}
+    - target: {fileID: 1771911141492560490, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.756
       objectReference: {fileID: 0}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
@@ -86,5 +100,10 @@ PrefabInstance:
 --- !u!1 &1319241616494603273 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+  m_PrefabInstance: {fileID: 2664587169635685600}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4354299289913673354 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1771911141492560490, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
   m_PrefabInstance: {fileID: 2664587169635685600}
   m_PrefabAsset: {fileID: 0}
