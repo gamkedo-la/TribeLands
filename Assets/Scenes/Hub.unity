@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3081.6123, g: 2354.711, b: 2287.3086, a: 1}
+  m_IndirectSpecularColor: {r: 3114.3242, g: 2357.6309, b: 2227.0352, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1135,7 +1135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tribelands
+  m_text: "Triune\n      Legacy"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 678ef745657301c42be841104a172f5b, type: 2}
   m_sharedMaterial: {fileID: -7450786991447804425, guid: 678ef745657301c42be841104a172f5b, type: 2}
