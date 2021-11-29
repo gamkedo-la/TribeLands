@@ -92,6 +92,8 @@ MonoBehaviour:
   - {fileID: 1319241616494603273, guid: d6da4f139ef90394ab4566a987504aa0, type: 3}
   - {fileID: 6860034412142793801, guid: 97da863c08aa82c4989fd85ef831e754, type: 3}
   - {fileID: 6364507234747988861, guid: f944fd1f4d5b8e14988309e10acf38fc, type: 3}
+  - {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
+  - {fileID: 8338964250749903663, guid: 6a3d4b142e6c1b44782204bfc6e2e258, type: 3}
   meleeCharacterPrefab: {fileID: 0}
   rangedCharacterPrefab: {fileID: 0}
   magicCharacterPrefab: {fileID: 0}

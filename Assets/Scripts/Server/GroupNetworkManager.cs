@@ -18,8 +18,8 @@ public class GroupNetworkManager : NetworkManager
     private enum AvatarType
     {
         Magic,
-        Melee,
         Ranged,
+        Melee,
         Count
     }
 
@@ -296,21 +296,21 @@ public class GroupNetworkManager : NetworkManager
 
     private void AssignAvatar(NetworkConnection conn)
     {
-        var avatar = avatars[(int)AvatarType.Ranged]?.GetComponent<NetworkAvatar>();
-        avatar.netIdentity.AssignClientAuthority(conn);
-        conn.identity.gameObject.SendMessage("BecomeHost", avatar);
+        // var avatar = avatars[(int)AvatarType.Ranged]?.GetComponent<NetworkAvatar>();
+        // avatar.netIdentity.AssignClientAuthority(conn);
+        // conn.identity.gameObject.SendMessage("BecomeHost", avatar);
 
         // Find an unassigned avatar, and assign that avatar to the newly-joined player.
-        // for (var i = 0; i < avatars.Length; i++)
-        // {
-        //     var avatar = avatars[i]?.GetComponent<NetworkAvatar>();
-        //     if (avatar && !avatar.isControlled)
-        //     {
-        //         Debug.Log($"tell {conn.connectionId} client to use avatar {avatar.name}");
-        //         avatar.netIdentity.AssignClientAuthority(conn);
-        //         conn.identity.gameObject.SendMessage("BecomeHost", avatar);
-        //         break;
-        //     }
-        // }
+        for (var i = 0; i < avatars.Length; i++)
+        {
+            var avatar = avatars[i]?.GetComponent<NetworkAvatar>();
+            if (avatar && !avatar.isControlled)
+            {
+                Debug.Log($"tell {conn.connectionId} client to use avatar {avatar.name}");
+                avatar.netIdentity.AssignClientAuthority(conn);
+                conn.identity.gameObject.SendMessage("BecomeHost", avatar);
+                break;
+            }
+        }
     }
 }
