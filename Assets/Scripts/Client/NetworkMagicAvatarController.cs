@@ -8,7 +8,8 @@ namespace Client
         [SerializeField] private GameObject projectile;
         [SerializeField] private Transform fireFrom;
         
-        public override void Attack()
+        [Command]
+        public override void CmdAttack()
         {
             // Spawn magic projectile
             var projectileDirection = Quaternion.LookRotation(transform.forward, Vector3.up);

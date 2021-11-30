@@ -27,7 +27,7 @@ namespace Client
             Debug.LogError("Dodge not implemented");
         }
 
-        public virtual void Attack()
+        public virtual void CmdAttack()
         {
             Debug.LogError("Attack not implemented");
         }

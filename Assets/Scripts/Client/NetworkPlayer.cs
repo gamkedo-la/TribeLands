@@ -82,10 +82,12 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void OnAttackPerformed(InputAction.CallbackContext ctx)
     {
+        if (!isLocalPlayer) return;
+        
         // Only do this on press, not release.
         if (ctx.started)
         {
-            avatarController.Attack();
+            avatarController.CmdAttack();
             // CmdAttack();
         }
     }

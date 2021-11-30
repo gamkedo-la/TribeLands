@@ -8,9 +8,10 @@ namespace Client
         [SerializeField] private GameObject projectile;
         [SerializeField] private Transform fireFrom;
         
-        public override void Attack()
+        [Command]
+        public override void CmdAttack()
         {
-            // Spawn magic projectile
+            // Spawn projectile
             var projectileDirection = Quaternion.LookRotation(transform.forward, Vector3.up);
             var rangedProjectile = Instantiate(projectile, fireFrom.position, projectileDirection);
             NetworkServer.Spawn(rangedProjectile);
