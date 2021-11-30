@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5256420710995023829}
   - component: {fileID: 9143919389770877159}
   - component: {fileID: 6215472897268141385}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 3080247677583036580}
   - component: {fileID: 7299375912257724868}
   - component: {fileID: 8721386646319520923}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RangedProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
