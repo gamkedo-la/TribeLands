@@ -21,5 +21,11 @@ namespace Client
         {
             NetworkServer.Destroy(gameObject);
         }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            other.gameObject.SendMessageUpwards("TakeDamage", SendMessageOptions.DontRequireReceiver);
+            DestroySelf();
+        }
     }
 }

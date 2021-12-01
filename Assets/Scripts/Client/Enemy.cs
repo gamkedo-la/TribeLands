@@ -28,27 +28,23 @@ public class Enemy : NetworkBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        var percentRemaining = health/maxHealth;
-        healthBar.fillAmount = percentRemaining;
-        healthBarBackground.fillAmount = 1 - percentRemaining;
-        
         healthBarCanvas.rotation = mainCamera.transform.rotation * Quaternion.AngleAxis(180f, Vector3.up);
     }
 
-    private void TakeDamage()
+    public void TakeDamage()
     {
         health -= 20f;
+
+        if (health <= 0f) DestroySelf();
         
         var percentRemaining = health/maxHealth;
         healthBar.fillAmount = percentRemaining;
         healthBarBackground.fillAmount = 1 - percentRemaining;
     }
 
-    private void OnCollisionEnter(Collision other)
+    [Server]
+    private void DestroySelf()
     {
-        if (other.gameObject.CompareTag("PlayerAttack"))
-        {
-            TakeDamage();
-        }
+        NetworkServer.Destroy(gameObject);
     }
 }
