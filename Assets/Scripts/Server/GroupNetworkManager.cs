@@ -22,7 +22,7 @@ public class GroupNetworkManager : NetworkManager
         Melee,
         Count
     }
-
+    
     // private List<GameObject> avatars;
     private GameObject[] avatars;
     
@@ -163,7 +163,7 @@ public class GroupNetworkManager : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         base.OnServerAddPlayer(conn);
-        AssignAvatar(conn);
+        AssignInitialAvatar(conn);
     }
 
     /// <summary>
@@ -294,7 +294,7 @@ public class GroupNetworkManager : NetworkManager
         avatars[(int)AvatarType.Ranged] = rangedCharacterInstance;
     }
 
-    private void AssignAvatar(NetworkConnection conn)
+    private void AssignInitialAvatar(NetworkConnection conn)
     {
         // var avatar = avatars[(int)AvatarType.Ranged]?.GetComponent<NetworkAvatar>();
         // avatar.netIdentity.AssignClientAuthority(conn);
@@ -312,5 +312,31 @@ public class GroupNetworkManager : NetworkManager
                 break;
             }
         }
+    }
+
+    public static GroupNetworkManager gnmSingleton
+    {
+        get { return (GroupNetworkManager) singleton; }
+        private set { }
+    }
+    
+        // private void AssignAvatar(NetworkConnection conn, NetworkAvatar avatar)
+    // {
+        // singleton
+    
+    public bool AskForAvatar(NetworkConnection conn, int avatarSlot)
+    {
+        if (avatarSlot >= avatars.Length || avatarSlot < 0) return false;
+
+        var avatar = avatars[avatarSlot]?.GetComponent<NetworkAvatar>();
+        if (avatar && !avatar.isControlled)
+        {
+            avatar.netIdentity.AssignClientAuthority(conn);
+            conn.identity.gameObject.SendMessage("BecomeHost", avatar);
+            return true;
+        }
+        
+        // Debug.Log($"{conn.connectionId} asked for avatar slot {avatarSlot}");
+        return false;
     }
 }

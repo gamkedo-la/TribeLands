@@ -94,13 +94,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
     {
-        if (ctx.performed && avatarSlot >= 0 && avatarSlot < avatars.Length)
+        if (ctx.performed)
         {
-            var a = avatars[avatarSlot];
-            if (a.gameObject != avatar.gameObject)
-            {
-                // BecomeHost(a);
-            }
+            GroupNetworkManager.gnmSingleton.AskForAvatar(connectionToClient, avatarSlot);
         }
     }
 
@@ -155,14 +151,15 @@ public class NetworkPlayer : NetworkBehaviour
         avatar.virtualCamera.gameObject.SetActive(true);
         
         // Activate selection indicator
-        avatar.selectionIndicator.SetActive(true);
+        // commented out while experimenting with 3rd person camera (rather than top-down camera)
+        // avatar.selectionIndicator.SetActive(true);
         
         // Change animator reference
         animator = avatar.animator;
         
         Debug.Log($"hosting avatar {a.gameObject.name}");
     }
-
+    
     private void UpdateAvatarAI(NetworkAvatar avatar)
     {
         foreach (var networkAvatar in avatars)
@@ -177,5 +174,8 @@ public class NetworkPlayer : NetworkBehaviour
         avatar.targetGroup.gameObject.SetActive(false);
         avatar.virtualCamera.gameObject.SetActive(false);
         avatar.selectionIndicator.SetActive(false);
+        avatar.hostPlayer = avatar.transform;
+        avatar.isControlled = false;
+        avatar.netIdentity.RemoveClientAuthority();
     }
 }

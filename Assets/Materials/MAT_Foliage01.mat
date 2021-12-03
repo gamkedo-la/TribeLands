@@ -24,7 +24,7 @@ Material:
   m_Shader: {fileID: -6465566751694194690, guid: 3077bce5db3107343b35d876ac3d5bfc, type: 3}
   m_ShaderKeywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
+  m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: 2475
   stringTagMap:
@@ -61,8 +61,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - BillboardSize: -0.97
-    - Inflate: 0.32
+    - BillboardSize: 0.9
+    - Inflate: 0.1
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 0
@@ -112,6 +112,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Base_Color: {r: 0.50390786, g: 0.75471693, b: 0, a: 0}
-    - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
+    - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
