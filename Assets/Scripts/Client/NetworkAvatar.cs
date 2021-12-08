@@ -21,11 +21,6 @@ public class NetworkAvatar : NetworkBehaviour
     public Collider followRadius;
     public LayerMask followMask;
 
-    private void Start()
-    {
-        Debug.LogWarning($"{name} has authority? {hasAuthority}");
-    }
-
     private void Update()
     {
         if (isControlled) return;

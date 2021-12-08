@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  movementSpeed: 4
+  turnSmoothTime: 0.05
 --- !u!1001 &7604288770004380832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -80,6 +82,10 @@ PrefabInstance:
     - target: {fileID: 7369767834514395573, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654678296384862742, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: clientAuthority
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510d5ddfa58654544866927864c7c62c, type: 3}

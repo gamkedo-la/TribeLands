@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  movementSpeed: 4
+  turnSmoothTime: 0.05
   projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
   fireFrom: {fileID: 4354299289913673354}
 --- !u!1001 &2664587169635685600

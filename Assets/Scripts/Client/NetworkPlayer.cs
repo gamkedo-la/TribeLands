@@ -11,11 +11,8 @@ using UnityEngine.InputSystem;
 public class NetworkPlayer : NetworkBehaviour
 {
     private Vector2 movementInput;
-    private Animator animator;
     private NavMeshAgent navAgent;
     private Camera cam;
-
-    [SyncVar] private float currentSpeed;
 
     [SerializeField]
     private GameObject rightHandSlot;
@@ -28,6 +25,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     private NetworkAvatar avatar;
     private NetworkAvatarController avatarController;
+    
+    public NetworkAnimator networkAnimator;
+    private Animator animator;
 
     private NetworkAvatar[] avatars;
     
@@ -42,17 +42,6 @@ public class NetworkPlayer : NetworkBehaviour
         
         if (movementInput != Vector2.zero)
             Move();
-
-        if (navAgent)
-        {
-            SetMoveSpeed(navAgent.velocity.magnitude);
-        }
-    }
-    
-    private void LateUpdate()
-    {
-        if (animator != null)
-            animator.SetFloat("Speed", currentSpeed);
     }
 
     private void Move()
@@ -64,15 +53,9 @@ public class NetworkPlayer : NetworkBehaviour
         var forward = cameraTransform.forward;
         var hMovement = new Vector3(right.x, 0f, right.z) * movementInput.x;
         var vMovement = new Vector3(forward.x, 0f, forward.z) * movementInput.y;
-        var moveDir = (hMovement + vMovement).normalized;
+        var moveDir = hMovement + vMovement;
 
         avatarController.Move(moveDir);
-    }
-
-    [Command]
-    private void SetMoveSpeed(float speed)
-    {
-        currentSpeed = speed;
     }
 
     public void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -155,7 +138,9 @@ public class NetworkPlayer : NetworkBehaviour
         // avatar.selectionIndicator.SetActive(true);
         
         // Change animator reference
-        animator = avatar.animator;
+        // animator = avatar.animator;
+        networkAnimator.animator = avatar.animator;
+        networkAnimator.enabled = true;
         
         Debug.Log($"hosting avatar {a.gameObject.name}");
     }

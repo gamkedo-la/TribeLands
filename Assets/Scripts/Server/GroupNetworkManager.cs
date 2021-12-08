@@ -320,10 +320,7 @@ public class GroupNetworkManager : NetworkManager
         private set { }
     }
     
-        // private void AssignAvatar(NetworkConnection conn, NetworkAvatar avatar)
-    // {
-        // singleton
-    
+    [Server]
     public bool AskForAvatar(NetworkConnection conn, int avatarSlot)
     {
         if (avatarSlot >= avatars.Length || avatarSlot < 0) return false;
