@@ -26,8 +26,11 @@ public class NetworkPlayer : NetworkBehaviour
     private NetworkAvatar avatar;
     private NetworkAvatarController avatarController;
     
-    public NetworkAnimator networkAnimator;
+    // public NetworkAnimator networkAnimator;
     private Animator animator;
+    
+    [SyncVar]
+    private float currentSpeed;
 
     private NetworkAvatar[] avatars;
     
@@ -44,6 +47,11 @@ public class NetworkPlayer : NetworkBehaviour
             Move();
     }
 
+    private void LateUpdate()
+    {
+        // animator.SetFloat("Speed", currentSpeed);
+    }
+
     private void Move()
     {
         if (avatarController == null) return;
@@ -56,6 +64,7 @@ public class NetworkPlayer : NetworkBehaviour
         var moveDir = hMovement + vMovement;
 
         avatarController.Move(moveDir);
+        currentSpeed = moveDir.sqrMagnitude;
     }
 
     public void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -138,9 +147,9 @@ public class NetworkPlayer : NetworkBehaviour
         // avatar.selectionIndicator.SetActive(true);
         
         // Change animator reference
-        // animator = avatar.animator;
-        networkAnimator.animator = avatar.animator;
-        networkAnimator.enabled = true;
+        animator = avatar.animator;
+        // networkAnimator.animator = avatar.animator;
+        // networkAnimator.enabled = true;
         
         Debug.Log($"hosting avatar {a.gameObject.name}");
     }

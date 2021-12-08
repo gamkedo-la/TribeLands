@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 6186709532410121165}
   - component: {fileID: -6839869417490429716}
   - component: {fileID: 1917247802819294294}
-  - component: {fileID: -1138638214980621052}
   m_Layer: 0
   m_Name: NetworkPlayerBrain
   m_TagString: Player
@@ -98,7 +97,6 @@ MonoBehaviour:
   rightHandSlot: {fileID: 0}
   targetGroup: {fileID: 0}
   virtualCamera: {fileID: 0}
-  networkAnimator: {fileID: -1138638214980621052}
 --- !u!114 &1917247802819294294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,19 +267,3 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &-1138638214980621052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3941881863343208681}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  clientAuthority: 1
-  animator: {fileID: 0}
