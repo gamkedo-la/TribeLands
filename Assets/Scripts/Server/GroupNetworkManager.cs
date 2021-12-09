@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Mirror;
@@ -75,9 +74,9 @@ public class GroupNetworkManager : NetworkManager
     /// Set the frame rate for a headless server.
     /// <para>Override if you wish to disable the behavior or set your own tick rate.</para>
     /// </summary>
-    public override void ConfigureServerFrameRate()
+    public override void ConfigureHeadlessFrameRate()
     {
-        base.ConfigureServerFrameRate();
+        base.ConfigureHeadlessFrameRate();
     }
 
     /// <summary>
@@ -241,7 +240,7 @@ public class GroupNetworkManager : NetworkManager
     /// </summary>
     public override void OnStartServer()
     {
-        SpawnAvatars();
+         SpawnAvatars();
     }
 
     /// <summary>
@@ -265,8 +264,7 @@ public class GroupNetworkManager : NetworkManager
     public override void OnStopClient() { }
 
     #endregion
-
-
+    
     private void SpawnAvatars()
     {
         // Make sure we have at least one start position.
