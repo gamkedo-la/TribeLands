@@ -15,8 +15,6 @@ namespace Client
         private float turnSmoothVelocity;
 
         private Vector3 inputVelocity;
-        private Camera mainCamera;
-
         private Animator animator;
 
         [SyncVar]
@@ -26,14 +24,11 @@ namespace Client
         {
             animator = GetComponentInChildren<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
-            mainCamera = Camera.main;
         }
 
         private void Update()
         {
-            currentSpeed = 0f;
-
-            if (inputVelocity.sqrMagnitude >= 0.1f)
+            if (inputVelocity != Vector3.zero)
             {
                 if (inputVelocity.sqrMagnitude >= 1f) inputVelocity.Normalize();
 
@@ -46,28 +41,33 @@ namespace Client
                     turnSmoothTime);
                 transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-                // Update animator
-                currentSpeed = inputVelocity.sqrMagnitude;
-
                 // Reset input
                 inputVelocity = Vector3.zero;
             }
-            
-            animator.SetFloat("Speed", currentSpeed);
+        }
+
+        [Command]
+        private void SetCurrentSpeed(float speed)
+        {
+            currentSpeed = speed;
         }
 
         public void LateUpdate()
         {
-            // Debug.Log($"SetFloat({currentSpeed}) on {gameObject.name} animator");
-            // animator.SetFloat("Speed", currentSpeed);
+            animator.SetFloat("Speed", currentSpeed);
         }
 
         public virtual void Move(Vector3 movementDirection)
         {
-            if (NavMesh.SamplePosition(transform.position + movementDirection, out var navMeshHit, 100f, NavMesh.AllAreas))
+            var speed = movementDirection.sqrMagnitude;
+
+            if (NavMesh.SamplePosition(transform.position + movementDirection, out var navMeshHit, 100f,
+                NavMesh.AllAreas))
             {
                 inputVelocity = movementDirection;
             }
+            
+            SetCurrentSpeed(speed);
         }
 
         public virtual void Dodge(Vector2 direction)

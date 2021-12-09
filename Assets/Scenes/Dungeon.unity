@@ -3382,6 +3382,10 @@ PrefabInstance:
       propertyPath: rangedCharacterPrefab
       value: 
       objectReference: {fileID: 1319241616494603273, guid: d6da4f139ef90394ab4566a987504aa0, type: 3}
+    - target: {fileID: 8148839757553177128, guid: c85d2cb8ff07dbc45894c5640442c499, type: 3}
+      propertyPath: Port
+      value: 7778
+      objectReference: {fileID: 0}
     - target: {fileID: 8704807323081884493, guid: c85d2cb8ff07dbc45894c5640442c499, type: 3}
       propertyPath: m_RootOrder
       value: 4
