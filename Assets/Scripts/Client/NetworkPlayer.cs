@@ -73,6 +73,16 @@ public class NetworkPlayer : NetworkBehaviour
         }
     }
 
+    public void OnPowerAttackPerformed(InputAction.CallbackContext ctx)
+    {
+        if (!isLocalPlayer) return;
+
+        if (ctx.started)
+        {
+            avatarController.PowerAttack();
+        }
+    }
+
     private void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
     {
         if (ctx.performed)

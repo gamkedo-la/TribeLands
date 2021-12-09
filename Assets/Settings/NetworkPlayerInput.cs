@@ -73,6 +73,14 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""PowerAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""12e25af1-7aa9-4a1f-b8ab-5f246ccc7e09"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -370,6 +378,28 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""SelectThirdAvatar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5634eec0-64df-4e46-af44-d1c9ca3b1f59"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""PowerAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37bfde05-efd8-40f6-b967-cc242c91a568"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""PowerAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -954,6 +984,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         m_Player_SelectFirstAvatar = m_Player.FindAction("SelectFirstAvatar", throwIfNotFound: true);
         m_Player_SelectSecondAvatar = m_Player.FindAction("SelectSecondAvatar", throwIfNotFound: true);
         m_Player_SelectThirdAvatar = m_Player.FindAction("SelectThirdAvatar", throwIfNotFound: true);
+        m_Player_PowerAttack = m_Player.FindAction("PowerAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1022,6 +1053,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SelectFirstAvatar;
     private readonly InputAction m_Player_SelectSecondAvatar;
     private readonly InputAction m_Player_SelectThirdAvatar;
+    private readonly InputAction m_Player_PowerAttack;
     public struct PlayerActions
     {
         private @NetworkPlayerInput m_Wrapper;
@@ -1033,6 +1065,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         public InputAction @SelectFirstAvatar => m_Wrapper.m_Player_SelectFirstAvatar;
         public InputAction @SelectSecondAvatar => m_Wrapper.m_Player_SelectSecondAvatar;
         public InputAction @SelectThirdAvatar => m_Wrapper.m_Player_SelectThirdAvatar;
+        public InputAction @PowerAttack => m_Wrapper.m_Player_PowerAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1063,6 +1096,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @SelectThirdAvatar.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectThirdAvatar;
                 @SelectThirdAvatar.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectThirdAvatar;
                 @SelectThirdAvatar.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSelectThirdAvatar;
+                @PowerAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
+                @PowerAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
+                @PowerAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1088,6 +1124,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @SelectThirdAvatar.started += instance.OnSelectThirdAvatar;
                 @SelectThirdAvatar.performed += instance.OnSelectThirdAvatar;
                 @SelectThirdAvatar.canceled += instance.OnSelectThirdAvatar;
+                @PowerAttack.started += instance.OnPowerAttack;
+                @PowerAttack.performed += instance.OnPowerAttack;
+                @PowerAttack.canceled += instance.OnPowerAttack;
             }
         }
     }
@@ -1251,6 +1290,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         void OnSelectFirstAvatar(InputAction.CallbackContext context);
         void OnSelectSecondAvatar(InputAction.CallbackContext context);
         void OnSelectThirdAvatar(InputAction.CallbackContext context);
+        void OnPowerAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
