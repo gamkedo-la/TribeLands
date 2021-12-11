@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1740024826223272333}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0.703, z: 0.4058}
-  m_LocalScale: {x: 0.71, y: 0.2164, z: 0.1884}
+  m_LocalPosition: {x: -0, y: 0.703, z: 0.4677}
+  m_LocalScale: {x: 0.71, y: 0.2164, z: 0.31219763}
   m_Children: []
   m_Father: {fileID: 1465788798376177120}
   m_RootOrder: 2
@@ -151,6 +151,14 @@ MonoBehaviour:
   healthBar: {fileID: 4510605183766701060}
   healthBarBackground: {fileID: 4196079256097078693}
   health: 0
+  target: {fileID: 0}
+  navAgent: {fileID: 0}
+  detectionRadius: 10
+  breakFollowDistance: 15
+  avatarCheckInterval: 0.5
+  avatarLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
 --- !u!114 &1950535492102652480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,11 +198,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.21
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -388,7 +396,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.65
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8221324236383660563
 GameObject:
