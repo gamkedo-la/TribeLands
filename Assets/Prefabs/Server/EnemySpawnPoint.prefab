@@ -65,3 +65,5 @@ MonoBehaviour:
   syncInterval: 0.1
   spawnFrequency: 3
   enemy: {fileID: 1795260258213812621, guid: 6eb4b266990684b408deb2a9fe8796bb, type: 3}
+  maxSpawnedEnemies: 8
+  activeEnemies: 0

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class Enemy : NetworkBehaviour
@@ -18,7 +19,6 @@ public class Enemy : NetworkBehaviour
     [SyncVar]
     public float health;
 
-
     public GameObject target;
     public NavMeshAgent navAgent;
 
@@ -29,6 +29,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private LayerMask avatarLayerMask;
     private float timeSinceLastCheck = 0f;
     private Collider[] nearbyAvatars;
+
+    public UnityEvent<int> OnDeath;
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +44,11 @@ public class Enemy : NetworkBehaviour
     public override void OnStartServer()
     {
         nearbyAvatars = new Collider[3];
+        
+        if (OnDeath == null)
+            OnDeath = new UnityEvent<int>();
+        
+        OnDeath.AddListener(DestroySelf);
     }
 
     private void Update()
@@ -80,12 +87,25 @@ public class Enemy : NetworkBehaviour
         healthBarCanvas.rotation = mainCamera.transform.rotation * Quaternion.AngleAxis(180f, Vector3.up);
     }
 
+    [Server]
     public void TakeDamage()
     {
         health -= 20f;
 
-        if (health <= 0f) DestroySelf();
-        
+        if (health <= 0f)
+        {
+            OnDeath?.Invoke(gameObject.GetInstanceID());
+        }
+        else
+        {
+            RpcTakeDamage();
+            
+        }
+    }
+
+    [ClientRpc]
+    private void RpcTakeDamage()
+    {
         var percentRemaining = health/maxHealth;
         healthBar.fillAmount = percentRemaining;
         healthBarBackground.fillAmount = 1 - percentRemaining;
@@ -108,7 +128,7 @@ public class Enemy : NetworkBehaviour
     }
 
     [Server]
-    private void DestroySelf()
+    private void DestroySelf(int objId)
     {
         NetworkServer.Destroy(gameObject);
     }
