@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -99,7 +100,6 @@ public class Enemy : NetworkBehaviour
         else
         {
             RpcTakeDamage();
-            
         }
     }
 

@@ -24,6 +24,8 @@ namespace Client
 
         private void OnCollisionEnter(Collision other)
         {
+            if (!isServer) return;
+                
             other.gameObject.SendMessageUpwards("TakeDamage", SendMessageOptions.DontRequireReceiver);
             DestroySelf();
         }
