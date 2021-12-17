@@ -16,6 +16,7 @@ MonoBehaviour:
   syncInterval: 0.1
   movementSpeed: 4
   turnSmoothTime: 0.05
+  currentSpeed: 0
   projectile: {fileID: 8338964250749903663, guid: 6a3d4b142e6c1b44782204bfc6e2e258, type: 3}
   fireFrom: {fileID: 8534377355548185086}
 --- !u!1001 &7991396983869719444
@@ -47,7 +48,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
-      value: turtle Variant
+      value: Tua
       objectReference: {fileID: 0}
     - target: {fileID: 4523135122113808319, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -120,6 +121,10 @@ PrefabInstance:
     - target: {fileID: 7369767834514395573, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: maxHealth
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510d5ddfa58654544866927864c7c62c, type: 3}

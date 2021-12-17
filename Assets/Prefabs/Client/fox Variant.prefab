@@ -16,6 +16,7 @@ MonoBehaviour:
   syncInterval: 0.1
   movementSpeed: 4
   turnSmoothTime: 0.05
+  currentSpeed: 0
   projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
   fireFrom: {fileID: 4354299289913673354}
 --- !u!1001 &2664587169635685600
@@ -124,6 +125,10 @@ PrefabInstance:
     - target: {fileID: 7369767834514395573, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: maxHealth
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510d5ddfa58654544866927864c7c62c, type: 3}

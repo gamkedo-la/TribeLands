@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 9076436709610602476}
   - component: {fileID: 4424568918695368897}
   - component: {fileID: 5019124501405134403}
+  - component: {fileID: 1092360235283903671}
   m_Layer: 0
   m_Name: AvatarStatPanel
   m_TagString: Untagged
@@ -229,6 +230,22 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1092360235283903671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967975408329549478}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fb04dc0a7a1ae448bf5f8021d38e6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  avatarTag: Avatar
+  avatarName: 
+  healthMeter: {fileID: 1755415922241868252}
+  specialMeter: {fileID: 1701327318498529641}
 --- !u!1 &5585528885904272887
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,15 +24,15 @@ public class NetworkAvatar : NetworkBehaviour
     [SerializeField] private float maxHealth = 100f;
     private float health;
     
-    // Broadcasts remaining health after damage taken.
-    public UnityEvent<float> OnDamaged;
+    // Broadcasts remaining health and max health after damage taken.
+    public UnityEvent<float, float> OnDamaged;
 
-    public override void OnStartLocalPlayer()
+    void Start()
     {
         health = maxHealth;
         
         if (OnDamaged == null)
-            OnDamaged = new UnityEvent<float>();
+            OnDamaged = new UnityEvent<float, float>();
     }
 
     private void Update()
@@ -53,7 +53,6 @@ public class NetworkAvatar : NetworkBehaviour
         if (!hostPlayer) return;
 
         var ray = new Ray(transform.position, (hostPlayer.position - transform.position).normalized);
-        // Debug.DrawRay(ray.origin, ray.direction, Color.red, 2f);
         
         if (Physics.Raycast(ray, out var hitInfo, 100f, followMask))
         {
@@ -63,8 +62,7 @@ public class NetworkAvatar : NetworkBehaviour
 
     private void TakeDamage(float damage)
     {
-        health -= 20f;
-        Debug.Log($"{gameObject.name} has {health} remaining");
-        OnDamaged?.Invoke(health);
+        health = Mathf.Max(health - damage, 0f);
+        OnDamaged?.Invoke(health, maxHealth);
     }
 }

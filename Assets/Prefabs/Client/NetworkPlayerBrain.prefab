@@ -496,6 +496,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4904253471400274618}
     m_Modifications:
+    - target: {fileID: 1092360235283903671, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
+      propertyPath: avatarName
+      value: fox Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 3967975408329549478, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: m_Name
       value: AvatarStatPanel (2)
@@ -598,6 +602,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4904253471400274618}
     m_Modifications:
+    - target: {fileID: 1092360235283903671, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
+      propertyPath: avatarName
+      value: hippo Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 3967975408329549478, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: m_Name
       value: AvatarStatPanel (1)
@@ -700,6 +708,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4904253471400274618}
     m_Modifications:
+    - target: {fileID: 1092360235283903671, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
+      propertyPath: avatarName
+      value: Tua
+      objectReference: {fileID: 0}
     - target: {fileID: 3967975408329549478, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: m_Name
       value: AvatarStatPanel
