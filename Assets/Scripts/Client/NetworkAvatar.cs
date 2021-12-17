@@ -1,8 +1,8 @@
-using System;
 using Cinemachine;
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class NetworkAvatar : NetworkBehaviour
 {
@@ -20,6 +20,20 @@ public class NetworkAvatar : NetworkBehaviour
     public GameObject selectionIndicator;
     public Collider followRadius;
     public LayerMask followMask;
+
+    [SerializeField] private float maxHealth = 100f;
+    private float health;
+    
+    // Broadcasts remaining health after damage taken.
+    public UnityEvent<float> OnDamaged;
+
+    public override void OnStartLocalPlayer()
+    {
+        health = maxHealth;
+        
+        if (OnDamaged == null)
+            OnDamaged = new UnityEvent<float>();
+    }
 
     private void Update()
     {
@@ -45,5 +59,12 @@ public class NetworkAvatar : NetworkBehaviour
         {
             navMeshAgent.SetDestination(hitInfo.point);
         }
+    }
+
+    private void TakeDamage(float damage)
+    {
+        health -= 20f;
+        Debug.Log($"{gameObject.name} has {health} remaining");
+        OnDamaged?.Invoke(health);
     }
 }

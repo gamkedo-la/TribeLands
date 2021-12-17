@@ -31,6 +31,10 @@ public class Enemy : NetworkBehaviour
     private float timeSinceLastCheck = 0f;
     private Collider[] nearbyAvatars;
 
+    [SerializeField] private float attackDamage = 20f;
+    [SerializeField] private float timeBetweenAttacks = 3.0f;
+    private float timeSinceLastAttack = 0f;
+
     public UnityEvent<int> OnDeath;
     
     // Start is called before the first frame update
@@ -79,7 +83,18 @@ public class Enemy : NetworkBehaviour
             {
                 Debug.LogError($"navAgent has target {target.gameObject.name}, but no valid path was found");
             }
+
+            if (navAgent.remainingDistance <= attackRange)
+            {
+                // Maybe also stop moving, and face the target?
+                if (timeSinceLastAttack >= timeBetweenAttacks)
+                {
+                    AttackTarget();
+                }
+            }
         }
+
+        timeSinceLastAttack += Time.deltaTime;
     }
 
     // Update is called once per frame
@@ -101,6 +116,13 @@ public class Enemy : NetworkBehaviour
         {
             RpcTakeDamage();
         }
+    }
+
+    [ClientRpc]
+    private void AttackTarget()
+    {
+        target.SendMessage("TakeDamage", attackDamage);
+        timeSinceLastAttack = 0f;
     }
 
     [ClientRpc]
