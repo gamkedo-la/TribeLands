@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 4751984589262287903}
   - component: {fileID: 8529161680047111098}
   - component: {fileID: 5888839220696715120}
-  - component: {fileID: 7609988790373557756}
+  - component: {fileID: 3865625027951888537}
+  - component: {fileID: 6870877973181674831}
   m_Layer: 0
   m_Name: rocks_rock5
   m_TagString: Untagged
@@ -83,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7609988790373557756
-MeshCollider:
+--- !u!135 &3865625027951888537
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -93,7 +94,22 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 96621212903710399, guid: 42a2051799eeb0f46a05b06b58a7c44d, type: 3}
+  serializedVersion: 2
+  m_Radius: 0.47
+  m_Center: {x: 0, y: -0.2, z: 0}
+--- !u!208 &6870877973181674831
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5384511172662505125}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.50100005, y: 0.41500002, z: 0.50100005}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.021000002, y: -0.178, z: 0.035}
+  m_TimeToStationary: 0.5
