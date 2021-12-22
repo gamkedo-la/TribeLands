@@ -20,6 +20,11 @@ namespace Client
         [SyncVar]
         public float currentSpeed;
 
+        [SerializeField]
+        protected float timeBetweenAttacks = 0.333f;
+
+        public float TimeBetweenAttacks => timeBetweenAttacks;
+
         private void Start()
         {
             animator = GetComponentInChildren<Animator>();

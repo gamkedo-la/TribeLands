@@ -29,6 +29,9 @@ public class NetworkPlayer : NetworkBehaviour
     private Animator animator;
 
     private NetworkAvatar[] avatars;
+
+    // Attack speed is tracked on the avatars.
+    private float timeSinceAttack;
     
     private void Start()
     {
@@ -38,7 +41,8 @@ public class NetworkPlayer : NetworkBehaviour
     private void Update()
     {
         if (!isLocalPlayer) return;
-        
+
+        timeSinceAttack += Time.deltaTime;
         Move();
     }
 
@@ -63,14 +67,12 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void OnAttackPerformed(InputAction.CallbackContext ctx)
     {
-        if (!isLocalPlayer) return;
-        
-        // Only do this on press, not release.
-        if (ctx.started)
-        {
-            avatarController.CmdAttack();
-            // CmdAttack();
-        }
+        if (!isLocalPlayer ||
+            !ctx.started ||
+            timeSinceAttack < avatarController.TimeBetweenAttacks) return;
+
+        timeSinceAttack = 0f;
+        avatarController.CmdAttack();
     }
 
     public void OnPowerAttackPerformed(InputAction.CallbackContext ctx)

@@ -17,6 +17,7 @@ MonoBehaviour:
   movementSpeed: 4
   turnSmoothTime: 0.05
   currentSpeed: 0
+  timeBetweenAttacks: 0.4
   projectile: {fileID: 8338964250749903663, guid: 6a3d4b142e6c1b44782204bfc6e2e258, type: 3}
   fireFrom: {fileID: 8534377355548185086}
 --- !u!1001 &7991396983869719444
