@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cinemachine;
 using Client;
 using Mirror;
@@ -77,11 +74,16 @@ public class NetworkPlayer : NetworkBehaviour
 
     public void OnPowerAttackPerformed(InputAction.CallbackContext ctx)
     {
-        if (!isLocalPlayer) return;
-
-        if (ctx.started)
+        if (!isLocalPlayer || !ctx.started) return;
+        
+        if (avatar.Energy >= avatarController.PowerAttackEnergyCost)
         {
+            avatar.PowerAttackPerformed(avatarController.PowerAttackEnergyCost);
             avatarController.PowerAttack();
+        }
+        else
+        {
+            Debug.LogWarning($"not enough energy: {avatar.Energy}");
         }
     }
 

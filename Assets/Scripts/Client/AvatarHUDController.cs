@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,11 +30,18 @@ public class AvatarHUDController : MonoBehaviour
 
         var networkAvatar = avatar.GetComponent<NetworkAvatar>();
         networkAvatar.OnDamaged.AddListener(OnAvatarDamaged);
+        networkAvatar.OnPowerAttack.AddListener(OnAvatarSpecialAttack);
     }
 
     private void OnAvatarDamaged(float healthRemaining, float maxHealth)
     {
         var percentHealthRemaining = healthRemaining / maxHealth;
         healthMeter.fillAmount = percentHealthRemaining;
+    }
+
+    private void OnAvatarSpecialAttack(float energyRemaining, float maxEnergy)
+    {
+        var percentEnergyRemaining = energyRemaining / maxEnergy;
+        specialMeter.fillAmount = percentEnergyRemaining;
     }
 }

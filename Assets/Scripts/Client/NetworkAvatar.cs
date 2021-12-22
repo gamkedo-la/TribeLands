@@ -23,16 +23,25 @@ public class NetworkAvatar : NetworkBehaviour
 
     [SerializeField] private float maxHealth = 100f;
     private float health;
+    public float Health => health;
+
+    [SerializeField] private float maxEnergy = 150f;
+    private float energy;
+    public float Energy => energy;
     
     // Broadcasts remaining health and max health after damage taken.
     public UnityEvent<float, float> OnDamaged;
+    public UnityEvent<float, float> OnPowerAttack;
 
     void Start()
     {
         health = maxHealth;
+        energy = maxEnergy;
         
         if (OnDamaged == null)
             OnDamaged = new UnityEvent<float, float>();
+        if (OnPowerAttack == null)
+            OnPowerAttack = new UnityEvent<float, float>();
     }
 
     private void Update()
@@ -46,6 +55,12 @@ public class NetworkAvatar : NetworkBehaviour
             timeSinceLastNavUpdate = 0f;
             FollowHost();
         }
+    }
+
+    public void PowerAttackPerformed(float cost)
+    {
+        energy -= cost;
+        OnPowerAttack?.Invoke(energy, maxEnergy);
     }
 
     private void FollowHost()

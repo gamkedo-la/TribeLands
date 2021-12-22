@@ -1,6 +1,4 @@
-﻿using System;
-using Mirror;
-using Unity.VisualScripting;
+﻿using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +20,9 @@ namespace Client
 
         [SerializeField]
         protected float timeBetweenAttacks = 0.333f;
+
+        [SerializeField] protected float powerAttackEnergyCost = 100f;
+        public float PowerAttackEnergyCost => powerAttackEnergyCost;
 
         public float TimeBetweenAttacks => timeBetweenAttacks;
 
