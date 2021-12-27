@@ -81,6 +81,14 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Dodge"",
+                    ""type"": ""Button"",
+                    ""id"": ""34365581-a0bd-451f-bdd6-61ea38898570"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -252,7 +260,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""143bb1cd-cc10-4eca-a2f0-a3664166fe91"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
@@ -400,6 +408,28 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""PowerAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40871ebc-0845-421b-a632-cddeeee65fe3"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""932e26ed-d986-4570-a0d7-99d0050c1802"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -985,6 +1015,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         m_Player_SelectSecondAvatar = m_Player.FindAction("SelectSecondAvatar", throwIfNotFound: true);
         m_Player_SelectThirdAvatar = m_Player.FindAction("SelectThirdAvatar", throwIfNotFound: true);
         m_Player_PowerAttack = m_Player.FindAction("PowerAttack", throwIfNotFound: true);
+        m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1054,6 +1085,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SelectSecondAvatar;
     private readonly InputAction m_Player_SelectThirdAvatar;
     private readonly InputAction m_Player_PowerAttack;
+    private readonly InputAction m_Player_Dodge;
     public struct PlayerActions
     {
         private @NetworkPlayerInput m_Wrapper;
@@ -1066,6 +1098,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         public InputAction @SelectSecondAvatar => m_Wrapper.m_Player_SelectSecondAvatar;
         public InputAction @SelectThirdAvatar => m_Wrapper.m_Player_SelectThirdAvatar;
         public InputAction @PowerAttack => m_Wrapper.m_Player_PowerAttack;
+        public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1099,6 +1132,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @PowerAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
                 @PowerAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
                 @PowerAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPowerAttack;
+                @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1127,6 +1163,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @PowerAttack.started += instance.OnPowerAttack;
                 @PowerAttack.performed += instance.OnPowerAttack;
                 @PowerAttack.canceled += instance.OnPowerAttack;
+                @Dodge.started += instance.OnDodge;
+                @Dodge.performed += instance.OnDodge;
+                @Dodge.canceled += instance.OnDodge;
             }
         }
     }
@@ -1291,6 +1330,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         void OnSelectSecondAvatar(InputAction.CallbackContext context);
         void OnSelectThirdAvatar(InputAction.CallbackContext context);
         void OnPowerAttack(InputAction.CallbackContext context);
+        void OnDodge(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

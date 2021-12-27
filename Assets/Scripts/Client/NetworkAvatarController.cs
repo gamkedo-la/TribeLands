@@ -76,8 +76,9 @@ namespace Client
             SetCurrentSpeed(speed);
         }
 
-        public virtual void Dodge(Vector2 direction)
+        public virtual void Dodge()
         {
+            // todo: use inputVelocity to determine dodge direction.
             Debug.LogError("Dodge not implemented");
         }
 
