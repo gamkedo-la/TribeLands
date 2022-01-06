@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Enemy : NetworkBehaviour
 {
@@ -35,6 +36,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private float timeBetweenAttacks = 3.0f;
     private float timeSinceLastAttack = 0f;
 
+    [SerializeField] private List<Pickup> pickups;
+
     public UnityEvent<int> OnDeath;
     
     // Start is called before the first frame update
@@ -54,6 +57,7 @@ public class Enemy : NetworkBehaviour
             OnDeath = new UnityEvent<int>();
         
         OnDeath.AddListener(DestroySelf);
+        OnDeath.AddListener(SpawnPickup);
     }
 
     private void Update()
@@ -153,6 +157,15 @@ public class Enemy : NetworkBehaviour
     private void DestroySelf(int objId)
     {
         NetworkServer.Destroy(gameObject);
+    }
+
+    [Server]
+    private void SpawnPickup(int objId)
+    {
+        if (pickups == null || pickups.Count == 0) return;
+        
+        var selection = Random.Range(0, pickups.Count);
+        Instantiate(pickups[selection], transform.position, Quaternion.identity);
     }
 
     [Server]

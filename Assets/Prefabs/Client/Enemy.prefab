@@ -146,6 +146,10 @@ MonoBehaviour:
   avatarLayerMask:
     serializedVersion: 2
     m_Bits: 8
+  attackDamage: 20
+  timeBetweenAttacks: 3
+  pickups:
+  - {fileID: 2989001207613888885, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
   OnDeath:
     m_PersistentCalls:
       m_Calls: []
