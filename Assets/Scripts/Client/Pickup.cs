@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pickup : MonoBehaviour
 {
@@ -18,6 +19,19 @@ public class Pickup : MonoBehaviour
     private Transform target;
     private Vector3 currentSpeed = Vector3.zero;
 
+    [SerializeField] private string pickupMessage;
+    [SerializeField] private float pickupValue;
+    public UnityEvent OnPickup;
+
+    private void Start()
+    {
+        if (OnPickup == null) OnPickup = new UnityEvent();
+
+        OnPickup.AddListener(RestorePlayerAttribute);
+        OnPickup.AddListener(SpawnPickupEffect);
+        OnPickup.AddListener(DestroySelf);
+    }
+
     void Update()
     {
         if (target)
@@ -26,7 +40,7 @@ public class Pickup : MonoBehaviour
 
             if ((target.position - transform.position).sqrMagnitude <= pickupRange)
             {
-                OnPickup();
+                OnPickup?.Invoke();
             }
         }
         else
@@ -44,15 +58,24 @@ public class Pickup : MonoBehaviour
         }
     }
 
+    void RestorePlayerAttribute()
+    {
+        target.gameObject.SendMessage(pickupMessage, pickupValue, SendMessageOptions.DontRequireReceiver);
+    }
+
     void FloatTowardTarget()
     {
         transform.position = Vector3.SmoothDamp(transform.position, target.position, ref currentSpeed, timeToTarget);
     }
 
-    void OnPickup()
+    void SpawnPickupEffect()
     {
         var effect = Instantiate(pickupEffect, target);
         Destroy(effect, 1f);
+    }
+
+    void DestroySelf()
+    {
         Destroy(gameObject);
     }
 }

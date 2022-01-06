@@ -28,18 +28,23 @@ public class AvatarHUDController : MonoBehaviour
             return;
         }
 
+        // Register event listeners for health and energy updates
         var networkAvatar = avatar.GetComponent<NetworkAvatar>();
-        networkAvatar.OnDamaged.AddListener(OnAvatarDamaged);
-        networkAvatar.OnPowerAttack.AddListener(OnAvatarSpecialAttack);
+        networkAvatar.OnHealthChanged.AddListener(UpdateHealth);
+        networkAvatar.OnEnergyChanged.AddListener(UpdateEnergy);
+        
+        // Set initial health and energy values in case they are not 100%
+        UpdateEnergy(networkAvatar.Energy, networkAvatar.MaxEnergy);
+        UpdateHealth(networkAvatar.Health, networkAvatar.MaxHealth);
     }
 
-    private void OnAvatarDamaged(float healthRemaining, float maxHealth)
+    private void UpdateHealth(float healthRemaining, float maxHealth)
     {
         var percentHealthRemaining = healthRemaining / maxHealth;
         healthMeter.fillAmount = percentHealthRemaining;
     }
 
-    private void OnAvatarSpecialAttack(float energyRemaining, float maxEnergy)
+    private void UpdateEnergy(float energyRemaining, float maxEnergy)
     {
         var percentEnergyRemaining = energyRemaining / maxEnergy;
         specialMeter.fillAmount = percentEnergyRemaining;

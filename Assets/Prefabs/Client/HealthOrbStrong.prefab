@@ -8,9 +8,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2989001207613888885, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
+      propertyPath: pickupValue
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2989001207613888885, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: pickupEffect
       value: 
       objectReference: {fileID: 7717064899286844601, guid: 57ee5e04231b61141b294861fb057e4f, type: 3}
+    - target: {fileID: 2989001207613888885, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
+      propertyPath: pickupMessage
+      value: GainHealth
+      objectReference: {fileID: 0}
     - target: {fileID: 4525929617773456054, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25

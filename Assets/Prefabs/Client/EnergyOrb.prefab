@@ -148,6 +148,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   pickupEffect: {fileID: 7717064899286844601, guid: ab1977df38127404a967dbb8386fef28, type: 3}
+  pickupMessage: GainEnergy
+  pickupValue: 10
+  OnPickup:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &8545669217420814240
 GameObject:
   m_ObjectHideFlags: 0

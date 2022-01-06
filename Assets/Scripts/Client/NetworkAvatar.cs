@@ -3,6 +3,7 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 public class NetworkAvatar : NetworkBehaviour
 {
@@ -24,24 +25,26 @@ public class NetworkAvatar : NetworkBehaviour
     [SerializeField] private float maxHealth = 100f;
     private float health;
     public float Health => health;
+    public float MaxHealth => maxHealth;
 
     [SerializeField] private float maxEnergy = 150f;
     private float energy;
     public float Energy => energy;
+    public float MaxEnergy => maxEnergy;
     
     // Broadcasts remaining health and max health after damage taken.
-    public UnityEvent<float, float> OnDamaged;
-    public UnityEvent<float, float> OnPowerAttack;
+    public UnityEvent<float, float> OnHealthChanged;
+    public UnityEvent<float, float> OnEnergyChanged;
 
     void Start()
     {
-        health = maxHealth;
-        energy = maxEnergy;
+        health = 1;
+        energy = 1;
         
-        if (OnDamaged == null)
-            OnDamaged = new UnityEvent<float, float>();
-        if (OnPowerAttack == null)
-            OnPowerAttack = new UnityEvent<float, float>();
+        if (OnHealthChanged == null)
+            OnHealthChanged = new UnityEvent<float, float>();
+        if (OnEnergyChanged == null)
+            OnEnergyChanged = new UnityEvent<float, float>();
     }
 
     private void Update()
@@ -60,7 +63,7 @@ public class NetworkAvatar : NetworkBehaviour
     public void PowerAttackPerformed(float cost)
     {
         energy -= cost;
-        OnPowerAttack?.Invoke(energy, maxEnergy);
+        OnEnergyChanged?.Invoke(energy, maxEnergy);
     }
 
     private void FollowHost()
@@ -78,6 +81,18 @@ public class NetworkAvatar : NetworkBehaviour
     private void TakeDamage(float damage)
     {
         health = Mathf.Max(health - damage, 0f);
-        OnDamaged?.Invoke(health, maxHealth);
+        OnHealthChanged?.Invoke(health, maxHealth);
+    }
+
+    public void GainHealth(float amount)
+    {
+        health = Mathf.Min((health + amount), maxHealth);
+        OnHealthChanged?.Invoke(health, maxHealth);
+    }
+
+    public void GainEnergy(float amount)
+    {
+        energy = Mathf.Min((energy + amount), maxEnergy);
+        OnEnergyChanged?.Invoke(energy, maxEnergy);
     }
 }
