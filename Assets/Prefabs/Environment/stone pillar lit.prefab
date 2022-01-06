@@ -559,6 +559,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: wall_sconce_lit__dungeon
       objectReference: {fileID: 0}
+    - target: {fileID: 7494085489618002274, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
+      propertyPath: m_Intensity
+      value: 7.957747
+      objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -569,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2327976
+      value: 2.453
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -693,7 +697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2327976
+      value: 2.453
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -829,7 +833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2327976
+      value: 2.453
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -891,7 +895,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.2327976
+      value: 2.453
       objectReference: {fileID: 0}
     - target: {fileID: 7635799611236904877, guid: 10330bf7119c098419f2b4ac992e3d3f, type: 3}
       propertyPath: m_LocalPosition.z
