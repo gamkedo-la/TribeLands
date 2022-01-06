@@ -13,6 +13,8 @@ public class Pickup : MonoBehaviour
     
     [SerializeField] private LayerMask playerMask;
 
+    [SerializeField] private GameObject pickupEffect;
+
     private Transform target;
     private Vector3 currentSpeed = Vector3.zero;
 
@@ -49,6 +51,8 @@ public class Pickup : MonoBehaviour
 
     void OnPickup()
     {
+        var effect = Instantiate(pickupEffect, target);
+        Destroy(effect, 1f);
         Destroy(gameObject);
     }
 }

@@ -7,13 +7,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2989001207613888885, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
+      propertyPath: pickupEffect
+      value: 
+      objectReference: {fileID: 7717064899286844601, guid: 57ee5e04231b61141b294861fb057e4f, type: 3}
     - target: {fileID: 4525929617773456056, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ac9abd18fe4f6c94aa3cc9a48791a8e9, type: 2}
     - target: {fileID: 4525929618321044134, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_Name
-      value: HealthOrb Variant
+      value: HealthOrb
       objectReference: {fileID: 0}
     - target: {fileID: 4525929618321044135, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_RootOrder
