@@ -8,8 +8,11 @@ using UnityEngine.InputSystem;
 public class NetworkPlayer : NetworkBehaviour
 {
     private Vector2 movementInput;
+    private Vector2 lookInput;
     private NavMeshAgent navAgent;
     private Camera cam;
+
+    [SerializeField] private float lookSpeed = 5f;
 
     [SerializeField]
     private GameObject rightHandSlot;
@@ -40,14 +43,25 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isLocalPlayer) return;
 
         timeSinceAttack += Time.deltaTime;
+        
+        Look();
         Move();
+    }
+
+    private void Look()
+    {
+        if (avatar == null || targetGroup == null) return;
+
+        var xRotation = lookInput.x;
+        // avatar.targetGroup.transform.Rotate(Vector3.up, xRotation);
+        targetGroup.transform.Rotate(Vector3.up, xRotation);
     }
 
     private void Move()
     {
-        if (avatarController == null) return;
-        
-        var cameraTransform = cam.transform;
+        if (avatarController == null || targetGroup == null) return;
+
+        var cameraTransform = targetGroup.transform;
         var right = cameraTransform.right;
         var forward = cameraTransform.forward;
         var hMovement = new Vector3(right.x, 0f, right.z) * movementInput.x;
@@ -55,6 +69,21 @@ public class NetworkPlayer : NetworkBehaviour
         var moveDir = hMovement + vMovement;
 
         avatarController.Move(moveDir);
+    }
+
+    public void OnControlsChanged(PlayerInput input)
+    {
+        Debug.Log(input.currentControlScheme);
+    }
+
+    public void OnLookPerformed(InputAction.CallbackContext ctx)
+    {
+        lookInput = ctx.ReadValue<Vector2>() * lookSpeed;
+    }
+
+    public void OnMouseLookPerformed(InputAction.CallbackContext ctx)
+    {
+        lookInput = ctx.ReadValue<Vector2>();
     }
 
     public void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -146,9 +175,20 @@ public class NetworkPlayer : NetworkBehaviour
         // Change navmeshagent reference
         navAgent = avatar.navMeshAgent;
         
+        targetGroup = FindObjectOfType<CinemachineTargetGroup>();
+        if (targetGroup != null)
+        {
+            var target = new CinemachineTargetGroup.Target();
+            target.target = avatar.animator.transform;
+            target.weight = 1;
+            target.radius = 0;
+
+            targetGroup.m_Targets = new[] { target };
+        }
+        
         // Activate virtual camera and target group
-        avatar.targetGroup.gameObject.SetActive(true);
-        avatar.virtualCamera.gameObject.SetActive(true);
+        // avatar.targetGroup.gameObject.SetActive(true);
+        // avatar.virtualCamera.gameObject.SetActive(true);
         
         // Activate selection indicator
         // commented out while experimenting with 3rd person camera (rather than top-down camera)

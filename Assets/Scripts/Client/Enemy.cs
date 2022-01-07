@@ -125,6 +125,8 @@ public class Enemy : NetworkBehaviour
     [ClientRpc]
     private void AttackTarget()
     {
+        if (target == null) return;
+        
         target.SendMessage("TakeDamage", attackDamage);
         timeSinceLastAttack = 0f;
     }
