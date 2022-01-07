@@ -128,14 +128,20 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (ctx.performed)
         {
-            GroupNetworkManager.gnmSingleton.AskForAvatar(connectionToClient, avatarSlot);
+            AskForAvatar(avatarSlot);
         }
+    }
+
+    [Command]
+    void AskForAvatar(int slot)
+    {
+        GroupNetworkManager.gnmSingleton.AskForAvatar(connectionToClient, slot);
     }
 
     public void OnSelectFirstAvatar(InputAction.CallbackContext ctx) => OnSwapAvatar(ctx, 0);
     public void OnSelectSecondAvatar(InputAction.CallbackContext ctx) => OnSwapAvatar(ctx, 1);
     public void OnSelectThirdAvatar(InputAction.CallbackContext ctx) => OnSwapAvatar(ctx, 2);
-        
+
 
     [Command]
     private void CmdAttack()
@@ -156,6 +162,8 @@ public class NetworkPlayer : NetworkBehaviour
     [ClientRpc]
     private void BecomeHost(NetworkAvatar a)
     {
+        if (!isLocalPlayer) return;
+        
         Debug.Log($"{name} becoming host to {a.gameObject.name}");
         if (avatar)
         {
@@ -211,6 +219,8 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void DeactivateCurrentAvatar()
     {
+        Debug.Log($"Deactivate current avatar for {name}");
+        
         avatar.targetGroup.gameObject.SetActive(false);
         avatar.virtualCamera.gameObject.SetActive(false);
         avatar.selectionIndicator.SetActive(false);
