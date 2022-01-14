@@ -18,8 +18,11 @@ MonoBehaviour:
   turnSmoothTime: 0.05
   currentSpeed: 0
   timeBetweenAttacks: 0.4
+  powerAttackEnergyCost: 50
   projectile: {fileID: 8338964250749903663, guid: 6a3d4b142e6c1b44782204bfc6e2e258, type: 3}
   fireFrom: {fileID: 8534377355548185086}
+  healSpellStrength: 50
+  healEffect: {fileID: 7717064899286844601, guid: 57ee5e04231b61141b294861fb057e4f, type: 3}
 --- !u!1001 &7991396983869719444
 PrefabInstance:
   m_ObjectHideFlags: 0

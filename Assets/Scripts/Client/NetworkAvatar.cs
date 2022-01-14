@@ -39,7 +39,7 @@ public class NetworkAvatar : NetworkBehaviour
     void Start()
     {
         health = 1;
-        energy = 1;
+        energy = maxEnergy;
         
         if (OnHealthChanged == null)
             OnHealthChanged = new UnityEvent<float, float>();

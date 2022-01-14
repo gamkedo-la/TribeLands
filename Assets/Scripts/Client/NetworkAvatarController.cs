@@ -25,11 +25,14 @@ namespace Client
         public float PowerAttackEnergyCost => powerAttackEnergyCost;
 
         public float TimeBetweenAttacks => timeBetweenAttacks;
+        
+        protected NetworkAvatar[] avatars;
 
         private void Start()
         {
             animator = GetComponentInChildren<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
+            avatars = FindObjectsOfType<NetworkAvatar>();
         }
 
         private void Update()
@@ -87,7 +90,7 @@ namespace Client
             Debug.LogError("Attack not implemented");
         }
 
-        public virtual void PowerAttack()
+        public virtual void CmdPowerAttack()
         {
             Debug.LogError("Power attack not implemented");
         }

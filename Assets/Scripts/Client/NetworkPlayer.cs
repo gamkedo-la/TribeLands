@@ -36,6 +36,9 @@ public class NetworkPlayer : NetworkBehaviour
     private void Start()
     {
         cam = Camera.main;
+        
+        // Find all NetworkAvatars in the scene.
+        avatars = FindObjectsOfType<NetworkAvatar>();
     }
 
     private void Update()
@@ -108,7 +111,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (avatar.Energy >= avatarController.PowerAttackEnergyCost)
         {
             avatar.PowerAttackPerformed(avatarController.PowerAttackEnergyCost);
-            avatarController.PowerAttack();
+            avatarController.CmdPowerAttack();
         }
         else
         {
