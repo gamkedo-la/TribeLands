@@ -60,12 +60,6 @@ public class NetworkAvatar : NetworkBehaviour
         }
     }
 
-    public void PowerAttackPerformed(float cost)
-    {
-        energy -= cost;
-        OnEnergyChanged?.Invoke(energy, maxEnergy);
-    }
-
     private void FollowHost()
     {
         if (!hostPlayer) return;
@@ -90,7 +84,14 @@ public class NetworkAvatar : NetworkBehaviour
         OnHealthChanged?.Invoke(health, maxHealth);
     }
 
+    [Command]
     public void GainEnergy(float amount)
+    {
+        GainEnergyRpc(amount);
+    }
+
+    [ClientRpc]
+    private void GainEnergyRpc(float amount)
     {
         energy = Mathf.Min((energy + amount), maxEnergy);
         OnEnergyChanged?.Invoke(energy, maxEnergy);

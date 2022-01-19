@@ -110,7 +110,7 @@ public class NetworkPlayer : NetworkBehaviour
         
         if (avatar.Energy >= avatarController.PowerAttackEnergyCost)
         {
-            avatar.PowerAttackPerformed(avatarController.PowerAttackEnergyCost);
+            avatar.GainEnergy(-avatarController.PowerAttackEnergyCost);
             avatarController.CmdPowerAttack();
         }
         else
