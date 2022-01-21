@@ -22097,18 +22097,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5850782827045139480}
     m_Modifications:
-    - target: {fileID: 4670264492819742296, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_Intensity
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 4670264492819742296, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_LightUnit
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4670264492819742296, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_ShapeRadius
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7366317704701420050, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
       propertyPath: m_Name
       value: brazier (4)
@@ -22155,18 +22143,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8764238525255572646, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766226762085217757, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_Range
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766226762085217757, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_Intensity
-      value: 0.9947184
-      objectReference: {fileID: 0}
-    - target: {fileID: 8766226762085217757, guid: 93e823c123cde944e868397f3e3f1699, type: 3}
-      propertyPath: m_ShadowRadius
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
