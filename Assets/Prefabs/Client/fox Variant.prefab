@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  navAgent: {fileID: 0}
   movementSpeed: 4
   turnSmoothTime: 0.05
+  dodgeDistance: 5
+  dodgeDuration: 0.2
   currentSpeed: 0
   timeBetweenAttacks: 0.2
   powerAttackEnergyCost: 100

@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System.Collections;
+using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,6 +12,12 @@ namespace Client
         [SerializeField] private float movementSpeed = 4.0f;
         [SerializeField] private float turnSmoothTime = 0.05f;
         private float turnSmoothVelocity;
+
+        [SerializeField] private float dodgeDistance = 10.0f;
+        [SerializeField] private float dodgeDuration = 0.5f;
+        private bool isDodging = false;
+        private Vector3 dodgeTarget;
+        private Vector3 dodgeVelocity;
 
         private Vector3 inputVelocity;
         private Animator animator;
@@ -37,7 +44,13 @@ namespace Client
 
         private void Update()
         {
-            if (inputVelocity != Vector3.zero)
+            if (isDodging)
+            {
+                var position = transform.position;
+                var newPosition = Vector3.SmoothDamp(position, dodgeTarget, ref dodgeVelocity, dodgeDuration);
+                navAgent.Move(newPosition - position);
+            }
+            else if (inputVelocity != Vector3.zero)
             {
                 if (inputVelocity.sqrMagnitude >= 1f) inputVelocity.Normalize();
 
@@ -79,10 +92,12 @@ namespace Client
             SetCurrentSpeed(speed);
         }
 
-        public virtual void Dodge()
+        public virtual void Dodge(Vector3 dodgeDirection)
         {
             // todo: use inputVelocity to determine dodge direction.
-            Debug.LogError("Dodge not implemented");
+            isDodging = true;
+            dodgeTarget = transform.position + dodgeDistance * dodgeDirection.normalized;
+            StartCoroutine(DodgeTimer());
         }
 
         public virtual void CmdAttack()
@@ -93,6 +108,12 @@ namespace Client
         public virtual void CmdPowerAttack()
         {
             Debug.LogError("Power attack not implemented");
+        }
+
+        IEnumerator DodgeTimer()
+        {
+            yield return new WaitForSeconds(dodgeDuration);
+            isDodging = false;
         }
     }
 }

@@ -124,7 +124,8 @@ public class NetworkPlayer : NetworkBehaviour
         if (!isLocalPlayer || !ctx.started) return;
         
         // todo: stamina check (see power attack energy check for implementation)
-        avatarController.Dodge();
+        var dodgeDir = avatarController.transform.forward;
+        avatarController.Dodge(dodgeDir);
     }
 
     private void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
