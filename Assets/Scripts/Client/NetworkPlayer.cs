@@ -13,6 +13,11 @@ public class NetworkPlayer : NetworkBehaviour
     private Camera cam;
 
     [SerializeField] private float lookSpeed = 5f;
+    [SerializeField] private float mouseLookSpeed = 0.2f;
+    [SerializeField] private float minVerticalAngle = 40f;
+    [SerializeField] private float maxVerticalAngle = 340f;
+    [SerializeField] private bool invertGamePadVertical = true;
+    [SerializeField] private bool invertMouseVertical = false;
 
     [SerializeField]
     private GameObject rightHandSlot;
@@ -22,6 +27,7 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField]
     private CinemachineVirtualCamera virtualCamera;
     private bool cameraChanged;
+    private Quaternion nextRotation;
 
     private NetworkAvatar avatar;
     private NetworkAvatarController avatarController;
@@ -39,6 +45,8 @@ public class NetworkPlayer : NetworkBehaviour
         
         // Find all NetworkAvatars in the scene.
         avatars = FindObjectsOfType<NetworkAvatar>();
+
+        nextRotation = transform.rotation;
     }
 
     private void Update()
@@ -54,10 +62,31 @@ public class NetworkPlayer : NetworkBehaviour
     private void Look()
     {
         if (avatar == null || targetGroup == null) return;
-
+        
+        // Rotation around axes individually based on input
         var xRotation = lookInput.x;
-        // avatar.targetGroup.transform.Rotate(Vector3.up, xRotation);
-        targetGroup.transform.Rotate(Vector3.up, xRotation);
+        var yRotation = lookInput.y;
+        var targetRotation = targetGroup.transform.rotation;
+        targetRotation *= Quaternion.AngleAxis(xRotation, Vector3.up);
+        targetRotation *= Quaternion.AngleAxis(yRotation, Vector3.right);
+
+        // Clamp vertical angle, ignore z
+        var angles = targetRotation.eulerAngles;
+        angles.z = 0;
+        var angle = angles.x;
+        if (angle > 180 && angle < maxVerticalAngle)
+        {
+            angles.x = maxVerticalAngle;
+        }
+        else if (angle < 180 && angle > minVerticalAngle)
+        {
+            angles.x = minVerticalAngle;
+        }
+
+        // smoov
+        targetRotation.eulerAngles = angles;
+        nextRotation = Quaternion.Lerp(targetGroup.transform.rotation, targetRotation, lookInput.sqrMagnitude);
+        targetGroup.transform.rotation = nextRotation;
     }
 
     private void Move()
@@ -72,6 +101,15 @@ public class NetworkPlayer : NetworkBehaviour
         var moveDir = hMovement + vMovement;
 
         avatarController.Move(moveDir);
+
+        // Rotate the avatar only if we're moving. That way players can rotate the camera around
+        // to see the front of the avatar.
+        if (movementInput.x != 0 || movementInput.y != 0)
+        {
+            var targetRotation = Quaternion.Euler(0, nextRotation.eulerAngles.y, 0);
+            avatarController.transform.localRotation =
+                Quaternion.Lerp(avatarController.transform.localRotation, targetRotation, 0.1f);
+        }
     }
 
     public void OnControlsChanged(PlayerInput input)
@@ -82,11 +120,15 @@ public class NetworkPlayer : NetworkBehaviour
     public void OnLookPerformed(InputAction.CallbackContext ctx)
     {
         lookInput = ctx.ReadValue<Vector2>() * lookSpeed;
+        if (invertGamePadVertical)
+            lookInput.y = -lookInput.y;
     }
 
     public void OnMouseLookPerformed(InputAction.CallbackContext ctx)
     {
-        lookInput = ctx.ReadValue<Vector2>();
+        lookInput = ctx.ReadValue<Vector2>() * mouseLookSpeed;
+        if (invertMouseVertical)
+            lookInput.y = -lookInput.y;
     }
 
     public void OnMovePerformed(InputAction.CallbackContext ctx)
@@ -101,7 +143,7 @@ public class NetworkPlayer : NetworkBehaviour
             timeSinceAttack < avatarController.TimeBetweenAttacks) return;
 
         timeSinceAttack = 0f;
-        avatarController.CmdAttack();
+        avatarController.CmdAttack(nextRotation);
     }
 
     public void OnPowerAttackPerformed(InputAction.CallbackContext ctx)

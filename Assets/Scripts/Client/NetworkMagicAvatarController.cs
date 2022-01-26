@@ -11,11 +11,12 @@ namespace Client
         [SerializeField] private GameObject healEffect;
 
         [Command]
-        public override void CmdAttack()
+        public override void CmdAttack(Quaternion direction)
         {
             // Spawn magic projectile
             var projectileDirection = Quaternion.LookRotation(transform.forward, Vector3.up);
-            var magicProjectile = Instantiate(projectile, fireFrom.position, projectileDirection);
+            // var magicProjectile = Instantiate(projectile, fireFrom.position, projectileDirection);
+            var magicProjectile = Instantiate(projectile, fireFrom.position, direction);
             NetworkServer.Spawn(magicProjectile);
         }
 

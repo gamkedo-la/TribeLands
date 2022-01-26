@@ -40,6 +40,11 @@ namespace Client
             animator = GetComponentInChildren<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
             avatars = FindObjectsOfType<NetworkAvatar>();
+
+            if (isLocalPlayer)
+            {
+                navAgent.updateRotation = false;
+            }
         }
 
         private void Update()
@@ -56,12 +61,6 @@ namespace Client
 
                 var movement = inputVelocity * movementSpeed * Time.deltaTime;
                 navAgent.Move(movement);
-
-                // Turn toward movement direction
-                var targetAngle = Mathf.Atan2(movement.x, movement.z) * Mathf.Rad2Deg;
-                var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity,
-                    turnSmoothTime);
-                transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                 // Reset input
                 inputVelocity = Vector3.zero;
@@ -100,7 +99,7 @@ namespace Client
             StartCoroutine(DodgeTimer());
         }
 
-        public virtual void CmdAttack()
+        public virtual void CmdAttack(Quaternion direction)
         {
             Debug.LogError("Attack not implemented");
         }
