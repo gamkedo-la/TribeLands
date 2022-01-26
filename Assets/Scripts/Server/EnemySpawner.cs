@@ -14,6 +14,8 @@ public class EnemySpawner : NetworkBehaviour
     [SerializeField]
     private GameObject enemy;
 
+    [SerializeField] private Transform spawnPoint;
+
     [SerializeField] private int maxSpawnedEnemies;
     private List<int> activeEnemies;
     public int activeEnemyCount;
@@ -33,7 +35,7 @@ public class EnemySpawner : NetworkBehaviour
     private void Spawn()
     {
         var offset = Random.insideUnitCircle;
-        var spawnPosition = transform.position + new Vector3(offset.x, 0f, offset.y);
+        var spawnPosition = spawnPoint.position + new Vector3(offset.x, 0f, offset.y);
         var obj = Instantiate(enemy, spawnPosition, Quaternion.identity);
         NetworkServer.Spawn(obj.gameObject);
         
@@ -43,7 +45,6 @@ public class EnemySpawner : NetworkBehaviour
         {
             activeEnemies.Remove(objId);
         });
-        
     }
 
     IEnumerator ShouldSpawn()
