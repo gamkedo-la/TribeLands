@@ -41,7 +41,7 @@ public class EnemySpawner : NetworkBehaviour
         
         activeEnemies.Add(obj.gameObject.GetInstanceID());
         
-        obj.GetComponent<Enemy>()?.OnDeath.AddListener((objId) =>
+        obj.GetComponent<EnemyHealth>()?.OnDeath.AddListener((objId) =>
         {
             activeEnemies.Remove(objId);
         });
