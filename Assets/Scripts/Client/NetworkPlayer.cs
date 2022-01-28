@@ -48,6 +48,8 @@ public class NetworkPlayer : NetworkBehaviour
         avatars = FindObjectsOfType<NetworkAvatar>();
 
         nextRotation = transform.rotation;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
