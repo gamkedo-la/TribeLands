@@ -97,6 +97,14 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""5c5c5710-72aa-409e-9b87-8d5cc71e7574"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -438,6 +446,28 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse;Touch"",
                     ""action"": ""MouseLook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""68c48c46-d9b3-428d-970e-59e9cee950a8"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""855c346d-df92-4b7c-ba45-02f9cb988729"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1025,6 +1055,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         m_Player_SelectThirdAvatar = m_Player.FindAction("SelectThirdAvatar", throwIfNotFound: true);
         m_Player_PowerAttack = m_Player.FindAction("PowerAttack", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1096,6 +1127,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_SelectThirdAvatar;
     private readonly InputAction m_Player_PowerAttack;
     private readonly InputAction m_Player_Dodge;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @NetworkPlayerInput m_Wrapper;
@@ -1110,6 +1142,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         public InputAction @SelectThirdAvatar => m_Wrapper.m_Player_SelectThirdAvatar;
         public InputAction @PowerAttack => m_Wrapper.m_Player_PowerAttack;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1149,6 +1182,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @Dodge.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
                 @Dodge.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDodge;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1183,6 +1219,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @Dodge.started += instance.OnDodge;
                 @Dodge.performed += instance.OnDodge;
                 @Dodge.canceled += instance.OnDodge;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -1349,6 +1388,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         void OnSelectThirdAvatar(InputAction.CallbackContext context);
         void OnPowerAttack(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

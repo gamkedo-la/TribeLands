@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6839869417490429716}
   - component: {fileID: 1917247802819294294}
   m_Layer: 0
-  m_Name: NetworkPlayerBrain
+  m_Name: NetworkPlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 88edf10db0a6fa142b88c7253ba0e8dd
+  m_AssetId: b8a97a102d81c3049ab388b8b403f2f7
   hasSpawned: 0
 --- !u!114 &6186709532410121165
 MonoBehaviour:
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  lookSpeed: 5
+  lookSpeed: 3
   mouseLookSpeed: 0.2
   minVerticalAngle: 40
   maxVerticalAngle: 335
@@ -341,22 +341,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7df6343c-1f53-43f9-89f8-cf93771d923e
     m_ActionName: Player/MouseLook[/Mouse/delta,/Pen/delta]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4d78d443-ff8d-49a9-85ba-bd891b3bc112
-    m_ActionName: Player/Pause[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

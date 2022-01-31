@@ -21,6 +21,7 @@ public class NetworkPlayer : NetworkBehaviour
 
     [SerializeField]
     private GameObject rightHandSlot;
+    private GameManager gameManager;
 
     [SerializeField]
     private CinemachineTargetGroup targetGroup;
@@ -39,6 +40,10 @@ public class NetworkPlayer : NetworkBehaviour
     // Attack speed is tracked on the avatars.
     private bool isAttacking = false;
     private float timeSinceAttack = 100;
+
+    private void Awake(){
+        gameManager = FindObjectOfType<GameManager>();
+    }
     
     private void Start()
     {
@@ -179,6 +184,7 @@ public class NetworkPlayer : NetworkBehaviour
         var dodgeDir = avatarController.transform.forward;
         avatarController.Dodge(dodgeDir);
     }
+
 
     private void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
     {
