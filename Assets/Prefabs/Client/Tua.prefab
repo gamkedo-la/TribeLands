@@ -132,6 +132,14 @@ PrefabInstance:
       propertyPath: maxHealth
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a6342748225944ed8a0fd1c9b8150360, type: 3}
+    - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: powerAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fc50c4d8f220940a9a0183d8226b1408, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
 --- !u!1 &6364507234747988861 stripped

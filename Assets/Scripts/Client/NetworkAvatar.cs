@@ -1,5 +1,6 @@
 using Cinemachine;
 using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
@@ -31,20 +32,34 @@ public class NetworkAvatar : NetworkBehaviour
     private float energy;
     public float Energy => energy;
     public float MaxEnergy => maxEnergy;
+
+    private AudioSource audioSource;
+    [SerializeField] private AudioClip attackSound;
+    [SerializeField] private AudioClip powerAttackSound;
     
     // Broadcasts remaining health and max health after damage taken.
     public UnityEvent<float, float> OnHealthChanged;
     public UnityEvent<float, float> OnEnergyChanged;
+    public UnityEvent OnAttack;
+    public UnityEvent OnPowerAttack;
 
     void Start()
     {
         health = 1;
         energy = maxEnergy;
+        audioSource = GetComponent<AudioSource>();
         
         if (OnHealthChanged == null)
             OnHealthChanged = new UnityEvent<float, float>();
         if (OnEnergyChanged == null)
             OnEnergyChanged = new UnityEvent<float, float>();
+        if (OnAttack == null)
+            OnAttack = new UnityEvent();
+        if (OnPowerAttack == null)
+            OnPowerAttack = new UnityEvent();
+        
+        OnAttack.AddListener(PlayAttackSound);
+        OnPowerAttack.AddListener(PlayPowerAttackSound);
     }
 
     private void Update()
@@ -96,4 +111,15 @@ public class NetworkAvatar : NetworkBehaviour
         energy = Mathf.Min((energy + amount), maxEnergy);
         OnEnergyChanged?.Invoke(energy, maxEnergy);
     }
+
+    private void PlayAttackSound()
+    {
+        audioSource?.PlayOneShot(attackSound);
+    }
+
+    private void PlayPowerAttackSound()
+    {
+        audioSource?.PlayOneShot(powerAttackSound);
+    }
+    
 }
