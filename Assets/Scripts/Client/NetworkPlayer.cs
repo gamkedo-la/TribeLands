@@ -59,7 +59,8 @@ public class NetworkPlayer : NetworkBehaviour
         avatars = FindObjectsOfType<NetworkAvatar>();
         nextRotation = transform.rotation;
         Cursor.lockState = CursorLockMode.Locked;
-    }    private void Update(){
+    }    
+    private void Update(){
         if (!isLocalPlayer) return;
         timeSinceAttack += Time.deltaTime;
         if (isAttacking) Attack();

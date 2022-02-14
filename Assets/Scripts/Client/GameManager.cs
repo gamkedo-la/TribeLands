@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonPanelMain;
     [SerializeField] GameObject optionsMenu;
-    private GameObject currentMenu = null;
+    private GameObject currentMenu;
 
     public void ToggleOptionsMenu(){
         pauseMenu.SetActive(!optionsMenu.activeSelf);
@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
     }
     public GameObject GetActiveMenu(){
         return currentMenu;
+    }
+    private void Awake(){
+        currentMenu = pauseMenu;
     }
     void Start(){
         
