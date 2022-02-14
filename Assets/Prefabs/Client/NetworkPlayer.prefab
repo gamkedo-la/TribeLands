@@ -102,7 +102,6 @@ MonoBehaviour:
   invertGamePadVertical: 1
   invertMouseVertical: 1
   rightHandSlot: {fileID: 0}
-  targetGroup: {fileID: 0}
   virtualCamera: {fileID: 0}
 --- !u!114 &1917247802819294294
 MonoBehaviour:
@@ -231,9 +230,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -6839869417490429716}
+      - m_Target: {fileID: 3941881863343208681}
         m_TargetAssemblyTypeName: NetworkPlayer, Assembly-CSharp
-        m_MethodName: OnSwapAvatar
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -341,6 +340,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 7df6343c-1f53-43f9-89f8-cf93771d923e
     m_ActionName: Player/MouseLook[/Mouse/delta,/Pen/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3941881863343208681}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5c5c5710-72aa-409e-9b87-8d5cc71e7574
+    m_ActionName: Player/Pause[/Keyboard/p]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

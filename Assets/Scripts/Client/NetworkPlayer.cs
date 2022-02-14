@@ -202,7 +202,7 @@ public class NetworkPlayer : NetworkBehaviour
     }
 
 
-    private void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
+    public void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
     {
         if (ctx.performed)
         {
