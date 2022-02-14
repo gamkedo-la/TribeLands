@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using Cinemachine;
 using Client;
 using Mirror;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
@@ -22,56 +25,65 @@ public class NetworkPlayer : NetworkBehaviour
     [SerializeField]
     private GameObject rightHandSlot;
     private GameManager gameManager;
-
-    [SerializeField]
+    private PlayerInput playerInput;
+    private bool gameIsPaused = false;
     private CinemachineTargetGroup targetGroup;
     [SerializeField]
     private CinemachineVirtualCamera virtualCamera;
     private bool cameraChanged;
     private Quaternion nextRotation;
-
     private NetworkAvatar avatar;
     private NetworkAvatarController avatarController;
-    
     private Animator animator;
-
     private NetworkAvatar[] avatars;
-
     // Attack speed is tracked on the avatars.
     private bool isAttacking = false;
     private float timeSinceAttack = 100;
+    
+    // ------- UI --------
+    private GraphicRaycaster uiRaycaster;
+    PointerEventData clickData;
+    List<RaycastResult> clickResults;
 
     private void Awake(){
         gameManager = FindObjectOfType<GameManager>();
+        playerInput = GetComponent<PlayerInput>();
+        uiRaycaster = gameManager.GetActiveMenu().GetComponent<GraphicRaycaster>();
+        clickData = new PointerEventData(EventSystem.current);
+        clickResults = new List<RaycastResult>();
     }
-    
     private void Start()
     {
         cam = Camera.main;
-        
         // Find all NetworkAvatars in the scene.
         avatars = FindObjectsOfType<NetworkAvatar>();
-
         nextRotation = transform.rotation;
-
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void Update()
-    {
+    }    private void Update(){
         if (!isLocalPlayer) return;
-
         timeSinceAttack += Time.deltaTime;
-
         if (isAttacking) Attack();
         Look();
         Move();
+    }
+    public void OnPause(){
+        gameIsPaused = true;
+        Cursor.lockState = CursorLockMode.None;
+        playerInput.actions.FindActionMap("UI").Enable();
+        playerInput.actions.FindActionMap("Player").Disable();
+        gameManager.OpenPauseMenu();
+    }
+    public void ResumeGame(){
+        gameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        playerInput.actions.FindActionMap("Player").Enable();
+        playerInput.actions.FindActionMap("UI").Disable();
+        gameManager.CloseAllMenus();
     }
 
     private void Attack()
     {
         if (!isLocalPlayer || timeSinceAttack < avatarController.TimeBetweenAttacks) return;
-
         timeSinceAttack = 0f;
         avatarController.CmdAttack(nextRotation);
         avatar.OnAttack?.Invoke();
@@ -79,12 +91,14 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Look()
     {
+        // Mouse sensitivity - Storing saved profile 
+        // set a slider 0 - 3 [SerializeField] [range(0, 3)] double mouseSensitivity = 1;   
         if (avatar == null || targetGroup == null) return;
         
         // Rotation around axes individually based on input
         var xRotation = lookInput.x;
         var yRotation = lookInput.y;
-        var targetRotation = targetGroup.transform.rotation;
+        var targetRotation = targetGroup.transform.rotation; // * sensitivity
         targetRotation *= Quaternion.AngleAxis(xRotation, Vector3.up);
         targetRotation *= Quaternion.AngleAxis(yRotation, Vector3.right);
 
@@ -195,6 +209,26 @@ public class NetworkPlayer : NetworkBehaviour
             AskForAvatar(avatarSlot);
         }
     }
+
+
+
+    //-----------------------------UI--------------------------
+
+
+    public void UIClick(){
+        // Raytrace
+        // Retrieve one single UI element
+        // Call GameManager to handle accordingly
+        Debug.Log("UI Click " + gameManager.GetActiveMenu().ToString());
+        clickData.position = Mouse.current.position.ReadValue();
+        clickResults.Clear();
+        uiRaycaster.Raycast(clickData, clickResults);
+        foreach (RaycastResult result in clickResults){
+            GameObject uiElement = result.gameObject;
+            Debug.Log(uiElement.transform.position.ToString() + uiElement.name);
+        }
+    }
+
 
     [Command]
     void AskForAvatar(int slot)

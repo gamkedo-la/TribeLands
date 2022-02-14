@@ -7,15 +7,32 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
-    public void TogglePauseMenu(){
-        pauseMenu.SetActive(!pauseMenu.activeSelf);
+    [SerializeField] GameObject buttonPanelMain;
+    [SerializeField] GameObject optionsMenu;
+    private GameObject currentMenu = null;
+
+    public void ToggleOptionsMenu(){
+        pauseMenu.SetActive(!optionsMenu.activeSelf);
     }
-    void Start()
-    {
+    public void OpenPauseMenu(){
+        pauseMenu.SetActive(true);
+        buttonPanelMain.SetActive(true);
+        currentMenu = buttonPanelMain;
+    }
+    public void CloseAllMenus(){
+        GameObject[] menus = gameObject.GetComponentsInChildren<GameObject>();
+        foreach (var menu in menus){
+            menu.SetActive(false);
+        }
+        currentMenu = pauseMenu;
+    }
+    public GameObject GetActiveMenu(){
+        return currentMenu;
+    }
+    void Start(){
         
     }
-    void Update()
-    {
+    void Update(){
         
     }
 }

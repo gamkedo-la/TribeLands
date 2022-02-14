@@ -104,7 +104,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""5c5c5710-72aa-409e-9b87-8d5cc71e7574"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 }
             ],
             ""bindings"": [
@@ -515,7 +515,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""4dcce6f9-9e9d-4f63-9ad2-6d805c438e83"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Press(behavior=2)""
                 },
                 {
                     ""name"": ""ScrollWheel"",
