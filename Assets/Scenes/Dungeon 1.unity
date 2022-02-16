@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.023140788, g: 0.018744078, b: 0.012710551, a: 1}
+  m_IndirectSpecularColor: {r: 0.02347771, g: 0.018983766, b: 0.01287733, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724476293dd4b1b41952fba8e7552120, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextScene: Dungeon 1
+  NextScene: OutdoorsScene
 --- !u!1001 &35939942
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -431,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 38076272}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 90, y: 0, z: -31.95}
+  m_LocalPosition: {x: 94, y: 0, z: 3.8999977}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14667,7 +14667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827256817}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.000002905726}
-  m_LocalPosition: {x: 82.56, y: 0, z: -32.6}
+  m_LocalPosition: {x: 86.56, y: 0, z: 3.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26384,7 +26384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1530655037}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000029504295}
-  m_LocalPosition: {x: 86.52, y: 0, z: -31.49}
+  m_LocalPosition: {x: 90.52, y: 0, z: 4.3599987}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -30212,7 +30212,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-38564
+  m_Name: pb_Mesh-165022
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
