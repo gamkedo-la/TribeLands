@@ -8,6 +8,7 @@ public class Enemy : NetworkBehaviour
     public GameObject target;
     public NavMeshAgent navAgent;
     public Animator m_animator;
+    private Vector3 targetPosition;
 
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float breakFollowDistance = 15f;
@@ -39,8 +40,13 @@ public class Enemy : NetworkBehaviour
         m_animator?.SetFloat("Speed", currentSpeed);
         
         if (!isServer) return;
+        
+        // ⚡: maybe don't do this every frame
+        currentSpeed = navAgent.velocity.magnitude;
 
         timeSinceLastCheck += Time.deltaTime;
+        timeSinceLastAttack += Time.deltaTime;
+        
         if (target == null && timeSinceLastCheck > avatarCheckInterval)
         {
             FindTarget();
@@ -48,30 +54,36 @@ public class Enemy : NetworkBehaviour
 
         if (target != null)
         {
+            var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            var distanceTargetMoved = Vector3.Distance(target.transform.position, targetPosition);
+            
             if (navAgent.hasPath)
             {
                 // Check if target has gotten too far away.
-                if (Vector3.Distance(transform.position, target.transform.position) >= breakFollowDistance)
+                if (distanceToTarget >= breakFollowDistance)
                 {
                     RemoveTarget();
                     return;
                 }
-
-                // ⚡: maybe don't do this every frame
-                currentSpeed = navAgent.velocity.magnitude;
+            }
+            
+            // If target has moved out of attack range of original position, repath.
+            if (distanceTargetMoved > attackRange)
+            {
+                UpdatePath();
             }
 
-            if (navAgent.remainingDistance <= attackRange)
+            if (distanceToTarget <= attackRange)
             {
-                // Maybe also stop moving, and face the target?
+                // TODO: Bail on the rest of our path.
+                // TODO: Face target
+                
                 if (timeSinceLastAttack >= timeBetweenAttacks)
                 {
                     AttackTarget();
                 }
             }
         }
-
-        timeSinceLastAttack += Time.deltaTime;
     }
 
     [ClientRpc]
@@ -92,11 +104,19 @@ public class Enemy : NetworkBehaviour
         if (numColliders > 0)
         {
             target = nearbyAvatars[0].gameObject;
-        
-            var path = new NavMeshPath();
-            navAgent.CalculatePath(target.transform.position, path);
-            navAgent.SetPath(path);
+            UpdatePath();
         }
+    }
+
+    [Server]
+    private void UpdatePath()
+    {
+        if (target == null) return;
+        
+        targetPosition = target.transform.position;
+        var path = new NavMeshPath();
+        navAgent.CalculatePath(targetPosition, path);
+        navAgent.SetPath(path);
     }
 
     [Server]
