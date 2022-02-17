@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.023532018, g: 0.019015435, b: 0.01289309, a: 1}
+  m_IndirectSpecularColor: {r: 0.023218945, g: 0.01883363, b: 0.012793761, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -29725,6 +29725,10 @@ PrefabInstance:
       propertyPath: m_UseViewFrustumForShadowCasterCull
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3345979611219073807, guid: c22f0eb57f0b0504582b8576c5297123, type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 3212829723426424332, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
     - target: {fileID: 3407728348793871846, guid: c22f0eb57f0b0504582b8576c5297123, type: 3}
       propertyPath: m_Mesh
       value: 

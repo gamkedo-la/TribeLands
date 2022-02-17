@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 1614.0947, g: 1601.8896, b: 2407.4258, a: 1}
+  m_IndirectSpecularColor: {r: 1572.6416, g: 1515.456, b: 2015.5, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -635,7 +635,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1258494758
 GameObject:
@@ -680,7 +680,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451818963
 GameObject:
@@ -803,13 +803,74 @@ RectTransform:
   - {fileID: 1878131024}
   - {fileID: 519773275}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1001 &1645424566
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 554.8495
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 23.299482
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 436.0165
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318174068163392097, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212829723426424332, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: m_Name
+      value: SpiderEnemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4031595840999120201, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
+      propertyPath: sceneId
+      value: 768433769
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
 --- !u!1 &1687819875
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,7 +930,7 @@ MonoBehaviour:
   m_IncludeForRayTracing: 1
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
-  m_InteractsWithSky: 1
+  m_InteractsWithSky: 0
   m_AngularDiameter: 0.5
   m_FlareSize: 2
   m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
@@ -1025,7 +1086,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -208.567, y: 267.299, z: 11.306}
 --- !u!1 &1878131023
 GameObject:
@@ -1256,7 +1317,7 @@ Transform:
   m_LocalScale: {x: 120, y: 1, z: 120}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1707259906757946262
 PrefabInstance:
