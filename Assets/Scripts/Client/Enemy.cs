@@ -21,6 +21,8 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private float timeBetweenAttacks = 3.0f;
     private float timeSinceLastAttack = 0f;
 
+    [SyncVar] private float currentSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,8 @@ public class Enemy : NetworkBehaviour
 
     private void Update()
     {
+        m_animator?.SetFloat("Speed", currentSpeed);
+        
         if (!isServer) return;
 
         timeSinceLastCheck += Time.deltaTime;
@@ -53,7 +57,8 @@ public class Enemy : NetworkBehaviour
                     return;
                 }
 
-                AnimationUpdate();
+                // ⚡: maybe don't do this every frame
+                currentSpeed = navAgent.velocity.magnitude;
             }
 
             if (navAgent.remainingDistance <= attackRange)
@@ -67,15 +72,6 @@ public class Enemy : NetworkBehaviour
         }
 
         timeSinceLastAttack += Time.deltaTime;
-    }
-
-    [ClientRpc]
-    private void AnimationUpdate()
-    {
-        if (m_animator == null) return;
-
-        var currentSpeed = navAgent.velocity.magnitude;
-        m_animator.SetFloat("Speed", currentSpeed);
     }
 
     [ClientRpc]
