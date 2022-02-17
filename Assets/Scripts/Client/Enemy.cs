@@ -1,4 +1,5 @@
 using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,7 @@ public class Enemy : NetworkBehaviour
 {
     public GameObject target;
     public NavMeshAgent navAgent;
+    public Animator m_animator;
 
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float breakFollowDistance = 15f;
@@ -18,7 +20,7 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private float attackDamage = 20f;
     [SerializeField] private float timeBetweenAttacks = 3.0f;
     private float timeSinceLastAttack = 0f;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class Enemy : NetworkBehaviour
         {
             FindTarget();
         }
-        
+
         if (target != null)
         {
             if (navAgent.hasPath)
@@ -50,12 +52,8 @@ public class Enemy : NetworkBehaviour
                     RemoveTarget();
                     return;
                 }
-                
-                // Debug.Log($"{gameObject.name} navAgent path status: {navAgent.path.status.ToString()}");
-            }
-            else
-            {
-                // Debug.LogError($"navAgent has target {target.gameObject.name}, but no valid path was found");
+
+                AnimationUpdate();
             }
 
             if (navAgent.remainingDistance <= attackRange)
@@ -69,6 +67,15 @@ public class Enemy : NetworkBehaviour
         }
 
         timeSinceLastAttack += Time.deltaTime;
+    }
+
+    [ClientRpc]
+    private void AnimationUpdate()
+    {
+        if (m_animator == null) return;
+
+        var currentSpeed = navAgent.velocity.magnitude;
+        m_animator.SetFloat("Speed", currentSpeed);
     }
 
     [ClientRpc]
