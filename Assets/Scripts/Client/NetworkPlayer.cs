@@ -26,7 +26,6 @@ public class NetworkPlayer : NetworkBehaviour
     private GameObject rightHandSlot;
     private GameManager gameManager;
     private PlayerInput playerInput;
-    private bool gameIsPaused = false;
     private CinemachineTargetGroup targetGroup;
     [SerializeField]
     private CinemachineVirtualCamera virtualCamera;
@@ -48,7 +47,6 @@ public class NetworkPlayer : NetworkBehaviour
     private void Awake(){
         gameManager = FindObjectOfType<GameManager>();
         playerInput = GetComponent<PlayerInput>();
-        uiRaycaster = gameManager.GetActiveMenu().GetComponent<GraphicRaycaster>();
         clickData = new PointerEventData(EventSystem.current);
         clickResults = new List<RaycastResult>();
     }
@@ -68,14 +66,12 @@ public class NetworkPlayer : NetworkBehaviour
         Move();
     }
     public void OnPause(){
-        gameIsPaused = true;
         Cursor.lockState = CursorLockMode.None;
         playerInput.actions.FindActionMap("UI").Enable();
         playerInput.actions.FindActionMap("Player").Disable();
         gameManager.OpenPauseMenu();
     }
     public void ResumeGame(){
-        gameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
         playerInput.actions.FindActionMap("Player").Enable();
         playerInput.actions.FindActionMap("UI").Disable();
@@ -220,10 +216,8 @@ public class NetworkPlayer : NetworkBehaviour
         // Raytrace
         // Retrieve one single UI element
         // Call GameManager to handle accordingly
-        Debug.Log("UI Click " + gameManager.GetActiveMenu().ToString());
         clickData.position = Mouse.current.position.ReadValue();
         clickResults.Clear();
-        uiRaycaster.Raycast(clickData, clickResults);
         foreach (RaycastResult result in clickResults){
             GameObject uiElement = result.gameObject;
             Debug.Log(uiElement.transform.position.ToString() + uiElement.name);
