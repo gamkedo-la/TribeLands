@@ -1,13 +1,14 @@
+using Mirror;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelEndpoint : MonoBehaviour
 {
     public string NextScene;
 
+    [Server]
     public void LoadNextScene()
     {
-        SceneManager.LoadScene(NextScene);
+        GroupNetworkManager.singleton.ServerChangeScene(NextScene);
     }
     
     void OnTriggerEnter(Collider other)
