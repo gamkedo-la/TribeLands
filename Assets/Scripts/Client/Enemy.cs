@@ -80,8 +80,10 @@ public class Enemy : NetworkBehaviour
                 // Bail on the rest of our path.
                 navAgent.ResetPath();
                 
-                // TODO: Face target
-                Debug.Log("within attack distance, attack target");
+                // Always face target while in attack range.
+                var direction = (target.transform.position - transform.position).normalized;
+                var targetRotation = Quaternion.LookRotation(direction, transform.up);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.2f);
                 
                 if (timeSinceLastAttack >= timeBetweenAttacks)
                 {
