@@ -9,6 +9,7 @@ public class Enemy : NetworkBehaviour
     public GameObject target;
     public NavMeshAgent navAgent;
     public Animator m_animator;
+    public NetworkAnimator m_NetworkAnimator;
     private Vector3 targetPosition;
 
     [SerializeField] private float detectionRadius = 10f;
@@ -38,9 +39,9 @@ public class Enemy : NetworkBehaviour
 
     private void Update()
     {
-        m_animator?.SetFloat("Speed", currentSpeed);
-        
         if (!isServer) return;
+        
+        m_animator?.SetFloat("Speed", currentSpeed);
         
         // ⚡: maybe don't do this every frame
         currentSpeed = navAgent.velocity.magnitude;
@@ -95,7 +96,7 @@ public class Enemy : NetworkBehaviour
     {
         if (target == null) return;
         
-        m_animator.SetTrigger("Attack");
+        m_NetworkAnimator?.SetTrigger("Attack");
         target.SendMessage("TakeDamage", attackDamage);
         timeSinceLastAttack = 0f;
     }
@@ -122,6 +123,7 @@ public class Enemy : NetworkBehaviour
         var path = new NavMeshPath();
         navAgent.CalculatePath(targetPosition, path);
         navAgent.SetPath(path);
+        navAgent.updateRotation = true;
     }
 
     [Server]
