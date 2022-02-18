@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -75,8 +76,11 @@ public class Enemy : NetworkBehaviour
 
             if (distanceToTarget <= attackRange)
             {
-                // TODO: Bail on the rest of our path.
+                // Bail on the rest of our path.
+                navAgent.ResetPath();
+                
                 // TODO: Face target
+                Debug.Log("within attack distance, attack target");
                 
                 if (timeSinceLastAttack >= timeBetweenAttacks)
                 {
@@ -91,6 +95,7 @@ public class Enemy : NetworkBehaviour
     {
         if (target == null) return;
         
+        m_animator.SetTrigger("Attack");
         target.SendMessage("TakeDamage", attackDamage);
         timeSinceLastAttack = 0f;
     }
@@ -124,5 +129,11 @@ public class Enemy : NetworkBehaviour
     {
         target = null;
         navAgent.ResetPath();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }
