@@ -510,7 +510,7 @@ MonoBehaviour:
   target: {fileID: 0}
   navAgent: {fileID: 8768268134780546875}
   m_animator: {fileID: 7324170223803115434}
-  m_NetworkAnimator: {fileID: 0}
+  m_NetworkAnimator: {fileID: 4555744143586831528}
   followRadius: 1
   followLayerMask:
     serializedVersion: 2
