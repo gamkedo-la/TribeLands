@@ -13,16 +13,11 @@ public class NetworkAvatar : NetworkBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
+    public AllyBaseBehavior followAI;
 
     public bool isControlled = false;
-    public NetworkAvatar followTarget;
-
-    public float navUpdateInterval = 0.3f;
-    private float timeSinceLastNavUpdate = 0f;
 
     public GameObject selectionIndicator;
-    public Collider followRadius;
-    public LayerMask followMask;
 
     [SerializeField] private float maxHealth = 100f;
     private float health;
@@ -72,59 +67,24 @@ public class NetworkAvatar : NetworkBehaviour
         OnPowerAttack.AddListener(PlayPowerAttackSound);
     }
 
-    private void Update()
-    {
-        if (isControlled) return;
-
-        timeSinceLastNavUpdate += Time.deltaTime;
-
-        if (timeSinceLastNavUpdate > navUpdateInterval)
-        {
-            timeSinceLastNavUpdate = 0f;
-            FollowTarget();
-        }
-    }
-
-    [Server]
-    private void FollowTarget()
-    {
-        if (avatars.Count == 0) return;
-
-        if (followTarget == null || !followTarget.isControlled) ;
-        {
-            FindFollowTarget();
-        }
-
-        navMeshAgent.SetDestination(followTarget.transform.position);
-    }
-
-    private void FindFollowTarget()
-    {
-        followTarget = null;
-        
-        foreach (var avatar in avatars)
-        {
-            if (avatar.isControlled)
-            {
-                followTarget = avatar;
-                return;
-            }
-        }
-        
-        if (followTarget == null) Debug.LogError($"No valid follow target found for {name}");
-    }
-
     private void TakeDamage(float damage)
     {
         health = Mathf.Max(health - damage, 0f);
         OnHealthChanged?.Invoke(health, maxHealth);
     }
 
+    public void AddPlayerControl()
+    {
+        isControlled = true;
+        followAI.enabled = false;
+        navMeshAgent.ResetPath();
+    }
+
     public void RemovePlayerControl(NetworkAvatar newFollowTarget)
     {
         isControlled = false;
         netIdentity.RemoveClientAuthority();
-        followTarget = newFollowTarget;
+        followAI.enabled = true;
     }
 
     public void GainHealth(float amount)

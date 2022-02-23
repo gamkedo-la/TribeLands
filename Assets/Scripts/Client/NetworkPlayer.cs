@@ -270,10 +270,11 @@ public class NetworkPlayer : NetworkBehaviour
         }
 
         // Tell avatar that it's being controlled externally.
-        a.isControlled = true;
+        // a.isControlled = true;
+        a.AddPlayerControl();
         
         // Remove current path.
-        a.navMeshAgent.ResetPath();
+        // a.navMeshAgent.ResetPath();
         
         // Save reference
         avatar = a;
