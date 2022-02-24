@@ -364,6 +364,8 @@ MonoBehaviour:
   playPanel: {fileID: 9126102810926591928}
   hostButton: {fileID: 1023701296188511601}
   joinButton: {fileID: 1827929624940025726}
+  hostAddressInput: {fileID: 6918600467197124848}
+  playPanelBackButton: {fileID: 3228694406416765805}
 --- !u!114 &425633787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -719,6 +721,28 @@ MonoBehaviour:
 --- !u!114 &1827929624940025726 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5983081915305329416, guid: 4862a9211dd441e43a8be49b4951848f, type: 3}
+  m_PrefabInstance: {fileID: 5356522693596288118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6918600467197124848 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3050625202888307846, guid: 4862a9211dd441e43a8be49b4951848f, type: 3}
+  m_PrefabInstance: {fileID: 5356522693596288118}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da0c512f12947e489f739169773d7ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3228694406416765805 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7392818727305283355, guid: 4862a9211dd441e43a8be49b4951848f, type: 3}
   m_PrefabInstance: {fileID: 5356522693596288118}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

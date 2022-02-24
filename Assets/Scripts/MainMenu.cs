@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,14 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private Button hostButton;
     [SerializeField] private Button joinButton;
+    [SerializeField] private TMP_InputField hostAddressInput;
+    [SerializeField] private Button playPanelBackButton;
 
     void Start()
     {
+        // In case we're kicked back here from within game, make sure cursor is not locked.
+        Cursor.lockState = CursorLockMode.None;
+        
         playButton.onClick.AddListener(OnPlayButtonPressed);
         settingsButton.onClick.AddListener(OnSettingsButtonPressed);
         creditsButton.onClick.AddListener(OnCreditsButtonPressed);
@@ -22,13 +28,15 @@ public class MainMenu : MonoBehaviour
         
         hostButton.onClick.AddListener(OnHostButtonPressed);
         joinButton.onClick.AddListener(OnJoinButtonPressed);
+        hostAddressInput.onValueChanged.AddListener(OnHostValueChanged);
+        
+        playPanelBackButton.onClick.AddListener((() => playPanel.SetActive(false)));
         
         playPanel.SetActive(false);
     }
 
     void OnPlayButtonPressed()
     {
-        Debug.Log("Play button pressed");
         playPanel.SetActive(true);
     }
 
@@ -54,16 +62,16 @@ public class MainMenu : MonoBehaviour
     void OnHostButtonPressed()
     {
         GroupNetworkManager.singleton.StartHost();
-        GroupNetworkManager.singleton.ServerChangeScene("Dungeon");
+    }
+
+    void OnHostValueChanged(string hostAddress)
+    {
+        GroupNetworkManager.singleton.networkAddress = hostAddress;
     }
 
     void OnJoinButtonPressed()
     {
-        var ipAddress = "localhost";
-        GroupNetworkManager.singleton.networkAddress = ipAddress;
         GroupNetworkManager.singleton.StartClient();
-        // Debug.Log($"Join game at {ipAddress}");
-        // 1. Check that an IP address was provided
-        // 2. Join game at that address
+        // TODO: Open another panel showing progress and/or errors from connecting to host.
     }
 }
