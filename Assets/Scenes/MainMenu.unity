@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 5472.0264, g: 3296.6094, b: 2077.2031, a: 1}
+  m_IndirectSpecularColor: {r: 5912.051, g: 3831.5586, b: 2953.379, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -503,41 +503,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22319310889744a4c8930bec6b4c2c8f, type: 3}
---- !u!1 &425633786 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6744566708071788100, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-  m_PrefabInstance: {fileID: 6744566708227656126}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &425633787
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 425633786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 5871fef48debda3449d782dcd788993e, type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 1317465979}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: UI
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 2112484553}
 --- !u!1001 &590254255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1719,6 +1684,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425633787, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2112484553}
+    - target: {fileID: 425633787, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 1317465979}
     - target: {fileID: 4308590940652740646, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1814,46 +1787,6 @@ PrefabInstance:
     - target: {fileID: 6086182741749921801, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_Spacing
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_ChildScaleHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_Padding.m_Bottom
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_ChildControlWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_ChildControlHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807706, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_ChildForceExpandHeight
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807709, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807709, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -303.3466
-      objectReference: {fileID: 0}
-    - target: {fileID: 6744566707793807709, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -151.67325
       objectReference: {fileID: 0}
     - target: {fileID: 6744566708071788096, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_Pivot.x
