@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.XR.Haptics;
 public class AllyBaseBehavior : NetworkBehaviour
 {
     public GameObject target;
+    public NetworkAvatar targetAvatar;
     private Vector3 targetPosition;
     public NavMeshAgent navAgent;
     public Animator m_animator;
@@ -58,7 +59,6 @@ public class AllyBaseBehavior : NetworkBehaviour
     [Server]
     protected virtual void Searching()
     {
-        m_animator?.SetFloat("Speed", navAgent.velocity.sqrMagnitude);
         timeSinceLastCheck += Time.deltaTime;
 
         if (timeSinceLastCheck > targetCheckInterval)
@@ -73,6 +73,8 @@ public class AllyBaseBehavior : NetworkBehaviour
     [Server]
     protected virtual void Following()
     {
+        m_animator?.SetFloat("Speed", navAgent.velocity.sqrMagnitude);
+        
         var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
         var distanceTargetMoved = Vector3.Distance(target.transform.position, targetPosition);
         
@@ -83,6 +85,12 @@ public class AllyBaseBehavior : NetworkBehaviour
         {
             navAgent.ResetPath();
             currentState = AIState.Standby;
+        }
+        
+        // Avatar we're following is no longer player-controlled. Find a new target!
+        if (targetAvatar != null && !targetAvatar.isControlled)
+        {
+            currentState = AIState.Searching;
         }
     }
 
@@ -117,6 +125,7 @@ public class AllyBaseBehavior : NetworkBehaviour
             var networkAvatar = targetPool[i].GetComponent<NetworkAvatar>();
             if (networkAvatar != null && networkAvatar.isControlled)
             {
+                targetAvatar = networkAvatar;
                 target = targetPool[i].gameObject;
                 UpdatePath();
                 return true;
