@@ -12,6 +12,7 @@ public class NetworkPlayer : NetworkBehaviour
 {
     private Vector2 movementInput;
     private Vector2 lookInput;
+    
     private NavMeshAgent navAgent;
     private Camera cam;
 
@@ -46,9 +47,9 @@ public class NetworkPlayer : NetworkBehaviour
 
     private void Awake(){
         gameManager = FindObjectOfType<GameManager>();
-        playerInput = GetComponent<PlayerInput>();
         clickData = new PointerEventData(EventSystem.current);
         clickResults = new List<RaycastResult>();
+        playerInput = GetComponent<PlayerInput>();
     }
     private void Start()
     {
@@ -65,19 +66,6 @@ public class NetworkPlayer : NetworkBehaviour
         Look();
         Move();
     }
-    public void OnPause(){
-        Cursor.lockState = CursorLockMode.None;
-        playerInput.actions.FindActionMap("UI").Enable();
-        playerInput.actions.FindActionMap("Player").Disable();
-        gameManager.OpenPauseMenu();
-    }
-    public void ResumeGame(){
-        Cursor.lockState = CursorLockMode.Locked;
-        playerInput.actions.FindActionMap("Player").Enable();
-        playerInput.actions.FindActionMap("UI").Disable();
-        gameManager.CloseAllMenus();
-    }
-
     private void Attack()
     {
         if (!isLocalPlayer || timeSinceAttack < avatarController.TimeBetweenAttacks) return;
@@ -85,7 +73,6 @@ public class NetworkPlayer : NetworkBehaviour
         avatarController.CmdAttack(nextRotation);
         avatar.OnAttack?.Invoke();
     }
-
     private void Look()
     {
         // Mouse sensitivity - Storing saved profile 
@@ -173,8 +160,7 @@ public class NetworkPlayer : NetworkBehaviour
         else if (ctx.canceled) isAttacking = false;
     }
 
-    public void OnPowerAttackPerformed(InputAction.CallbackContext ctx)
-    {
+    public void OnPowerAttackPerformed(InputAction.CallbackContext ctx){
         if (!isLocalPlayer || !ctx.started) return;
         
         if (avatar.Energy >= avatarController.PowerAttackEnergyCost)
@@ -213,9 +199,6 @@ public class NetworkPlayer : NetworkBehaviour
 
 
     public void UIClick(){
-        // Raytrace
-        // Retrieve one single UI element
-        // Call GameManager to handle accordingly
         clickData.position = Mouse.current.position.ReadValue();
         clickResults.Clear();
         foreach (RaycastResult result in clickResults){
@@ -268,6 +251,7 @@ public class NetworkPlayer : NetworkBehaviour
 
         // Tell avatar that it's being controlled externally
         a.isControlled = true;
+        gameManager.SetLocalPlayer(a.gameObject);
         
         // Save reference
         avatar = a;
