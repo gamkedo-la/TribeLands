@@ -479,7 +479,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7906615252763824481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 26.602085, y: 0.9, z: 6.095253}
+  m_LocalPosition: {x: 26.602085, y: 0.9000015, z: 6.095253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6988405718021613284}
@@ -736,7 +736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 343326870417761238, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.9
+      value: 0.9000015
       objectReference: {fileID: 0}
     - target: {fileID: 343326870417761238, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -780,7 +780,7 @@ PrefabInstance:
       objectReference: {fileID: 7906615252324153115}
     - target: {fileID: 343326870417761239, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7788018
+      value: 1.7786459
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
@@ -799,6 +799,10 @@ PrefabInstance:
     - target: {fileID: 1071526998498214985, guid: c85d2cb8ff07dbc45894c5640442c499, type: 3}
       propertyPath: m_Name
       value: NetworkManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659475670635890353, guid: c85d2cb8ff07dbc45894c5640442c499, type: 3}
+      propertyPath: onlineScene
+      value: Assets/Scenes/Dungeon.unity
       objectReference: {fileID: 0}
     - target: {fileID: 6659475670635890353, guid: c85d2cb8ff07dbc45894c5640442c499, type: 3}
       propertyPath: maxConnections

@@ -85,12 +85,12 @@ Material:
     m_Floats:
     - Depth: 8.14
     - Displacement: 2.91
-    - DisplacementSpeed: 18.8
+    - DisplacementSpeed: 47.4
     - DisplacementTiling: 20
     - EdgeFoamWidth: -1.96
     - NormalSpeed: 0.05
-    - NormalStrength: 0.25
-    - Smoothness: 0.852
+    - NormalStrength: 0.679
+    - Smoothness: 0.905
     - TopNoiseTextureTiling: 0.24
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0

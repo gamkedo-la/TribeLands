@@ -1,7 +1,6 @@
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem.XR.Haptics;
 
 public class AllyBaseBehavior : NetworkBehaviour
 {
@@ -11,6 +10,10 @@ public class AllyBaseBehavior : NetworkBehaviour
     public NavMeshAgent navAgent;
     public Animator m_animator;
     public NetworkAnimator m_NetworkAnimator;
+
+    public bool alliedFollow;
+    public bool hostileFollow;
+    public bool hostileAttack;
 
     [SerializeField] private float followRadius = 1.0f;
     [SerializeField] private LayerMask followLayerMask;

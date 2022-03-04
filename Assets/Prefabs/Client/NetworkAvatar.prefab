@@ -343,7 +343,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.05
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 2
 --- !u!114 &8294073517928208182
@@ -508,9 +508,13 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   target: {fileID: 0}
+  targetAvatar: {fileID: 0}
   navAgent: {fileID: 8768268134780546875}
   m_animator: {fileID: 7324170223803115434}
   m_NetworkAnimator: {fileID: 4555744143586831528}
+  alliedFollow: 0
+  hostileFollow: 0
+  hostileAttack: 0
   followRadius: 1
   followLayerMask:
     serializedVersion: 2
