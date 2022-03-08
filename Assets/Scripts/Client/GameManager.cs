@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     private GameObject localPlayer;
     private GameObject currentMenu;
     private bool gameIsOn = false;
-    private PlayerInput playerInput;
+    private NetworkPlayerInput playerInput;
     public void ToOptionsMenu(){
         pauseMenu.SetActive(true);
         buttonPanelMain.SetActive(false);
@@ -24,28 +24,16 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         buttonPanelMain.SetActive(true);
         optionsMenu.SetActive(true);
-        DisableAllActionMaps();
-        EnableActionMap("UI");
+        playerInput.UI.Enable();
+        playerInput.Player.Disable();
     }
     public void ClosePauseMenu(){
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
         buttonPanelMain.SetActive(false);
         optionsMenu.SetActive(false);
-        DisableAllActionMaps();
-        EnableActionMap("Player");
-    }
-    public void DisableAllActionMaps(){
-        playerInput.actions.FindActionMap("Player").Disable();
-        playerInput.actions.FindActionMap("UI").Disable();
-    }
-    public void EnableActionMap(string mapName){
-        StartCoroutine(DelayedActionMapSwitch(mapName));
-    }
-    private IEnumerator DelayedActionMapSwitch(string mapName){
-        yield return new WaitForEndOfFrame();
-        yield return new WaitForEndOfFrame();
-        playerInput.actions.FindActionMap(mapName).Enable();
+        playerInput.UI.Disable();
+        playerInput.Player.Enable();
     }
     public void SetLocalPlayer(GameObject playerObj){
         localPlayer = playerObj;
@@ -58,7 +46,7 @@ public class GameManager : MonoBehaviour
     }
     private void Awake(){
         currentMenu = pauseMenu;
-        playerInput = GetComponent<PlayerInput>();
+        playerInput = new NetworkPlayerInput();
     }
     void Start(){
         
