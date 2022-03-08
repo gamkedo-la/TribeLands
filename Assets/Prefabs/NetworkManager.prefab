@@ -75,8 +75,8 @@ MonoBehaviour:
   runInBackground: 1
   autoStartServerBuild: 1
   serverTickRate: 30
-  offlineScene: 
-  onlineScene: 
+  offlineScene: Assets/Scenes/MainMenu.unity
+  onlineScene: Assets/Scenes/Dungeon.unity
   transport: {fileID: 8148839757553177128}
   networkAddress: localhost
   maxConnections: 100
@@ -85,7 +85,7 @@ MonoBehaviour:
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs:
-  - {fileID: 1795260258213812621, guid: 6eb4b266990684b408deb2a9fe8796bb, type: 3}
+  - {fileID: 3212829723426424332, guid: 416195a7e88ed904fb84be16d900967a, type: 3}
   - {fileID: 1707259906104059889, guid: f8b26254c3bfcfe438a108d8cabafb11, type: 3}
   - {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
   - {fileID: 8338964250749903663, guid: 6a3d4b142e6c1b44782204bfc6e2e258, type: 3}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1071526998498214985}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6442dc8070ceb41f094e44de0bf87274, type: 3}
   m_Name: 

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Mirror;
 
 /*
@@ -112,7 +111,10 @@ public class GroupNetworkManager : NetworkManager
     /// Called on the server when a scene is completed loaded, when the scene load was initiated by the server with ServerChangeScene().
     /// </summary>
     /// <param name="sceneName">The name of the new scene.</param>
-    public override void OnServerSceneChanged(string sceneName) { }
+    public override void OnServerSceneChanged(string sceneName)
+    {
+         SpawnAvatars();
+    }
 
     /// <summary>
     /// Called from ClientChangeScene immediately before SceneManager.LoadSceneAsync is executed
@@ -331,7 +333,6 @@ public class GroupNetworkManager : NetworkManager
             return true;
         }
         
-        // Debug.Log($"{conn.connectionId} asked for avatar slot {avatarSlot}");
         return false;
     }
 }

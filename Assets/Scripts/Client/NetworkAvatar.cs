@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Cinemachine;
 using Mirror;
 using Unity.VisualScripting;
@@ -12,16 +13,11 @@ public class NetworkAvatar : NetworkBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
+    public AllyBaseBehavior followAI;
 
     public bool isControlled = false;
-    public Transform hostPlayer;
-    
-    public float navUpdateInterval = 0.3f;
-    private float timeSinceLastNavUpdate = 0f;
-    
+
     public GameObject selectionIndicator;
-    public Collider followRadius;
-    public LayerMask followMask;
 
     [SerializeField] private float maxHealth = 100f;
     private float health;
@@ -36,19 +32,28 @@ public class NetworkAvatar : NetworkBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip powerAttackSound;
-    
+
     // Broadcasts remaining health and max health after damage taken.
     public UnityEvent<float, float> OnHealthChanged;
     public UnityEvent<float, float> OnEnergyChanged;
     public UnityEvent OnAttack;
     public UnityEvent OnPowerAttack;
 
+    private List<NetworkAvatar> avatars;
+
     void Start()
     {
         health = 1;
         energy = maxEnergy;
         audioSource = GetComponent<AudioSource>();
-        
+
+        // Find other avatars in scene.
+        avatars = new List<NetworkAvatar>();
+        foreach (var avatar in FindObjectsOfType<NetworkAvatar>())
+        {
+            if (avatar != this) avatars.Add(avatar);
+        }
+
         if (OnHealthChanged == null)
             OnHealthChanged = new UnityEvent<float, float>();
         if (OnEnergyChanged == null)
@@ -57,40 +62,29 @@ public class NetworkAvatar : NetworkBehaviour
             OnAttack = new UnityEvent();
         if (OnPowerAttack == null)
             OnPowerAttack = new UnityEvent();
-        
+
         OnAttack.AddListener(PlayAttackSound);
         OnPowerAttack.AddListener(PlayPowerAttackSound);
-    }
-
-    private void Update()
-    {
-        if (isControlled) return;
-        
-        timeSinceLastNavUpdate += Time.deltaTime;
-
-        if (timeSinceLastNavUpdate > navUpdateInterval)
-        {
-            timeSinceLastNavUpdate = 0f;
-            FollowHost();
-        }
-    }
-
-    private void FollowHost()
-    {
-        if (!hostPlayer) return;
-
-        var ray = new Ray(transform.position, (hostPlayer.position - transform.position).normalized);
-        
-        if (Physics.Raycast(ray, out var hitInfo, 100f, followMask))
-        {
-            navMeshAgent.SetDestination(hitInfo.point);
-        }
     }
 
     private void TakeDamage(float damage)
     {
         health = Mathf.Max(health - damage, 0f);
         OnHealthChanged?.Invoke(health, maxHealth);
+    }
+
+    public void AddPlayerControl()
+    {
+        isControlled = true;
+        followAI.enabled = false;
+        navMeshAgent.ResetPath();
+    }
+
+    public void RemovePlayerControl(NetworkAvatar newFollowTarget)
+    {
+        isControlled = false;
+        netIdentity.RemoveClientAuthority();
+        followAI.enabled = true;
     }
 
     public void GainHealth(float amount)

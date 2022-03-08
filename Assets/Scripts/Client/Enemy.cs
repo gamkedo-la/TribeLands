@@ -1,4 +1,6 @@
+using System;
 using Mirror;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +8,9 @@ public class Enemy : NetworkBehaviour
 {
     public GameObject target;
     public NavMeshAgent navAgent;
+    public Animator m_animator;
+    public NetworkAnimator m_NetworkAnimator;
+    private Vector3 targetPosition;
 
     [SerializeField] private float detectionRadius = 10f;
     [SerializeField] private float breakFollowDistance = 15f;
@@ -18,7 +23,9 @@ public class Enemy : NetworkBehaviour
     [SerializeField] private float attackDamage = 20f;
     [SerializeField] private float timeBetweenAttacks = 3.0f;
     private float timeSinceLastAttack = 0f;
-    
+
+    [SyncVar] private float currentSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,42 +40,57 @@ public class Enemy : NetworkBehaviour
     private void Update()
     {
         if (!isServer) return;
+        
+        m_animator?.SetFloat("Speed", currentSpeed);
+        
+        // ⚡: maybe don't do this every frame
+        currentSpeed = navAgent.velocity.magnitude;
 
         timeSinceLastCheck += Time.deltaTime;
+        timeSinceLastAttack += Time.deltaTime;
+        
         if (target == null && timeSinceLastCheck > avatarCheckInterval)
         {
             FindTarget();
         }
-        
+
         if (target != null)
         {
+            var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
+            var distanceTargetMoved = Vector3.Distance(target.transform.position, targetPosition);
+            
             if (navAgent.hasPath)
             {
                 // Check if target has gotten too far away.
-                if (Vector3.Distance(transform.position, target.transform.position) >= breakFollowDistance)
+                if (distanceToTarget >= breakFollowDistance)
                 {
                     RemoveTarget();
                     return;
                 }
-                
-                // Debug.Log($"{gameObject.name} navAgent path status: {navAgent.path.status.ToString()}");
             }
-            else
+            
+            // If target has moved out of attack range of original position, repath.
+            if (distanceTargetMoved > attackRange)
             {
-                // Debug.LogError($"navAgent has target {target.gameObject.name}, but no valid path was found");
+                UpdatePath();
             }
 
-            if (navAgent.remainingDistance <= attackRange)
+            if (distanceToTarget <= attackRange)
             {
-                // Maybe also stop moving, and face the target?
+                // Bail on the rest of our path.
+                navAgent.ResetPath();
+                
+                // Always face target while in attack range.
+                var direction = (target.transform.position - transform.position).normalized;
+                var targetRotation = Quaternion.LookRotation(direction, transform.up);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, 0.2f);
+                
                 if (timeSinceLastAttack >= timeBetweenAttacks)
                 {
                     AttackTarget();
                 }
             }
         }
-
-        timeSinceLastAttack += Time.deltaTime;
     }
 
     [ClientRpc]
@@ -76,6 +98,7 @@ public class Enemy : NetworkBehaviour
     {
         if (target == null) return;
         
+        m_NetworkAnimator?.SetTrigger("Attack");
         target.SendMessage("TakeDamage", attackDamage);
         timeSinceLastAttack = 0f;
     }
@@ -89,11 +112,20 @@ public class Enemy : NetworkBehaviour
         if (numColliders > 0)
         {
             target = nearbyAvatars[0].gameObject;
-        
-            var path = new NavMeshPath();
-            navAgent.CalculatePath(target.transform.position, path);
-            navAgent.SetPath(path);
+            UpdatePath();
         }
+    }
+
+    [Server]
+    private void UpdatePath()
+    {
+        if (target == null) return;
+        
+        targetPosition = target.transform.position;
+        var path = new NavMeshPath();
+        navAgent.CalculatePath(targetPosition, path);
+        navAgent.SetPath(path);
+        navAgent.updateRotation = true;
     }
 
     [Server]
@@ -101,5 +133,11 @@ public class Enemy : NetworkBehaviour
     {
         target = null;
         navAgent.ResetPath();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
     }
 }

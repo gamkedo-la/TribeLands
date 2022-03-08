@@ -249,6 +249,8 @@ GameObject:
   - component: {fileID: 8294073517928208182}
   - component: {fileID: 8192139015323263634}
   - component: {fileID: 2288572362381038255}
+  - component: {fileID: 4051993279420144529}
+  - component: {fileID: 4555744143586831528}
   m_Layer: 3
   m_Name: NetworkAvatar
   m_TagString: Avatar
@@ -336,14 +338,14 @@ NavMeshAgent:
   m_Acceleration: 20
   avoidancePriority: 50
   m_AngularSpeed: 7200
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: -0.05
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 0
+  m_ObstacleAvoidanceType: 2
 --- !u!114 &8294073517928208182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,17 +364,13 @@ MonoBehaviour:
   virtualCamera: {fileID: 5362318735520030701}
   navMeshAgent: {fileID: 8768268134780546875}
   animator: {fileID: 7324170223803115434}
+  followAI: {fileID: 4051993279420144529}
   isControlled: 0
-  hostPlayer: {fileID: 0}
-  navUpdateInterval: 0.3
   selectionIndicator: {fileID: 2685941372420536275}
-  followRadius: {fileID: 9121687518146413839}
-  followMask:
-    serializedVersion: 2
-    m_Bits: 256
   maxHealth: 100
   maxEnergy: 150
   attackSound: {fileID: 0}
+  powerAttackSound: {fileID: 0}
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -380,6 +378,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPowerAttack:
     m_PersistentCalls:
       m_Calls: []
 --- !u!136 &8192139015323263634
@@ -492,6 +493,51 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4051993279420144529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941881863343208681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c47e77712b02c6e46a6023d14e4334ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  target: {fileID: 0}
+  targetAvatar: {fileID: 0}
+  navAgent: {fileID: 8768268134780546875}
+  m_animator: {fileID: 7324170223803115434}
+  m_NetworkAnimator: {fileID: 4555744143586831528}
+  alliedFollow: 0
+  hostileFollow: 0
+  hostileAttack: 0
+  followRadius: 1
+  followLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  rotationSmoothing: 0.2
+  targetCheckInterval: 0.5
+  targetDetectionRadius: 100
+--- !u!114 &4555744143586831528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3941881863343208681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  animator: {fileID: 7324170223803115434}
 --- !u!1 &7188306769208207770
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3438485744238026908}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: right hand slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -736,19 +782,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3005321289182778289, guid: fe45d9a5059ee6d45ae1f31dcde03954, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5975293010830823985, guid: fe45d9a5059ee6d45ae1f31dcde03954, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7073892777496253156, guid: fe45d9a5059ee6d45ae1f31dcde03954, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 7408161007880714373, guid: fe45d9a5059ee6d45ae1f31dcde03954, type: 3}
       propertyPath: m_Layer
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe45d9a5059ee6d45ae1f31dcde03954, type: 3}

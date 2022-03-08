@@ -240,18 +240,19 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isLocalPlayer) return;
         
-        Debug.Log($"{name} becoming host to {a.gameObject.name}");
+        // Tell other avatars to follow the new target avatar
         if (avatar)
         {
-            DeactivateCurrentAvatar();
+            avatar.RemovePlayerControl(a);
         }
-
-        // Tell other avatars to follow the new target avatar
-        // UpdateAvatarAI(a);
-
-        // Tell avatar that it's being controlled externally
-        a.isControlled = true;
+        
+        // Tell avatar that it's being controlled externally.
+        // a.isControlled = true;
+        a.AddPlayerControl();
         gameManager.SetLocalPlayer(a.gameObject);
+        
+        // Remove current path.
+        // a.navMeshAgent.ResetPath();
         
         // Save reference
         avatar = a;
@@ -271,38 +272,9 @@ public class NetworkPlayer : NetworkBehaviour
             targetGroup.m_Targets = new[] { target };
         }
         
-        // Activate virtual camera and target group
-        // avatar.targetGroup.gameObject.SetActive(true);
-        // avatar.virtualCamera.gameObject.SetActive(true);
-        
-        // Activate selection indicator
-        // commented out while experimenting with 3rd person camera (rather than top-down camera)
-        // avatar.selectionIndicator.SetActive(true);
-        
         // Change animator reference
         animator = avatar.animator;
         
         Debug.Log($"hosting avatar {a.gameObject.name}");
-    }
-    
-    private void UpdateAvatarAI(NetworkAvatar avatar)
-    {
-        foreach (var networkAvatar in avatars)
-        {
-            networkAvatar.isControlled = false;
-            networkAvatar.hostPlayer = avatar.transform;
-        }
-    }
-
-    private void DeactivateCurrentAvatar()
-    {
-        Debug.Log($"Deactivate current avatar for {name}");
-        
-        avatar.targetGroup.gameObject.SetActive(false);
-        avatar.virtualCamera.gameObject.SetActive(false);
-        avatar.selectionIndicator.SetActive(false);
-        avatar.hostPlayer = avatar.transform;
-        avatar.isControlled = false;
-        avatar.netIdentity.RemoveClientAuthority();
     }
 }
