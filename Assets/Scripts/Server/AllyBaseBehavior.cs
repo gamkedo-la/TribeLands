@@ -106,10 +106,14 @@ public class AllyBaseBehavior : NetworkBehaviour
         }
         
         var targetVector = (target.transform.position - transform.position);
-        var direction = targetVector.normalized;
         var distance = targetVector.magnitude;
-        var targetRotation = Quaternion.LookRotation(direction, transform.up);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing);
+
+        if (distance > 0.01f)
+        {
+            var direction = targetVector.normalized;
+            var targetRotation = Quaternion.LookRotation(direction, transform.up);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSmoothing);
+        }
 
         if (distance > followRadius)
         {
