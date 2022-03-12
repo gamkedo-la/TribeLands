@@ -1,5 +1,27 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &6748325387317190570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2690572762333005229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 964c481a3a27b9143aabd331d5b24242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 8153064843924033851}
+  footstepSounds:
+  - {fileID: 8300000, guid: ef2b56ca62a4a0f4b97d36343d161f80, type: 3}
+  - {fileID: 8300000, guid: cb8b556426aab14419f26674c3ef1054, type: 3}
+  - {fileID: 8300000, guid: d1466f7986061644e86b33df63dfbb65, type: 3}
+  - {fileID: 8300000, guid: 11b86a82dd64f494ea3dae98cca38bcd, type: 3}
+  - {fileID: 8300000, guid: 5c1fd853104248747ad5fb893fee943a, type: 3}
+  - {fileID: 8300000, guid: 316fb8b23c977d047b39a2f8657d2ddb, type: 3}
+  - {fileID: 8300000, guid: ecc9e6e3aa75aff459a39a3e0aa7508a, type: 3}
+  - {fileID: 8300000, guid: 914ab7b4c3b0de34598f8b8be2676cc8, type: 3}
 --- !u!114 &7636908810931890869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,6 +156,11 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 6bf90bda9b1843d4a96f44784211ebd1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbf94a92266b0b2409b0113d8ffd0932, type: 3}
+--- !u!1 &2690572762333005229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cbf94a92266b0b2409b0113d8ffd0932, type: 3}
+  m_PrefabInstance: {fileID: 2997071326008473852}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8718170444487640429 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: cbf94a92266b0b2409b0113d8ffd0932, type: 3}
@@ -267,6 +294,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: a6342748225944ed8a0fd1c9b8150360, type: 3}
     - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: footstepSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ef2b56ca62a4a0f4b97d36343d161f80, type: 3}
+    - target: {fileID: 8294073517928208182, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: powerAttackSound
       value: 
       objectReference: {fileID: 8300000, guid: fc50c4d8f220940a9a0183d8226b1408, type: 3}
@@ -280,6 +311,11 @@ GameObject:
 --- !u!4 &621929934951698977 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7369767834514395573, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+  m_PrefabInstance: {fileID: 7991396983869719444}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &8153064843924033851 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2288572362381038255, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
   m_PrefabInstance: {fileID: 7991396983869719444}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &8534377355548185086 stripped

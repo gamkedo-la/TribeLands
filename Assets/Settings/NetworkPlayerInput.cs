@@ -104,7 +104,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""id"": ""5c5c5710-72aa-409e-9b87-8d5cc71e7574"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""Press(behavior=2)""
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [

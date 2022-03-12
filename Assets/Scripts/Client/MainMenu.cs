@@ -122,7 +122,6 @@ public class MainMenu : MonoBehaviour
         mainMenuOptionsPanel.SetActive(true);
         RestoreMainMenuSelection();
     }
-
     void RestoreMainMenuSelection()
     {
         EventSystem.current.SetSelectedGameObject(

@@ -115,5 +115,4 @@ public class NetworkAvatar : NetworkBehaviour
     {
         audioSource?.PlayOneShot(powerAttackSound);
     }
-    
 }

@@ -39,7 +39,6 @@ public class NetworkPlayer : NetworkBehaviour
     // Attack speed is tracked on the avatars.
     private bool isAttacking = false;
     private float timeSinceAttack = 100;
-    
     // ------- UI --------
     private GraphicRaycaster uiRaycaster;
     PointerEventData clickData;
@@ -66,6 +65,11 @@ public class NetworkPlayer : NetworkBehaviour
         Look();
         Move();
     }
+    // private void OnEnable(){
+    //     //Actions that will change the action map
+    //     playerInput.actions["Pause"].performed += Pause;
+    //     playerInput.actions["Cancel"].performed += Resume;
+    // }
     private void Attack()
     {
         if (!isLocalPlayer || timeSinceAttack < avatarController.TimeBetweenAttacks) return;
@@ -104,7 +108,6 @@ public class NetworkPlayer : NetworkBehaviour
         nextRotation = Quaternion.Lerp(targetGroup.transform.rotation, targetRotation, lookInput.sqrMagnitude);
         targetGroup.transform.rotation = nextRotation;
     }
-
     private void Move()
     {
         if (avatarController == null || targetGroup == null) return;
@@ -127,31 +130,26 @@ public class NetworkPlayer : NetworkBehaviour
                 Quaternion.Lerp(avatarController.transform.localRotation, targetRotation, 0.1f);
         }
     }
-
     public void OnControlsChanged(PlayerInput input)
     {
         Debug.Log(input.currentControlScheme);
     }
-
     public void OnLookPerformed(InputAction.CallbackContext ctx)
     {
         lookInput = ctx.ReadValue<Vector2>() * lookSpeed;
         if (invertGamePadVertical)
             lookInput.y = -lookInput.y;
     }
-
     public void OnMouseLookPerformed(InputAction.CallbackContext ctx)
     {
         lookInput = ctx.ReadValue<Vector2>() * mouseLookSpeed;
         if (invertMouseVertical)
             lookInput.y = -lookInput.y;
     }
-
     public void OnMovePerformed(InputAction.CallbackContext ctx)
     {
         movementInput = ctx.ReadValue<Vector2>();
     }
-
     public void OnAttackPerformed(InputAction.CallbackContext ctx)
     {
         if (!isLocalPlayer) return;
@@ -174,7 +172,6 @@ public class NetworkPlayer : NetworkBehaviour
             Debug.LogWarning($"not enough energy: {avatar.Energy}");
         }
     }
-
     public void OnDodgePerformed(InputAction.CallbackContext ctx)
     {
         if (!isLocalPlayer || !ctx.started) return;
@@ -183,8 +180,6 @@ public class NetworkPlayer : NetworkBehaviour
         var dodgeDir = avatarController.transform.forward;
         avatarController.Dodge(dodgeDir);
     }
-
-
     public void OnSwapAvatar(InputAction.CallbackContext ctx, int avatarSlot)
     {
         if (ctx.performed)
@@ -192,22 +187,31 @@ public class NetworkPlayer : NetworkBehaviour
             AskForAvatar(avatarSlot);
         }
     }
-
-
+    public void Pause(InputAction.CallbackContext ctx){
+        if(ctx.performed){
+            Debug.Log("Game Paused");
+            gameManager.OpenPauseMenu();
+            Cursor.lockState = CursorLockMode.None;
+            playerInput.SwitchCurrentActionMap("UI");
+        }
+        //playerInput.actions.FindActionMap("UI").Enable();
+        //playerInput.actions.FindActionMap("Player").Disable();
+    }
 
     //-----------------------------UI--------------------------
-
-
     public void UIClick(){
         clickData.position = Mouse.current.position.ReadValue();
         clickResults.Clear();
         foreach (RaycastResult result in clickResults){
             GameObject uiElement = result.gameObject;
-            Debug.Log(uiElement.transform.position.ToString() + uiElement.name);
         }
     }
-
-
+    public void Resume(){
+        Debug.Log("Resume");
+        gameManager.ClosePauseMenu();
+        Cursor.lockState = CursorLockMode.Locked;
+        playerInput.SwitchCurrentActionMap("Player");        
+    }
     [Command]
     void AskForAvatar(int slot)
     {
@@ -249,7 +253,6 @@ public class NetworkPlayer : NetworkBehaviour
         // Tell avatar that it's being controlled externally.
         // a.isControlled = true;
         a.AddPlayerControl();
-        gameManager.SetLocalPlayer(a.gameObject);
         
         // Remove current path.
         // a.navMeshAgent.ResetPath();
