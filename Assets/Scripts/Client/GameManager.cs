@@ -10,9 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonPanelMain;
     [SerializeField] GameObject optionsMenu;
+    [SerializeField] private LevelData levelData;
+    
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
     private bool gameIsOn = false;
+    
     public void HandleResume(){
         CheckForLocalPlayer();
         localPlayerController.Resume();
@@ -44,9 +47,13 @@ public class GameManager : MonoBehaviour
     private void Awake(){
         currentMenu = pauseMenu;
     }
-    void Start(){
-        
+    
+    void Start()
+    {
+        if (levelData != null)
+            AudioManager.instance.SetBackgroundMusic(levelData.BackgroundMusic);
     }
+    
     void Update(){
         
     }
