@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
-    private bool gameIsOn = false;
     public void HandleResume(){
         CheckForLocalPlayer();
         localPlayerController.Resume();
@@ -34,12 +33,6 @@ public class GameManager : MonoBehaviour
     }
     public void CheckForLocalPlayer(){
         localPlayerController = FindObjectOfType<NetworkPlayer>();
-    }
-    public bool GameIsOn(){
-        return gameIsOn;
-    }
-    public void SetGameIsOn(bool g){
-        gameIsOn = g;
     }
     private void Awake(){
         currentMenu = pauseMenu;
