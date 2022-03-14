@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 5924.959, g: 3832.666, b: 2938.871, a: 1}
+  m_IndirectSpecularColor: {r: 5996.0625, g: 3831.791, b: 2840.0508, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -191,10 +191,22 @@ PrefabInstance:
       propertyPath: m_FirstSelected
       value: 
       objectReference: {fileID: 425422122}
+    - target: {fileID: 1985268123154030926, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: levelData
+      value: 
+      objectReference: {fileID: 11400000, guid: adf1b4b68570dd14a8521304c3f1c9a5, type: 2}
     - target: {fileID: 3370494365058035531, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_Name
       value: ForEveryScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3688261624584038745, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3688261624584038745, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2f1343f6433ca394ba9cbdd282e87046, type: 2}
     - target: {fileID: 6988405718021613284, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_RootOrder
       value: 15
