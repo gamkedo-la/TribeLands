@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 // Manages events within the local / client environment
 // Anything that doesn't need to be sent over the network
