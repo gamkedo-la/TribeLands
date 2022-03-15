@@ -11,8 +11,6 @@ public class GameManager : MonoBehaviour
     
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
-    private bool gameIsOn = false;
-    
     public void HandleResume(){
         CheckForLocalPlayer();
         localPlayerController.Resume();
@@ -25,7 +23,7 @@ public class GameManager : MonoBehaviour
     public void OpenPauseMenu(){        
         pauseMenu.SetActive(true);
         buttonPanelMain.SetActive(true);
-        optionsMenu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
     public void ClosePauseMenu(){
         pauseMenu.SetActive(false);
@@ -34,12 +32,6 @@ public class GameManager : MonoBehaviour
     }
     public void CheckForLocalPlayer(){
         localPlayerController = FindObjectOfType<NetworkPlayer>();
-    }
-    public bool GameIsOn(){
-        return gameIsOn;
-    }
-    public void SetGameIsOn(bool g){
-        gameIsOn = g;
     }
     private void Awake(){
         currentMenu = pauseMenu;
