@@ -919,10 +919,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 7906615252324153115}
-    - target: {fileID: 343326870417761239, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
-      propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7780195
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
 --- !u!4 &7906615251287903861 stripped

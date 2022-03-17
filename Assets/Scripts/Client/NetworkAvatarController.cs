@@ -22,6 +22,9 @@ namespace Client
         private Vector3 inputVelocity;
         private Animator animator;
 
+        [SerializeField] protected LayerMask attackMask;
+        protected Camera cam;
+
         [SyncVar]
         public float currentSpeed;
 
@@ -40,6 +43,7 @@ namespace Client
             animator = GetComponentInChildren<Animator>();
             navAgent = GetComponent<NavMeshAgent>();
             avatars = FindObjectsOfType<NetworkAvatar>();
+            cam = Camera.main;
 
             if (isLocalPlayer)
             {

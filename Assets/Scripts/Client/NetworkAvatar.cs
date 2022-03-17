@@ -13,6 +13,8 @@ public class NetworkAvatar : NetworkBehaviour
     public CinemachineVirtualCamera virtualCamera;
     public NavMeshAgent navMeshAgent;
     public Animator animator;
+    [SerializeField] private NetworkAnimator networkAnimator;
+    
     public AllyBaseBehavior followAI;
 
     public bool isControlled = false;
@@ -63,6 +65,7 @@ public class NetworkAvatar : NetworkBehaviour
         if (OnPowerAttack == null)
             OnPowerAttack = new UnityEvent();
 
+        OnAttack.AddListener(PlayAttackAnimation);
         OnAttack.AddListener(PlayAttackSound);
         OnPowerAttack.AddListener(PlayPowerAttackSound);
     }
@@ -104,6 +107,11 @@ public class NetworkAvatar : NetworkBehaviour
     {
         energy = Mathf.Min((energy + amount), maxEnergy);
         OnEnergyChanged?.Invoke(energy, maxEnergy);
+    }
+
+    private void PlayAttackAnimation()
+    {
+        networkAnimator.SetTrigger("Attack");
     }
 
     private void PlayAttackSound()

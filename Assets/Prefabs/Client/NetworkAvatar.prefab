@@ -364,6 +364,7 @@ MonoBehaviour:
   virtualCamera: {fileID: 5362318735520030701}
   navMeshAgent: {fileID: 8768268134780546875}
   animator: {fileID: 7324170223803115434}
+  networkAnimator: {fileID: 4555744143586831528}
   followAI: {fileID: 4051993279420144529}
   isControlled: 0
   selectionIndicator: {fileID: 2685941372420536275}
