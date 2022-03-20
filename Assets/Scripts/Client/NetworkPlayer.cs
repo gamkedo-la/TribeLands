@@ -74,7 +74,6 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isLocalPlayer || timeSinceAttack < avatarController.TimeBetweenAttacks) return;
         timeSinceAttack = 0f;
-        avatarController.CmdAttack(nextRotation);
         avatar.OnAttack?.Invoke();
     }
     private void Look()
@@ -165,7 +164,6 @@ public class NetworkPlayer : NetworkBehaviour
         {
             avatar.GainEnergy(-avatarController.PowerAttackEnergyCost);
             avatar.OnPowerAttack?.Invoke();
-            avatarController.CmdPowerAttack();
         }
         else
         {

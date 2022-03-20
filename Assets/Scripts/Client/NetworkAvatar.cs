@@ -68,6 +68,7 @@ public class NetworkAvatar : NetworkBehaviour
         OnAttack.AddListener(PlayAttackAnimation);
         OnAttack.AddListener(PlayAttackSound);
         OnPowerAttack.AddListener(PlayPowerAttackSound);
+        OnPowerAttack.AddListener(PlayPowerAttackAnimation);
     }
 
     private void TakeDamage(float damage)
@@ -112,6 +113,11 @@ public class NetworkAvatar : NetworkBehaviour
     private void PlayAttackAnimation()
     {
         networkAnimator.SetTrigger("Attack");
+    }
+
+    private void PlayPowerAttackAnimation()
+    {
+        networkAnimator.SetTrigger("Power Attack");
     }
 
     private void PlayAttackSound()

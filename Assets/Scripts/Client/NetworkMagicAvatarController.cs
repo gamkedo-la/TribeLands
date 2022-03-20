@@ -14,7 +14,7 @@ namespace Client
         private Vector3 projectileTarget;
 
         [Command]
-        public override void CmdAttack(Quaternion direction)
+        public override void CmdAttack()
         {
             // Spawn magic projectile
             var projectileRay = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, cam.nearClipPlane));

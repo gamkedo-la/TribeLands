@@ -103,7 +103,7 @@ namespace Client
             StartCoroutine(DodgeTimer());
         }
 
-        public virtual void CmdAttack(Quaternion direction)
+        public virtual void CmdAttack()
         {
             Debug.LogError("Attack not implemented");
         }
