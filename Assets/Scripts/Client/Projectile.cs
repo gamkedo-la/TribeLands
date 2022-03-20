@@ -29,5 +29,25 @@ namespace Client
             other.gameObject.SendMessageUpwards("TakeDamage", SendMessageOptions.DontRequireReceiver);
             DestroySelf();
         }
+
+        public static Quaternion AttackDirection(Camera cam, LayerMask attackMask, Vector3 fireFrom)
+        {
+
+            Vector3 projectileTarget;
+            var projectileRay = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, cam.nearClipPlane));
+            
+            RaycastHit hit;
+            if (Physics.Raycast(projectileRay, out hit, 1000f, attackMask))
+            {
+                projectileTarget = hit.point;
+            }
+            else
+            {
+                projectileTarget = cam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cam.farClipPlane));
+            }
+                
+            var projectileDirection = (projectileTarget - fireFrom).normalized;
+            return Quaternion.LookRotation(projectileDirection);
+        }
     }
 }

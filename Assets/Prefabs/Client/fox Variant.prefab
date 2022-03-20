@@ -18,9 +18,13 @@ MonoBehaviour:
   turnSmoothTime: 0.05
   dodgeDistance: 5
   dodgeDuration: 0.2
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 0
   currentSpeed: 0
   timeBetweenAttacks: 0.2
   powerAttackEnergyCost: 100
+  attackDirection: {x: 0, y: 0, z: 0, w: 0}
   projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
   fireFrom: {fileID: 4354299289913673354}
 --- !u!1001 &2664587169635685600
@@ -54,10 +58,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.267
       objectReference: {fileID: 0}
+    - target: {fileID: 3309192851163328206, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: -2173602209471636470}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
       value: fox Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4051993279420144529, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: fireFrom
+      value: 
+      objectReference: {fileID: 4354299289913673354}
+    - target: {fileID: 4051993279420144529, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: attackRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051993279420144529, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: networkAvatarController
+      value: 
+      objectReference: {fileID: -2173602209471636470}
     - target: {fileID: 4523135122113808319, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

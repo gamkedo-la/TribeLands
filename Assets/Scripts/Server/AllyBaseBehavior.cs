@@ -1,3 +1,4 @@
+using Client;
 using Mirror;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,6 +11,7 @@ public class AllyBaseBehavior : NetworkBehaviour
     public NavMeshAgent navAgent;
     public Animator m_animator;
     public NetworkAnimator m_NetworkAnimator;
+    public NetworkAvatarController networkAvatarController;
 
     public bool alliedFollow;
     public bool hostileFollow;
@@ -21,14 +23,24 @@ public class AllyBaseBehavior : NetworkBehaviour
     private Collider[] targetPool;
     private int targetPoolSize = 2;
 
+    [SerializeField] private LayerMask enemyLayerMask;
+    [SerializeField] private float attackRange;
+    [SerializeField] private Transform fireFrom;
+    private Collider[] enemyTargetPool;
+    [SerializeField] private float enemyDetectionRadius = 30f;
+    public GameObject targetEnemy;
+    private int enemyTargetPoolSize = 4;
+    private float timeSinceLastAttack = 0f;
+
     [SerializeField] private float targetCheckInterval = 0.5f;
     [SerializeField] private float targetDetectionRadius = 100f;
     private float timeSinceLastCheck = 0f;
 
     enum AIState
     {
-        Searching,
+        Attacking,
         Following,
+        Searching,
         Standby,
     };
 
@@ -38,6 +50,7 @@ public class AllyBaseBehavior : NetworkBehaviour
     public override void OnStartServer()
     {
         targetPool = new Collider[targetPoolSize];
+        enemyTargetPool = new Collider[enemyTargetPoolSize];
     }
 
     // Update is called once per frame
@@ -47,11 +60,16 @@ public class AllyBaseBehavior : NetworkBehaviour
 
         switch (currentState)
         {
-            case AIState.Searching:
-                Searching();
+            case AIState.Attacking:
+                Debug.Log("attacking");
+                Attacking();
                 break;
             case AIState.Following:
                 Following();
+                break;
+            case AIState.Searching:
+                Debug.Log("searching");
+                Searching();
                 break;
             case AIState.Standby:
                 Standby();
@@ -63,13 +81,20 @@ public class AllyBaseBehavior : NetworkBehaviour
     protected virtual void Searching()
     {
         timeSinceLastCheck += Time.deltaTime;
+        timeSinceLastAttack += Time.deltaTime;
 
         if (timeSinceLastCheck > targetCheckInterval)
         {
-            if (FindTarget())
+            // Try first to find nearby enemies.
+            if (FindEnemyTarget())
             {
-                currentState = AIState.Following;
+                currentState = AIState.Attacking;
             }
+            // Otherwise try to find a player to follow.
+            // else if (FindTarget())
+            // {
+                // currentState = AIState.Following;
+            // }
         }
     }
 
@@ -96,6 +121,33 @@ public class AllyBaseBehavior : NetworkBehaviour
             currentState = AIState.Searching;
         }
     }
+    
+    protected virtual void Attacking()
+    {
+        if (targetEnemy == null)
+        {
+            currentState = AIState.Searching;
+            return;
+        }
+
+        var targetDirection = targetEnemy.transform.position - fireFrom.position;
+        var targetDistance = targetDirection.magnitude;
+        if (targetDistance < attackRange)
+        {
+            navAgent.ResetPath();
+            
+            if (timeSinceLastAttack >= networkAvatarController.TimeBetweenAttacks)
+            {
+                networkAvatarController.attackDirection = Quaternion.LookRotation(targetDirection.normalized);
+                m_NetworkAnimator.SetTrigger("Attack");
+            }
+        }
+
+        else
+        {
+            UpdatePath(targetEnemy.transform);
+        }
+    }
 
     protected virtual void Standby()
     {
@@ -119,6 +171,34 @@ public class AllyBaseBehavior : NetworkBehaviour
         {
             currentState = AIState.Following;
         }
+    }
+    
+    [Server]
+    private bool FindEnemyTarget()
+    {
+        var numColliders =
+            Physics.OverlapSphereNonAlloc(transform.position, enemyDetectionRadius, enemyTargetPool, enemyLayerMask);
+
+        if (numColliders > 0)
+        {
+            int nearestIndex = 0;
+            if (numColliders > 1)
+            {
+                float nearestDistance = (transform.position - enemyTargetPool[0].transform.position).sqrMagnitude;
+                for (int i = 1; i < numColliders; i++)
+                {
+                    var distance = (transform.position - enemyTargetPool[0].transform.position).sqrMagnitude;
+                    if (distance < nearestDistance) nearestIndex = i;
+                }
+            }
+
+            targetEnemy = enemyTargetPool[nearestIndex].gameObject;
+            Debug.Log($"target enemy: {targetEnemy.name}");
+            return true;
+        }
+
+        Debug.Log("No enemy found");
+        return false;
     }
 
     [Server]
@@ -148,6 +228,16 @@ public class AllyBaseBehavior : NetworkBehaviour
         if (target == null) return;
 
         targetPosition = target.transform.position;
+        navAgent.SetDestination(targetPosition);
+        navAgent.updateRotation = true;
+    }
+
+    [Server]
+    private void UpdatePath(Transform pathTarget)
+    {
+        if (pathTarget == null) return;
+
+        targetPosition = pathTarget.transform.position;
         navAgent.SetDestination(targetPosition);
         navAgent.updateRotation = true;
     }

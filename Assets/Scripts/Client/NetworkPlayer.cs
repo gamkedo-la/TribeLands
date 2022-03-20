@@ -74,6 +74,7 @@ public class NetworkPlayer : NetworkBehaviour
     {
         if (!isLocalPlayer || timeSinceAttack < avatarController.TimeBetweenAttacks) return;
         timeSinceAttack = 0f;
+        avatarController.BeginAttack();
         avatar.OnAttack?.Invoke();
     }
     private void Look()

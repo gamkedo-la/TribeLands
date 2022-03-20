@@ -35,6 +35,7 @@ namespace Client
         public float PowerAttackEnergyCost => powerAttackEnergyCost;
 
         public float TimeBetweenAttacks => timeBetweenAttacks;
+        public Quaternion attackDirection;
         
         protected NetworkAvatar[] avatars;
 
@@ -101,6 +102,11 @@ namespace Client
             isDodging = true;
             dodgeTarget = transform.position + dodgeDistance * dodgeDirection.normalized;
             StartCoroutine(DodgeTimer());
+        }
+
+        public virtual void BeginAttack()
+        {
+            Debug.LogError("Begin attack not implemented");
         }
 
         public virtual void CmdAttack()

@@ -18,9 +18,13 @@ MonoBehaviour:
   turnSmoothTime: 0.05
   dodgeDistance: 3
   dodgeDuration: 0.3
+  attackMask:
+    serializedVersion: 2
+    m_Bits: 64
   currentSpeed: 0
   timeBetweenAttacks: 0.3
   powerAttackEnergyCost: 100
+  attackDirection: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &7604288770004380832
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36,6 +40,10 @@ PrefabInstance:
       propertyPath: m_AssetId
       value: 97da863c08aa82c4989fd85ef831e754
       objectReference: {fileID: 0}
+    - target: {fileID: 3309192851163328206, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: -7246184391055210375}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
       value: hippo Variant
@@ -44,6 +52,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Avatar
       objectReference: {fileID: 0}
+    - target: {fileID: 4051993279420144529, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4051993279420144529, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: networkAvatarController
+      value: 
+      objectReference: {fileID: -7246184391055210375}
     - target: {fileID: 4523135122113808319, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
