@@ -201,7 +201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844503918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0.45, z: -9.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 2065256249}
   - component: {fileID: 2065256248}
   - component: {fileID: 2065256247}
+  - component: {fileID: 2065256250}
   m_Layer: 0
   m_Name: Visual Effect
   m_TagString: Untagged
@@ -444,10 +445,10 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1.2
+      - m_Value: 0.883
         m_Name: portal_open_size
         m_Overridden: 1
-      - m_Value: 0.577
+      - m_Value: 0.674
         m_Name: Arc_size
         m_Overridden: 1
     m_Vector2f:
@@ -478,9 +479,23 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2065256246}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.174, y: 0.24, z: -0.413}
+  m_LocalPosition: {x: -0.174, y: 0.24, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2065256250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2065256246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8cfb7cf01d6ab44bbec7f02f8a001c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationspeed: 1
+  torotate: {fileID: 2065256246}
