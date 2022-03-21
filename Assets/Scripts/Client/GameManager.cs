@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
         pauseMenu.SetActive(true);
         buttonPanelMain.SetActive(false);
         optionsMenu.SetActive(true);
+        currentMenu = optionsMenu;
     }
     public void OpenPauseMenu(){        
         pauseMenu.SetActive(true);
