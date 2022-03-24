@@ -44,6 +44,10 @@ PrefabInstance:
       propertyPath: receiver
       value: 
       objectReference: {fileID: -7246184391055210375}
+    - target: {fileID: 3864223257807720790, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: -7246184391055210375}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
       value: hippo Variant

@@ -58,17 +58,18 @@ public class AllyBaseBehavior : NetworkBehaviour
     {
         if (!isServer) return;
 
+        timeSinceLastCheck += Time.deltaTime;
+        timeSinceLastAttack += Time.deltaTime;
+        
         switch (currentState)
         {
             case AIState.Attacking:
-                Debug.Log("attacking");
                 Attacking();
                 break;
             case AIState.Following:
                 Following();
                 break;
             case AIState.Searching:
-                Debug.Log("searching");
                 Searching();
                 break;
             case AIState.Standby:
@@ -80,9 +81,6 @@ public class AllyBaseBehavior : NetworkBehaviour
     [Server]
     protected virtual void Searching()
     {
-        timeSinceLastCheck += Time.deltaTime;
-        timeSinceLastAttack += Time.deltaTime;
-
         if (timeSinceLastCheck > targetCheckInterval)
         {
             // Try first to find nearby enemies.
@@ -122,6 +120,7 @@ public class AllyBaseBehavior : NetworkBehaviour
         }
     }
     
+    [Server]
     protected virtual void Attacking()
     {
         if (targetEnemy == null)
@@ -139,7 +138,9 @@ public class AllyBaseBehavior : NetworkBehaviour
             if (timeSinceLastAttack >= networkAvatarController.TimeBetweenAttacks)
             {
                 networkAvatarController.attackDirection = Quaternion.LookRotation(targetDirection.normalized);
+                networkAvatarController.ServerAttack();
                 m_NetworkAnimator.SetTrigger("Attack");
+                timeSinceLastAttack = 0;
             }
         }
 
@@ -193,11 +194,9 @@ public class AllyBaseBehavior : NetworkBehaviour
             }
 
             targetEnemy = enemyTargetPool[nearestIndex].gameObject;
-            Debug.Log($"target enemy: {targetEnemy.name}");
             return true;
         }
 
-        Debug.Log("No enemy found");
         return false;
     }
 

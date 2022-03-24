@@ -22,7 +22,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   currentSpeed: 0
-  timeBetweenAttacks: 0.2
+  timeBetweenAttacks: 0.5
   powerAttackEnergyCost: 100
   attackDirection: {x: 0, y: 0, z: 0, w: 0}
   projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
@@ -59,6 +59,10 @@ PrefabInstance:
       value: 0.267
       objectReference: {fileID: 0}
     - target: {fileID: 3309192851163328206, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: receiver
+      value: 
+      objectReference: {fileID: -2173602209471636470}
+    - target: {fileID: 3864223257807720790, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: receiver
       value: 
       objectReference: {fileID: -2173602209471636470}

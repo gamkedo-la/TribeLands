@@ -114,6 +114,11 @@ namespace Client
             Debug.LogError("Attack not implemented");
         }
 
+        public virtual void ServerAttack()
+        {
+            Debug.LogError("ServerAttack not implemented");
+        }
+
         public virtual void CmdPowerAttack()
         {
             Debug.LogError("Power attack not implemented");

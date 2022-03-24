@@ -235,6 +235,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (animator)
         {
             animator.SetTrigger("Melee Attack");
+            avatarController.CmdAttack();
         }
     }
 
@@ -250,11 +251,7 @@ public class NetworkPlayer : NetworkBehaviour
         }
         
         // Tell avatar that it's being controlled externally.
-        // a.isControlled = true;
         a.AddPlayerControl();
-        
-        // Remove current path.
-        // a.navMeshAgent.ResetPath();
         
         // Save reference
         avatar = a;
