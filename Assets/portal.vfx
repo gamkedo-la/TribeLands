@@ -578,7 +578,7 @@ MonoBehaviour:
   capacity: 16000
   stripCapacity: 16
   particlePerStripCount: 16
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1046,7 +1046,7 @@ MonoBehaviour:
         m_SerializableType: UnityEditor.VFX.ArcCircle, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       m_SerializableObject: '{"circle":{"center":{"x":0.0,"y":0.0,"z":0.0},"radius":1.6299999952316285},"arc":0.36000001430511477}'
-    m_Space: 0
+    m_Space: 1
   m_Property:
     name: ArcCircle
     m_serializedType:
@@ -5142,7 +5142,7 @@ MonoBehaviour:
   capacity: 16000
   stripCapacity: 16
   particlePerStripCount: 16
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5293,7 +5293,7 @@ MonoBehaviour:
         m_SerializableType: UnityEditor.VFX.ArcCircle, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       m_SerializableObject: '{"circle":{"center":{"x":0.0,"y":0.0,"z":0.0},"radius":1.6299999952316285},"arc":0.9900000095367432}'
-    m_Space: 0
+    m_Space: 1
   m_Property:
     name: ArcCircle
     m_serializedType:
@@ -7441,7 +7441,7 @@ MonoBehaviour:
   capacity: 16000
   stripCapacity: 16
   particlePerStripCount: 16
-  m_Space: 0
+  m_Space: 1
 --- !u!114 &8926484042661614892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7592,7 +7592,7 @@ MonoBehaviour:
         m_SerializableType: UnityEditor.VFX.ArcCircle, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       m_SerializableObject: '{"circle":{"center":{"x":0.0,"y":0.0,"z":0.0},"radius":1.6299999952316285},"arc":0.9900000095367432}'
-    m_Space: 0
+    m_Space: 1
   m_Property:
     name: ArcCircle
     m_serializedType:
@@ -10875,7 +10875,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 596, y: 552}
+  m_UIPosition: {x: 597, y: 552}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
