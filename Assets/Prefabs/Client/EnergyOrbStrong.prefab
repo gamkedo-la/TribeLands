@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: pickupValue
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 4289184230708157209, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
+      propertyPath: m_Intensity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4525929617773456054, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -70,6 +74,10 @@ PrefabInstance:
     - target: {fileID: 4525929618321044135, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6837743468262408623, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
+      propertyPath: m_Intensity
+      value: 1.5915494
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0f8e81e8798569c4eb2a807fffb00262, type: 3}
