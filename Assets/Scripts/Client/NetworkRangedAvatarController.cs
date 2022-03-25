@@ -13,7 +13,7 @@ namespace Client
         public override void BeginAttack()
         {
             attackDirection = Projectile.AttackDirection(cam, attackMask, fireFrom.position);
-            // animation is triggered elsewhere..should it happen here instead?
+            // Animation is triggered elsewhere.
         }
         
         [Command]
