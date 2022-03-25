@@ -22,6 +22,7 @@ public class EnemyHealth : NetworkBehaviour
     {
         health = maxHealth;
         healthBarCanvas = healthBar.transform.parent;
+        healthBarCanvas.gameObject.SetActive(false);
         mainCamera = Camera.main;
     }
 
@@ -60,6 +61,8 @@ public class EnemyHealth : NetworkBehaviour
         var percentRemaining = health/maxHealth;
         healthBar.fillAmount = percentRemaining;
         healthBarBackground.fillAmount = 1 - percentRemaining;
+        
+        if (percentRemaining < 1) healthBarCanvas.gameObject.SetActive(true);
     }
 
     [Server]
