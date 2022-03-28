@@ -30710,6 +30710,10 @@ PrefabInstance:
       propertyPath: levelData
       value: 
       objectReference: {fileID: 11400000, guid: 0e64df523c1e9314790ac2c9013b3a34, type: 2}
+    - target: {fileID: 3128606675578464418, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: rotationspeed
+      value: 3.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3370494365058035531, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_Name
       value: ForEveryScene
@@ -30802,13 +30806,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7465211368612662470, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[0].m_Value
+      value: 0.893
+      objectReference: {fileID: 0}
+    - target: {fileID: 7465211368612662470, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: m_PropertySheet.m_Float.m_Array.Array.data[1].m_Value
+      value: 0.337
+      objectReference: {fileID: 0}
     - target: {fileID: 7906615251287903861, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 7906615251326878820, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: NextScene
-      value: Hub
+      value: OutdoorsScene
       objectReference: {fileID: 0}
     - target: {fileID: 7906615251326878842, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_Name
