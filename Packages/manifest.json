@@ -13,7 +13,11 @@
     "com.unity.test-framework": "1.1.24",
     "com.unity.textmeshpro": "3.0.4",
     "com.unity.timeline": "1.5.4",
+<<<<<<< HEAD
     "com.unity.toolchain.win-x86_64-linux-x86_64": "1.0.0",
+=======
+    "com.unity.toolchain.linux-x86_64": "1.0.0",
+>>>>>>> 64789d9 (linux toolchains added to project manifest)
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.5.2",
     "com.veriorpies.parrelsync": "https://github.com/VeriorPies/ParrelSync.git?path=/ParrelSync",
