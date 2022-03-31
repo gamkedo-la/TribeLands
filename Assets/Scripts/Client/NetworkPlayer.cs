@@ -197,6 +197,14 @@ public class NetworkPlayer : NetworkBehaviour
         //playerInput.actions.FindActionMap("Player").Disable();
     }
 
+    public void ToggleMute(InputAction.CallbackContext ctx)
+    {
+        if(ctx.performed)
+        {
+            gameManager.ToggleMute();
+        }
+    }
+
     //-----------------------------UI--------------------------
     public void UIClick(){
         clickData.position = Mouse.current.position.ReadValue();
@@ -221,6 +229,7 @@ public class NetworkPlayer : NetworkBehaviour
     public void OnSelectSecondAvatar(InputAction.CallbackContext ctx) => OnSwapAvatar(ctx, 1);
     public void OnSelectThirdAvatar(InputAction.CallbackContext ctx) => OnSwapAvatar(ctx, 2);
 
+    public void OnToggleMute(InputAction.CallbackContext ctx) => ToggleMute(ctx);
 
     [Command]
     private void CmdAttack()

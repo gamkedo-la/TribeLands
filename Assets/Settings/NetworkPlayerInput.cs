@@ -105,6 +105,14 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""ToggleMute"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e37ae5e-b627-4150-a23a-b7a05ea00aa4"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -468,6 +476,17 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a8f2096c-71e0-4b79-b42e-83437b04b95d"",
+                    ""path"": ""<Keyboard>/m"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""ToggleMute"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1067,6 +1086,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         m_Player_PowerAttack = m_Player.FindAction("PowerAttack", throwIfNotFound: true);
         m_Player_Dodge = m_Player.FindAction("Dodge", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ToggleMute = m_Player.FindAction("ToggleMute", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1139,6 +1159,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_PowerAttack;
     private readonly InputAction m_Player_Dodge;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ToggleMute;
     public struct PlayerActions
     {
         private @NetworkPlayerInput m_Wrapper;
@@ -1154,6 +1175,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         public InputAction @PowerAttack => m_Wrapper.m_Player_PowerAttack;
         public InputAction @Dodge => m_Wrapper.m_Player_Dodge;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ToggleMute => m_Wrapper.m_Player_ToggleMute;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1196,6 +1218,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ToggleMute.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMute;
+                @ToggleMute.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMute;
+                @ToggleMute.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnToggleMute;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1233,6 +1258,9 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ToggleMute.started += instance.OnToggleMute;
+                @ToggleMute.performed += instance.OnToggleMute;
+                @ToggleMute.canceled += instance.OnToggleMute;
             }
         }
     }
@@ -1400,6 +1428,7 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
         void OnPowerAttack(InputAction.CallbackContext context);
         void OnDodge(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnToggleMute(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
