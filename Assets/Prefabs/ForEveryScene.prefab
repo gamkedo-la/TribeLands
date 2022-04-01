@@ -352,7 +352,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7906615252763824481}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.152084, y: 1.4, z: 5.595253}
+  m_LocalPosition: {x: 27.152084, y: 1.4000015, z: 5.595253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6484504710511801800}
@@ -705,6 +705,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6988405718021613284}
     m_Modifications:
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3171302157606996337, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -753,6 +765,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: end of level
       objectReference: {fileID: 0}
+    - target: {fileID: 3171302159250100419, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
 --- !u!4 &7906615252837866952 stripped
@@ -781,7 +797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 343326870417761238, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 1.4000015
       objectReference: {fileID: 0}
     - target: {fileID: 343326870417761238, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -825,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 7906615252324153115}
     - target: {fileID: 343326870417761239, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7776184
+      value: 1.7780195
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}

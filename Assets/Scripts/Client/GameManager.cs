@@ -1,3 +1,4 @@
+using Mirror;
 using UnityEngine;
 
 // Manages events within the local / client environment
@@ -31,6 +32,20 @@ public class GameManager : MonoBehaviour
         buttonPanelMain.SetActive(false);
         optionsMenu.SetActive(false);
     }
+
+    public void Disconnect()
+    {
+        var gnm = GroupNetworkManager.singleton;
+        if (NetworkClient.isHostClient)
+        {
+            gnm.StopHost();
+        }
+        else
+        {
+            gnm.StopClient();
+        }
+    }
+    
     public void CheckForLocalPlayer(){
         localPlayerController = FindObjectOfType<NetworkPlayer>();
     }
