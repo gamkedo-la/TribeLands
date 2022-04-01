@@ -1369,6 +1369,7 @@ MonoBehaviour:
   buttonPanelMain: {fileID: 7971296014276768984}
   optionsMenu: {fileID: 3283598455910407949}
   levelData: {fileID: 0}
+  saveData: {fileID: 11400000, guid: b2d907ca9f1b1534cae0ef95ffa31de9, type: 2}
 --- !u!1 &7952683369591561253
 GameObject:
   m_ObjectHideFlags: 0

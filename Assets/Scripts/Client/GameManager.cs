@@ -5,10 +5,13 @@ using UnityEngine;
 // Anything that doesn't need to be sent over the network
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    
     [SerializeField] GameObject pauseMenu;
     [SerializeField] GameObject buttonPanelMain;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] private LevelData levelData;
+    [SerializeField] private SaveData saveData;
     
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
@@ -45,6 +48,19 @@ public class GameManager : MonoBehaviour
             gnm.StopClient();
         }
     }
+
+    public void UpdateCheckpoint(int checkpointIndex)
+    {
+        saveData.checkpointIndex = checkpointIndex;
+        saveData.scene = levelData.SceneName;
+        WriteSave();
+    }
+
+    private void WriteSave()
+    {
+        Debug.Log("Writing data to save file");
+        SaveSystem.SaveGame(saveData);
+    }
     
     public void CheckForLocalPlayer(){
         localPlayerController = FindObjectOfType<NetworkPlayer>();
@@ -56,6 +72,24 @@ public class GameManager : MonoBehaviour
     }
     private void Awake(){
         currentMenu = pauseMenu;
+        
+        if (instance != null && instance != this)
+        {
+            if (levelData != null)
+            {
+                // Assign our LevelData to the main instance before getting destroyed.
+                instance.levelData = levelData;
+            }
+            
+            Destroy(gameObject);
+            return;
+        }
+        
+        instance = this;
+        
+        // DontDestroyOnLoad doesn't work for nested objects.
+        transform.parent = null;
+        DontDestroyOnLoad(gameObject);
     }
     
     void Start()
