@@ -49,6 +49,11 @@ public class GameManager : MonoBehaviour
     public void CheckForLocalPlayer(){
         localPlayerController = FindObjectOfType<NetworkPlayer>();
     }
+
+    public void ToggleMute()
+    {
+        Debug.Log("anything from ToggleMute()");
+    }
     private void Awake(){
         currentMenu = pauseMenu;
     }
