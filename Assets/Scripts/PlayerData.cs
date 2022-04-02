@@ -7,4 +7,12 @@ public class PlayerData : ScriptableObject
     public int checkpointIndex;
     public float health;
     public float mana;
+    
+    public void Load(SaveData saveData)
+    {
+        scene = saveData.scene;
+        checkpointIndex = saveData.checkpointIndex;
+        health = saveData.health;
+        mana = saveData.mana;
+    }
 }

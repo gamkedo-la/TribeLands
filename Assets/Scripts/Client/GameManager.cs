@@ -12,7 +12,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject optionsMenu;
     [SerializeField] private LevelData levelData;
     [SerializeField] private PlayerData playerData;
-    
+
+    public PlayerData PlayerData
+    {
+        get => playerData;
+    }
+
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
     public void HandleResume(){
@@ -96,6 +101,12 @@ public class GameManager : MonoBehaviour
     {
         if (levelData != null)
             AudioManager.instance.SetBackgroundMusic(levelData.BackgroundMusic);
+
+        if (playerData != null)
+        {
+            var saveData = SaveSystem.LoadGame();
+            playerData.Load(saveData);
+        }
     }
     
     void Update(){
