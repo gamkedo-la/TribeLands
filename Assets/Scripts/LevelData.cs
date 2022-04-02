@@ -4,5 +4,6 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public string SceneName;
+    public string NextScene;
     public AudioClip BackgroundMusic;
 }

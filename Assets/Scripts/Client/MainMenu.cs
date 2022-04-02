@@ -93,6 +93,10 @@ public class MainMenu : MonoBehaviour
 
     void OnHostButtonPressed()
     {
+        // Load player save data to get current scene.
+        GroupNetworkManager.singleton.onlineScene = GameManager.instance.PlayerData.scene;
+        
+        // TODO: set checkpoint and change spawn locations
         GroupNetworkManager.singleton.StartHost();
     }
 
