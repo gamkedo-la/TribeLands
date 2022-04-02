@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Dungeon
   m_EditorClassIdentifier: 
   SceneName: Dungeon
+  NextScene: OutdoorsScene
   BackgroundMusic: {fileID: 8300000, guid: 34821edfa60dba54885fbf42e76f4ac0, type: 3}

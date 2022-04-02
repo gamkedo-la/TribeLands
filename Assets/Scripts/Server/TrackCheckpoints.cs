@@ -1,7 +1,8 @@
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class TrackCheckpoints : MonoBehaviour
+public class TrackCheckpoints : NetworkBehaviour
 {
     private List<Checkpoint> checkpoints;
     private int currentCheckpointIndex = -1;
@@ -21,10 +22,12 @@ public class TrackCheckpoints : MonoBehaviour
 
     public void PlayerReachedCheckpoint(Checkpoint checkpoint)
     {
-        if (checkpoints.IndexOf(checkpoint) > currentCheckpointIndex)
+        var index = checkpoints.IndexOf(checkpoint);
+        if (index > currentCheckpointIndex)
         {
             // store new checkpoint in save data
-            GameManager.instance.UpdateCheckpoint(currentCheckpointIndex);
+            currentCheckpointIndex = index;
+            GameManager.instance.UpdateCheckpoint(index);
         }
     }
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject buttonPanelMain;
     [SerializeField] GameObject optionsMenu;
     [SerializeField] private LevelData levelData;
-    [SerializeField] private SaveData saveData;
+    [SerializeField] private PlayerData playerData;
     
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
@@ -51,15 +51,15 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCheckpoint(int checkpointIndex)
     {
-        saveData.checkpointIndex = checkpointIndex;
-        saveData.scene = levelData.SceneName;
+        playerData.checkpointIndex = checkpointIndex;
+        playerData.scene = levelData.SceneName;
         WriteSave();
     }
 
     private void WriteSave()
     {
         Debug.Log("Writing data to save file");
-        SaveSystem.SaveGame(saveData);
+        SaveSystem.SaveGame(playerData);
     }
     
     public void CheckForLocalPlayer(){
