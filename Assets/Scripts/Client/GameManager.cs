@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelData levelData;
     [SerializeField] private PlayerData playerData;
 
-    float priorToMuteVolume;
     bool muted = false;
 
     public PlayerData PlayerData
@@ -76,19 +75,18 @@ public class GameManager : MonoBehaviour
 
     public void ToggleMute()
     {
-        GameObject musicManager = GameObject.FindGameObjectWithTag("MusicManager");
-        AudioSource musicManagersAudioSource = musicManager.GetComponent<AudioSource>();
+        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        AudioListener mainCamerasAudioListener = mainCamera.GetComponent<AudioListener>();
 
         if (!muted)
         {
-            priorToMuteVolume = musicManagersAudioSource.volume;
-            musicManagersAudioSource.volume = 0;
-            muted = true;
+            mainCamerasAudioListener.enabled = false;
+            muted = true;           
         }
         else
         {
-            musicManagersAudioSource.volume = priorToMuteVolume;
-            muted = false;
+            mainCamerasAudioListener.enabled = true;
+            muted = false;  
         }
     }
 

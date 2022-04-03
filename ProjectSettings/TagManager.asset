@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Avatar
   - PlayerAttack
+  - MusicManager
   layers:
   - Default
   - TransparentFX
