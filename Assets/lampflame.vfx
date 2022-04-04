@@ -41,7 +41,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -510
     y: -190
-    width: 2126
+    width: 1905
     height: 1837
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -529,7 +529,7 @@ MonoBehaviour:
   m_Owners:
   - {fileID: 8926484042661614558}
   - {fileID: 8926484042661614583}
-  - {fileID: 8926484042661614784}
+  - {fileID: 8926484042661614799}
   dataType: 0
   capacity: 2000
   stripCapacity: 16
@@ -555,7 +555,6 @@ MonoBehaviour:
   m_UISuperCollapsed: 0
   m_InputSlots:
   - {fileID: 8926484042661614570}
-  - {fileID: 0}
   m_OutputSlots: []
   m_Disabled: 1
   attribute: velocity
@@ -612,10 +611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 8926484042661614570}
-  m_Children:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
@@ -1028,7 +1024,7 @@ MonoBehaviour:
       slotIndex: 0
   m_OutputFlowSlot:
   - link:
-    - context: {fileID: 8926484042661614784}
+    - context: {fileID: 8926484042661614799}
       slotIndex: 0
   integration: 0
   angularIntegration: 0
@@ -3662,7 +3658,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 942, y: 1119}
+  m_UIPosition: {x: 456, y: 1184}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -3674,11 +3670,9 @@ MonoBehaviour:
   - {fileID: 8926484042661614792}
   m_OutputSlots: []
   m_Label: 
-  m_Data: {fileID: 8926484042661614568}
+  m_Data: {fileID: 0}
   m_InputFlowSlot:
-  - link:
-    - context: {fileID: 8926484042661614583}
-      slotIndex: 0
+  - link: []
   m_OutputFlowSlot:
   - link: []
   blendMode: 1
@@ -4053,7 +4047,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 1192, y: 1053}
+  m_UIPosition: {x: 971, y: 1079}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -4067,9 +4061,11 @@ MonoBehaviour:
   - {fileID: 8926484042661614807}
   m_OutputSlots: []
   m_Label: 
-  m_Data: {fileID: 8926484042661614815}
+  m_Data: {fileID: 8926484042661614568}
   m_InputFlowSlot:
-  - link: []
+  - link:
+    - context: {fileID: 8926484042661614583}
+      slotIndex: 0
   m_OutputFlowSlot:
   - link: []
   blendMode: 1
@@ -4442,7 +4438,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 0.1
+      m_SerializableObject: 0.015
     m_Space: 2147483647
   m_Property:
     name: motionVectorScale
@@ -4510,14 +4506,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_UIIgnoredErrors: []
-  m_Parent: {fileID: 114350483966674976}
+  m_Parent: {fileID: 0}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
   m_UICollapsed: 1
   m_UISuperCollapsed: 0
   title: 
-  m_Owners:
-  - {fileID: 8926484042661614799}
+  m_Owners: []
   dataType: 0
   capacity: 128
   stripCapacity: 1
@@ -4571,7 +4566,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: System.Single, mscorlib, Version=4.0.0.0, Culture=neutral,
           PublicKeyToken=b77a5c561934e089
-      m_SerializableObject: 16
+      m_SerializableObject: 12
     m_Space: 2147483647
   m_Property:
     name: FrameRate
