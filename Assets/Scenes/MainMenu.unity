@@ -383,6 +383,10 @@ PrefabInstance:
       propertyPath: field of view
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 8752512522317756736, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
+      propertyPath: m_TagString
+      value: MusicManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8831624075337290768, guid: 9ff61f18bbebb4b43a2e484b22a37ead, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -705,6 +705,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6988405718021613284}
     m_Modifications:
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 594574477711423645, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3171302157606996337, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -752,6 +764,10 @@ PrefabInstance:
     - target: {fileID: 3171302157606996341, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
       propertyPath: m_Name
       value: end of level
+      objectReference: {fileID: 0}
+    - target: {fileID: 3171302159250100419, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bfc898b9eeac3814e8ce9551193071c9, type: 3}
@@ -825,7 +841,7 @@ PrefabInstance:
       objectReference: {fileID: 7906615252324153115}
     - target: {fileID: 343326870417761239, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
-      value: 1.7776184
+      value: 1.5996094
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b7e706a1bf4e10439e852da90e0947c, type: 3}

@@ -235,14 +235,14 @@ public class GroupNetworkManager : NetworkManager
     /// <para>StartHost has multiple signatures, but they all cause this hook to be called.</para>
     /// </summary>
     public override void OnStartHost() { }
-
+    
     /// <summary>
     /// This is invoked when a server is started - including when a host is started.
     /// <para>StartServer has multiple signatures, but they all cause this hook to be called.</para>
     /// </summary>
     public override void OnStartServer()
     {
-         SpawnAvatars();
+        SpawnAvatars();
     }
 
     /// <summary>

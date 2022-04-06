@@ -106,7 +106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7635799611236904877}
   m_Layer: 0
-  m_Name: wall_sconce_lit__dungeon
+  m_Name: wall_sconce_lit_mixed__dungeon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -126,6 +126,7 @@ Transform:
   - {fileID: 9145442042952228209}
   - {fileID: 4731535688624568530}
   - {fileID: 8622867990646910634}
+  - {fileID: 5880566117573830872}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,6 +163,36 @@ Transform:
   m_Father: {fileID: 7635799611236904877}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -32.77, y: 0, z: 0}
+--- !u!1 &2725397306028782962
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5880566117573830872}
+  m_Layer: 0
+  m_Name: Flamesource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5880566117573830872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725397306028782962}
+  m_LocalRotation: {x: -0.5713356, y: -0.5713343, z: -0.4166242, w: 0.4166258}
+  m_LocalPosition: {x: 0, y: -0.51145005, z: -0.14303207}
+  m_LocalScale: {x: 25, y: 25, z: 25}
+  m_Children: []
+  m_Father: {fileID: 7635799611236904877}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2743332384861990243
 GameObject:
   m_ObjectHideFlags: 0
