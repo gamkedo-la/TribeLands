@@ -82,6 +82,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6813681619950290709, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -6216848347429144398, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1193369010709993867, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -1173223939934873156, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 671809556670854991, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9b508586f5f502444bc00954fb755d10, type: 3}
       propertyPath: m_Name
       value: ruined_forest
