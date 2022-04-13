@@ -110,11 +110,13 @@ public class NetworkAvatar : NetworkBehaviour
         OnEnergyChanged?.Invoke(energy, maxEnergy);
     }
 
+    [Command]
     private void PlayAttackAnimation()
     {
         networkAnimator.SetTrigger("Attack");
     }
 
+    [Command]
     private void PlayPowerAttackAnimation()
     {
         networkAnimator.SetTrigger("Power Attack");
