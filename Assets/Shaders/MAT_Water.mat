@@ -83,8 +83,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Depth: 8.14
-    - Displacement: 2.91
+    - Depth: 13.01
+    - Displacement: 0.5
     - DisplacementSpeed: 47.4
     - DisplacementTiling: 20
     - EdgeFoamWidth: -1.96

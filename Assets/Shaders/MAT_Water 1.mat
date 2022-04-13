@@ -83,15 +83,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Depth: 11.1
+    - Depth: 35.59
     - Displacement: 0
-    - DisplacementSpeed: 28.1
-    - DisplacementTiling: 4.19
-    - EdgeFoamWidth: 0.29
-    - NormalSpeed: 0.2
-    - NormalStrength: 0.697
-    - Smoothness: 0.871
-    - TopNoiseTextureTiling: 1.09
+    - DisplacementSpeed: 52.1
+    - DisplacementTiling: 1
+    - EdgeFoamWidth: -0.32
+    - NormalSpeed: 0.11
+    - NormalStrength: 0.731
+    - Smoothness: 1
+    - TopNoiseTextureTiling: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 10
@@ -143,8 +143,8 @@ Material:
     - _ZWrite: 0
     m_Colors:
     - FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - Main_Normal_Tiling: {r: 75, g: 75, b: 0, a: 0}
-    - Secondary_Normal_Tiling: {r: 50, g: 50, b: 0, a: 0}
+    - Main_Normal_Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - Secondary_Normal_Tiling: {r: 1, g: 1.11, b: 0, a: 0}
     - SurfaceColor: {r: 0.32599998, g: 0.9166185, b: 1, a: 0.27058825}
     - WaterColor: {r: 0.5037518, g: 0.40891376, b: 0.6627451, a: 0.69411767}
     - _DiffusionProfileAsset: {r: 68261110, g: 4.472372e-36, b: -1.6781209e+33, a: 9.673023e+27}
