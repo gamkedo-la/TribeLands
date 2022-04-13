@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MainMenu
   m_EditorClassIdentifier: 
   SceneName: MainMenu
-  NextScene: Dungeon
+  NextScene: Forest
   BackgroundMusic: {fileID: 8300000, guid: bee6c98d5cb8f25448baf5137200635d, type: 3}
