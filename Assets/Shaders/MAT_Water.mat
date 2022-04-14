@@ -83,7 +83,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - Depth: 13.01
+    - Depth: 21.9
     - Displacement: 0.5
     - DisplacementSpeed: 47.4
     - DisplacementTiling: 20
@@ -145,8 +145,8 @@ Material:
     - FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - Main_Normal_Tiling: {r: 75, g: 75, b: 0, a: 0}
     - Secondary_Normal_Tiling: {r: 50, g: 50, b: 0, a: 0}
-    - SurfaceColor: {r: 0.32599998, g: 0.9166185, b: 1, a: 0.27058825}
-    - WaterColor: {r: 0.5037518, g: 0.40891376, b: 0.6627451, a: 0.69411767}
+    - SurfaceColor: {r: 0.32599992, g: 0.9166185, b: 1, a: 0}
+    - WaterColor: {r: 0.5037518, g: 0.4089137, b: 0.6627451, a: 1}
     - _DiffusionProfileAsset: {r: 68261110, g: 4.472372e-36, b: -1.6781209e+33, a: 9.673023e+27}
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

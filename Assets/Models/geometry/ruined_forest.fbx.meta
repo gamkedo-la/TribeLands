@@ -7,8 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Brick
+    second: {fileID: 2100000, guid: a3bfedaba4a0d3747875ea4253a36bdf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Cobblestone
+    second: {fileID: 2100000, guid: d720ed8b78ee3f9478ba5e5bb901c9e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Dirt
-    second: {fileID: 2100000, guid: ac2037e564822454eafca870d491d745, type: 2}
+    second: {fileID: 2100000, guid: 2822c7b988445414993fdbead9397a31, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -18,7 +28,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Rock
-    second: {fileID: 2100000, guid: 8c1414281b98ee142b6ece4ddff82929, type: 2}
+    second: {fileID: 2100000, guid: 82518875f7e51034b9de2aa9d8f3b070, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
