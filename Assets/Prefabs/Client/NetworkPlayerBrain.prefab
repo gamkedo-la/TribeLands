@@ -667,7 +667,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1092360235283903671, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: avatarName
-      value: fox Variant
+      value: Fox
       objectReference: {fileID: 0}
     - target: {fileID: 3967975408329549478, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: m_Name
@@ -773,7 +773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1092360235283903671, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: avatarName
-      value: hippo Variant
+      value: Hippo
       objectReference: {fileID: 0}
     - target: {fileID: 3967975408329549478, guid: 83411e21fa2ca9b41a03d9fc899e4951, type: 3}
       propertyPath: m_Name
