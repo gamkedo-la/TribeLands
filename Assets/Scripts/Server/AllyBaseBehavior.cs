@@ -138,7 +138,6 @@ public class AllyBaseBehavior : NetworkBehaviour
             if (timeSinceLastAttack >= networkAvatarController.TimeBetweenAttacks)
             {
                 networkAvatarController.attackDirection = Quaternion.LookRotation(targetDirection.normalized);
-                networkAvatarController.ServerAttack();
                 m_NetworkAnimator.SetTrigger("Attack");
                 timeSinceLastAttack = 0;
             }

@@ -1,4 +1,5 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using UnityEngine;
 
 namespace Client
@@ -17,18 +18,30 @@ namespace Client
             attackDirection = Projectile.AttackDirection(cam, attackMask, fireFrom.position);
         }
 
-        [Command]
-        public override void CmdAttack()
+        public override void Attack()
         {
-            ServerAttack();
+            if (isServer)
+            {
+                ServerAttack(fireFrom.position, attackDirection);
+            }
+            else
+            {
+                CmdAttack(fireFrom.position, attackDirection);
+            }
         }
 
-
-        [Server]
-        public override void ServerAttack()
+        [Command]
+        public override void CmdAttack(Vector3 attackPosition, Quaternion direction)
         {
-            var magicProjectile = Instantiate(projectile, fireFrom.position, attackDirection);
-            NetworkServer.Spawn(magicProjectile);
+            // this is just a proxy so that clients can fire projectiles
+            ServerAttack(attackPosition, direction);
+        }
+        
+        [Server]
+        public override void ServerAttack(Vector3 attackPosition, Quaternion direction)
+        {
+            var projectileInstance = Instantiate(projectile, attackPosition, direction);
+            NetworkServer.Spawn(projectileInstance);
         }
 
         [Command]

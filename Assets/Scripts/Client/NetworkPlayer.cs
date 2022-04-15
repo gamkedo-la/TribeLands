@@ -244,7 +244,7 @@ public class NetworkPlayer : NetworkBehaviour
         if (animator)
         {
             animator.SetTrigger("Melee Attack");
-            avatarController.CmdAttack();
+            // avatarController.CmdAttack();
         }
     }
 

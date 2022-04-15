@@ -109,12 +109,17 @@ namespace Client
             Debug.LogError("Begin attack not implemented");
         }
 
-        public virtual void CmdAttack()
+        public virtual void Attack()
         {
             Debug.LogError("Attack not implemented");
         }
 
-        public virtual void ServerAttack()
+        public virtual void CmdAttack(Vector3 attackPosition, Quaternion direction)
+        {
+            Debug.LogError("CmdAttack not implemented");
+        }
+
+        public virtual void ServerAttack(Vector3 attackPosition, Quaternion direction)
         {
             Debug.LogError("ServerAttack not implemented");
         }

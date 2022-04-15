@@ -8,7 +8,7 @@ public class AnimationEventReceiver : MonoBehaviour
 
     void Attack()
     {
-        receiver.CmdAttack();
+        receiver.Attack();
     }
     
     void PowerAttack()

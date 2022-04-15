@@ -319,6 +319,36 @@ Transform:
   m_Father: {fileID: 6464089349789299710}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1444537903498473722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4252512406899646638}
+  m_Layer: 3
+  m_Name: fire_from
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4252512406899646638
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444537903498473722}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.325, z: 0.611}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5795747479066790307}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1457823624007860992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1571,6 +1601,51 @@ Transform:
   m_Father: {fileID: 5488251344522616658}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6558950400250235776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6766938178139679360}
+  - component: {fileID: 9111874447724096397}
+  m_Layer: 8
+  m_Name: follow_radius
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6766938178139679360
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6558950400250235776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5795747479066790307}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &9111874447724096397
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6558950400250235776}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6567779930545066777
 GameObject:
   m_ObjectHideFlags: 0
@@ -1583,7 +1658,6 @@ GameObject:
   - component: {fileID: 6472065951200017318}
   - component: {fileID: 1693101165892397243}
   - component: {fileID: 5213971103293056383}
-  - component: {fileID: 601182935461880208}
   - component: {fileID: 4939850275818626708}
   - component: {fileID: 8326162581319430336}
   - component: {fileID: 6010960483338973233}
@@ -1594,7 +1668,7 @@ GameObject:
   - component: {fileID: 2497486281643807235}
   m_Layer: 3
   m_Name: FoxHunter
-  m_TagString: Untagged
+  m_TagString: Avatar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1613,6 +1687,8 @@ Transform:
   - {fileID: 3930445618682204638}
   - {fileID: 6739828613698357532}
   - {fileID: 2035331729927579959}
+  - {fileID: 6766938178139679360}
+  - {fileID: 4252512406899646638}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1674,33 +1750,6 @@ MonoBehaviour:
   visible: 0
   m_AssetId: d2d90c63c29da644b85298316faca9e6
   hasSpawned: 0
---- !u!114 &601182935461880208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6567779930545066777}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc67298d94f44d5087467aecf99862b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  movementSpeed: 4
-  turnSmoothTime: 0.05
-  dodgeDistance: 5
-  dodgeDuration: 0.2
-  attackMask:
-    serializedVersion: 2
-    m_Bits: 0
-  currentSpeed: 0
-  timeBetweenAttacks: 0.5
-  powerAttackEnergyCost: 100
-  attackDirection: {x: 0, y: 0, z: 0, w: 0}
-  projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
-  fireFrom: {fileID: 0}
 --- !u!114 &4939850275818626708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1715,7 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  clientAuthority: 0
+  clientAuthority: 1
   sendInterval: 0.05
   syncPosition: 1
   syncRotation: 1
@@ -1804,13 +1853,13 @@ MonoBehaviour:
   dodgeDuration: 0.5
   attackMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 595
   currentSpeed: 0
-  timeBetweenAttacks: 0.333
+  timeBetweenAttacks: 0.4
   powerAttackEnergyCost: 100
   attackDirection: {x: 0, y: 0, z: 0, w: 0}
-  projectile: {fileID: 0}
-  fireFrom: {fileID: 0}
+  projectile: {fileID: 8338964250749903663, guid: 3f6321e4d3c3d1640a1f4e95a955b2e4, type: 3}
+  fireFrom: {fileID: 4252512406899646638}
 --- !u!114 &4497379987741990209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1830,20 +1879,20 @@ MonoBehaviour:
   navAgent: {fileID: 9166881582477206776}
   m_animator: {fileID: 6472065951200017318}
   m_NetworkAnimator: {fileID: 8326162581319430336}
-  networkAvatarController: {fileID: 601182935461880208}
+  networkAvatarController: {fileID: 4651735195631605730}
   alliedFollow: 1
   hostileFollow: 1
   hostileAttack: 0
   followRadius: 1
   followLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   rotationSmoothing: 0.2
   enemyLayerMask:
     serializedVersion: 2
-    m_Bits: 0
-  attackRange: 0
-  fireFrom: {fileID: 0}
+    m_Bits: 64
+  attackRange: 20
+  fireFrom: {fileID: 4252512406899646638}
   enemyDetectionRadius: 30
   targetEnemy: {fileID: 0}
   targetCheckInterval: 0.5
@@ -1856,7 +1905,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6567779930545066777}
   m_Enabled: 1
-  m_AgentTypeID: -1372625422
+  m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8

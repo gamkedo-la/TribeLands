@@ -13,19 +13,31 @@ namespace Client
         public override void BeginAttack()
         {
             attackDirection = Projectile.AttackDirection(cam, attackMask, fireFrom.position);
-            // Animation is triggered elsewhere.
         }
+
+        public override void Attack()
+        {
+            if (isServer)
+            {
+                ServerAttack(fireFrom.position, attackDirection);
+            }
+            else
+            {
+                CmdAttack(fireFrom.position, attackDirection);
+            }
+        } 
         
         [Command]
-        public override void CmdAttack()
+        public override void CmdAttack(Vector3 attackPosition, Quaternion direction)
         {
-            ServerAttack();
+            // this is just a proxy so that clients can fire projectiles
+            ServerAttack(attackPosition, direction);
         }
         
         [Server]
-        public override void ServerAttack()
+        public override void ServerAttack(Vector3 attackPosition, Quaternion direction)
         {
-            var projectileInstance = Instantiate(projectile, fireFrom.position, attackDirection);
+            var projectileInstance = Instantiate(projectile, attackPosition, direction);
             NetworkServer.Spawn(projectileInstance);
         }
     }
