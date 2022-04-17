@@ -50,14 +50,13 @@ public class GameManager : MonoBehaviour
         var gnm = GroupNetworkManager.singleton;
         if (NetworkClient.isHostClient)
         {
-            ClosePauseMenu();
             gnm.StopHost();
         }
         else
         {
-            ClosePauseMenu();
             gnm.StopClient();
         }
+        ClosePauseMenu();
     }
 
     public void UpdateCheckpoint(int checkpointIndex)
