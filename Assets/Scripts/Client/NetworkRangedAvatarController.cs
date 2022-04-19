@@ -25,7 +25,7 @@ namespace Client
             {
                 CmdAttack(fireFrom.position, attackDirection);
             }
-        } 
+        }
         
         [Command]
         public override void CmdAttack(Vector3 attackPosition, Quaternion direction)
