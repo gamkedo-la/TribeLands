@@ -210,6 +210,7 @@ MonoBehaviour:
   timeBetweenAttacks: 0.333
   powerAttackEnergyCost: 100
   attackDirection: {x: 0, y: 0, z: 0, w: 0}
+  powerAttackEffect: {fileID: 0}
 --- !u!114 &5279496599624026928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +465,18 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bc7d3f98b84ed57479f70a5e82cf29d7, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc7d3f98b84ed57479f70a5e82cf29d7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc7d3f98b84ed57479f70a5e82cf29d7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc7d3f98b84ed57479f70a5e82cf29d7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc7d3f98b84ed57479f70a5e82cf29d7, type: 3}
       propertyPath: m_LocalPosition.x
