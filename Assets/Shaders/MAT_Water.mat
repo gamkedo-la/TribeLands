@@ -89,7 +89,7 @@ Material:
     - DisplacementTiling: 20
     - EdgeFoamWidth: -1.96
     - NormalSpeed: 0.05
-    - NormalStrength: 0.679
+    - NormalStrength: 0.307
     - Smoothness: 0.905
     - TopNoiseTextureTiling: 0.24
     - _AddPrecomputedVelocity: 0
@@ -144,7 +144,7 @@ Material:
     m_Colors:
     - FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - Main_Normal_Tiling: {r: 75, g: 75, b: 0, a: 0}
-    - Secondary_Normal_Tiling: {r: 50, g: 50, b: 0, a: 0}
+    - Secondary_Normal_Tiling: {r: 20, g: 4, b: 0, a: 0}
     - SurfaceColor: {r: 0.32599992, g: 0.9166185, b: 1, a: 0}
     - WaterColor: {r: 0.5037518, g: 0.4089137, b: 0.6627451, a: 1}
     - _DiffusionProfileAsset: {r: 68261110, g: 4.472372e-36, b: -1.6781209e+33, a: 9.673023e+27}
