@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d08ce26990eb1a4a9177b860541e702, type: 3}
   m_Name: Exposure
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 1
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   meteringMode:
     m_OverrideState: 1
     m_Value: 2
@@ -25,16 +25,16 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 14.422459
+    m_Value: 1.6766357
   compensation:
-    m_OverrideState: 1
-    m_Value: 9.92
+    m_OverrideState: 0
+    m_Value: 0
   limitMin:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 5.983178
   limitMax:
     m_OverrideState: 1
-    m_Value: 14
+    m_Value: 11.06542
   curveMap:
     m_OverrideState: 1
     m_Value:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7593b3a9277ac4696b20006c21dde2, type: 3}
   m_Name: VisualEnvironment
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   m_AdvancedMode: 0
   skyType:
     m_OverrideState: 1
@@ -211,7 +211,7 @@ MonoBehaviour:
     showEyeDropper: 1
   tint:
     m_OverrideState: 0
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 0.56765074, g: 0.56765074, b: 0.56765074, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -236,7 +236,7 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 10.83
   maximumHeight:
-    m_OverrideState: 0
+    m_OverrideState: 1
     m_Value: 50
   meanFreePath:
     m_OverrideState: 1
@@ -258,7 +258,7 @@ MonoBehaviour:
     max: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 62.9
+    m_Value: 97.85
     min: 0.1
   denoisingMode:
     m_OverrideState: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
     m_Value: {fileID: 8900000, guid: a78585ec2a047c94ab148b83c2be9a1b, type: 3}
   spaceEmissionMultiplier:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 35.8
     min: 0
   spaceRotation:
     m_OverrideState: 1
