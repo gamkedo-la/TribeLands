@@ -425,6 +425,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 316fb8b23c977d047b39a2f8657d2ddb, type: 3}
   - {fileID: 8300000, guid: ecc9e6e3aa75aff459a39a3e0aa7508a, type: 3}
   - {fileID: 8300000, guid: 914ab7b4c3b0de34598f8b8be2676cc8, type: 3}
+  attackSound: {fileID: 8300000, guid: 61efe85d4632442b2bf984343653bc20, type: 3}
+  powerAttackSound: {fileID: 0}
 --- !u!1 &7216608203155926720
 GameObject:
   m_ObjectHideFlags: 0
