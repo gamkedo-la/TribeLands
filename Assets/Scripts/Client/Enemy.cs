@@ -94,7 +94,7 @@ public class Enemy : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void AttackTarget()
+    protected virtual void AttackTarget()
     {
         if (target == null) return;
         
