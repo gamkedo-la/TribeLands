@@ -692,6 +692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: rocks_rock1
       objectReference: {fileID: 0}
+    - target: {fileID: 106655105734729314, guid: 4694db751d39e64408f85a2fafe1dd82, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 734433001412003032, guid: 4694db751d39e64408f85a2fafe1dd82, type: 3}
       propertyPath: m_RootOrder
       value: 3
