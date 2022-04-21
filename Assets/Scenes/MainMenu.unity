@@ -1772,6 +1772,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2324823090148769622, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2981107500078920375, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3710924999084103229, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_FillAmount
       value: 0
@@ -1895,6 +1903,42 @@ PrefabInstance:
     - target: {fileID: 6086182741749921801, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1448
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 1131
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6471532814225423436, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32.29
       objectReference: {fileID: 0}
     - target: {fileID: 6485944915926166527, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchorMax.y
@@ -2039,6 +2083,56 @@ PrefabInstance:
     - target: {fileID: 7699125433488264768, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116422581837644753, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_text
+      value: "\u2022 Tyler Funk: Project lead, core gameplay, network code, player
+        models (including materials and animations for both turtle and hippo), spider
+        enemy, follow AI, stone and brick wall materials, level layouts, torch model,
+        pickup orbs, lighting (baking and volumetric), health/mana functionality,
+        trees, avatar switching, animation blending, water shader, UI, spellcasting,
+        sword, rocks, grass, assorted bug fixing\n\u2022 Patrick J Thompson: Crate
+        with texture, player control fix, goblin enemy, in-game menus, options menu,
+        menu color adjustments, pause menu\n\u2022 Andy King: Portal jet effects
+        (with variations), torch flames, shockwave effect with distortion\n\u2022
+        Christer \"McFunkypants\" Kaitila: Dungeon pillars and stone walls, spiderwebs,
+        menu and logo improvements, chains, stair fix, crystals, candles with related
+        flame effects, footstep integration\n\u2022 Luis Monta\xF1a: Barrel (model,
+        materials, and two broken variations)\n\u2022 Rob Tunstall: Heal sound, magic
+        attack sound, melee attack sound\n\u2022 Michael \"Misha\" Fewkes: Dungeon
+        music\n\u2022 Stebs: Mute toggle, stone step sound"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116422581837644753, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_fontSize
+      value: 47.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116422581837644753, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8116422581837644753, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712728634683566934, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712728634683566934, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712728634683566934, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712728634683566934, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.98
+      objectReference: {fileID: 0}
+    - target: {fileID: 8712728634683566934, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
