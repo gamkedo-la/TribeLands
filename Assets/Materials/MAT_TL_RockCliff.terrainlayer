@@ -6,7 +6,7 @@ TerrainLayer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: NewLayer
+  m_Name: MAT_TL_RockCliff
   m_DiffuseTexture: {fileID: 2800000, guid: b8f8856aaccdf3a4d9575a1f847a16eb, type: 3}
   m_NormalMapTexture: {fileID: 2800000, guid: 3f024b95fa0c29746921dfb15161788a, type: 3}
   m_MaskMapTexture: {fileID: 2800000, guid: 81e97eac32837a545986604f6a4d070a, type: 3}
