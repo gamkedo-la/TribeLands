@@ -1,8 +1,13 @@
+using System.Collections;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using Button = UnityEngine.UI.Button;
+using Cursor = UnityEngine.Cursor;
 
 public class MainMenu : MonoBehaviour
 {
@@ -33,9 +38,10 @@ public class MainMenu : MonoBehaviour
     [Space]
     [Header("Credits")]
     [SerializeField] private GameObject creditsPanel;
+    [SerializeField] private ScrollRect creditsScrollView;
+    [SerializeField] [Range(0, 1)] private float creditsScrollSpeed = 0.5f;
     [SerializeField] private Selectable creditsPanelFirstSelected;
     [SerializeField] private Button creditsPanelBackButton;
-
 
     private GameObject activePanel;
     private NetworkPlayerInput playerInput;
@@ -54,6 +60,7 @@ public class MainMenu : MonoBehaviour
         playButton.onClick.AddListener(() => SwitchPanel(playPanel, playPanelFirstSelected.gameObject));
         settingsButton.onClick.AddListener(() => SwitchPanel(settingsPanel, settingsPanelFirstSelected.gameObject));
         creditsButton.onClick.AddListener(() => SwitchPanel(creditsPanel, creditsPanelFirstSelected.gameObject));
+        creditsButton.onClick.AddListener(() => StartCreditScrolling());
         exitButton.onClick.AddListener(OnExitButtonPressed);
         
         hostButton.onClick.AddListener(OnHostButtonPressed);
@@ -63,6 +70,7 @@ public class MainMenu : MonoBehaviour
         playPanelBackButton.onClick.AddListener(BackButtonPressed);
         settingsPanelBackButton.onClick.AddListener(BackButtonPressed);
         creditsPanelBackButton.onClick.AddListener(BackButtonPressed);
+        creditsPanelBackButton.onClick.AddListener(() => StopCreditScrolling());
         
         // Apply default state.
         mainMenuOptionsPanel.SetActive(true);
@@ -75,6 +83,7 @@ public class MainMenu : MonoBehaviour
     private void OnEnable()
     {
         playerInput.Enable();
+        creditsScrollView.verticalNormalizedPosition = 0;
     }
 
     private void OnDisable()
@@ -132,5 +141,25 @@ public class MainMenu : MonoBehaviour
             mainMenuPreviousSelection == null ?
                 mainMenuFirstSelected.gameObject :
                 mainMenuPreviousSelection);
+    }
+
+    void StartCreditScrolling()
+    {
+        creditsScrollView.verticalNormalizedPosition = 1.0f;
+        StartCoroutine(ScrollCredits());
+    }
+
+    void StopCreditScrolling()
+    {
+        StopAllCoroutines();
+    }
+
+    IEnumerator ScrollCredits()
+    {
+        while (true)
+        {
+            creditsScrollView.verticalNormalizedPosition -= Time.deltaTime * creditsScrollSpeed;
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
