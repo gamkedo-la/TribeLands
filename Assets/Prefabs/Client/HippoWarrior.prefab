@@ -206,8 +206,9 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 64
+  attackDamage: 40
   currentSpeed: 0
-  timeBetweenAttacks: 0.333
+  timeBetweenAttacks: 0.66
   powerAttackEnergyCost: 100
   attackDirection: {x: 0, y: 0, z: 0, w: 0}
   powerAttackEffect: {fileID: 0}
