@@ -23,6 +23,7 @@ namespace Client
         private Animator animator;
 
         [SerializeField] protected LayerMask attackMask;
+        [SerializeField] protected float attackDamage = 40;
         protected Camera cam;
 
         [SyncVar]

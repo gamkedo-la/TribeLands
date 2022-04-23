@@ -149,7 +149,7 @@ MonoBehaviour:
   selectionIndicator: {fileID: 0}
   maxHealth: 100
   maxEnergy: 150
-  attackSound: {fileID: 0}
+  attackSound: {fileID: 8300000, guid: 61efe85d4632442b2bf984343653bc20, type: 3}
   powerAttackSound: {fileID: 0}
   OnHealthChanged:
     m_PersistentCalls:
@@ -205,12 +205,14 @@ MonoBehaviour:
   dodgeDuration: 0.5
   attackMask:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 64
   currentSpeed: 0
   timeBetweenAttacks: 0.333
   powerAttackEnergyCost: 100
   attackDirection: {x: 0, y: 0, z: 0, w: 0}
   powerAttackEffect: {fileID: 0}
+  fireFrom: {fileID: 8132547060369026315}
+  meleeHurtbox: {x: 1, y: 1, z: 0.75}
 --- !u!114 &5279496599624026928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +453,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7216608203155926720}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.519, z: 0.572}
+  m_LocalPosition: {x: 0, y: 1.332, z: 1.499}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7743792251112603115}
