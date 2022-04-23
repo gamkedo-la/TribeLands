@@ -19,6 +19,11 @@ public class GameManager : MonoBehaviour
         get => playerData;
     }
 
+    public LevelData LevelData
+    {
+        get => levelData;
+    }
+
     private NetworkPlayer localPlayerController;
     private GameObject currentMenu;
     public void HandleResume(){
