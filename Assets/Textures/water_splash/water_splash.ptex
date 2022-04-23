@@ -1,0 +1,165 @@
+{
+	"connections": [
+		{
+			"from": "shape",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 1
+		},
+		{
+			"from": "fbm2_2",
+			"from_port": 0,
+			"to": "blend",
+			"to_port": 0
+		},
+		{
+			"from": "blend",
+			"from_port": 0,
+			"to": "multi_warp",
+			"to_port": 0
+		},
+		{
+			"from": "fbm2",
+			"from_port": 0,
+			"to": "multi_warp",
+			"to_port": 1
+		},
+		{
+			"from": "multi_warp",
+			"from_port": 0,
+			"to": "Material",
+			"to_port": 7
+		}
+	],
+	"label": "Graph",
+	"longdesc": "",
+	"name": "@@309",
+	"node_position": {
+		"x": 0,
+		"y": 0
+	},
+	"nodes": [
+		{
+			"export_paths": {
+				"Unity - HDRP": "C:/Users/tfunk/code/unity/TriuneLegacy/Assets/Textures/water_splash/splash"
+			},
+			"name": "Material",
+			"node_position": {
+				"x": 171,
+				"y": 9
+			},
+			"parameters": {
+				"albedo_color": {
+					"a": 1,
+					"b": 1,
+					"g": 1,
+					"r": 1,
+					"type": "Color"
+				},
+				"ao": 1,
+				"depth_scale": 0.5,
+				"emission_energy": 1,
+				"flags_transparent": true,
+				"metallic": 0,
+				"normal": 1,
+				"roughness": 1,
+				"size": 11,
+				"sss": 0
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "material"
+		},
+		{
+			"name": "fbm2",
+			"node_position": {
+				"x": -738,
+				"y": 488
+			},
+			"parameters": {
+				"folds": 5,
+				"iterations": 10,
+				"noise": 1,
+				"offset": 0.04,
+				"persistence": 0.59,
+				"scale_x": 32,
+				"scale_y": 32
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		},
+		{
+			"name": "shape",
+			"node_position": {
+				"x": -1040,
+				"y": 467
+			},
+			"parameters": {
+				"edge": 1,
+				"radius": 0.9,
+				"shape": 0,
+				"sides": 2
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "shape"
+		},
+		{
+			"name": "blend",
+			"node_position": {
+				"x": -833,
+				"y": 283
+			},
+			"parameters": {
+				"amount": 1.9,
+				"blend_type": 2
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "blend"
+		},
+		{
+			"name": "fbm2_2",
+			"node_position": {
+				"x": -880,
+				"y": -123
+			},
+			"parameters": {
+				"folds": 0,
+				"iterations": 5,
+				"noise": 1,
+				"offset": 1,
+				"persistence": 0.5,
+				"scale_x": 3,
+				"scale_y": 3
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "fbm2"
+		},
+		{
+			"name": "multi_warp",
+			"node_position": {
+				"x": -542,
+				"y": 283
+			},
+			"parameters": {
+				"param0": 10,
+				"param1": 0.166,
+				"param2": 0,
+				"param3": 1
+			},
+			"seed": 0,
+			"seed_locked": false,
+			"type": "multi_warp"
+		}
+	],
+	"parameters": {
+
+	},
+	"seed": 0,
+	"seed_locked": false,
+	"shortdesc": "",
+	"type": "graph"
+}
