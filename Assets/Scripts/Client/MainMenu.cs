@@ -39,6 +39,7 @@ public class MainMenu : MonoBehaviour
     [Header("Credits")]
     [SerializeField] private GameObject creditsPanel;
     [SerializeField] private ScrollRect creditsScrollView;
+    [SerializeField] private bool autoScrollCredits = false;
     [SerializeField] [Range(0, 1)] private float creditsScrollSpeed = 0.5f;
     [SerializeField] private Selectable creditsPanelFirstSelected;
     [SerializeField] private Button creditsPanelBackButton;
@@ -145,12 +146,16 @@ public class MainMenu : MonoBehaviour
 
     void StartCreditScrolling()
     {
+        if (!autoScrollCredits) return;
+        
         creditsScrollView.verticalNormalizedPosition = 1.0f;
         StartCoroutine(ScrollCredits());
     }
 
     void StopCreditScrolling()
     {
+        if (!autoScrollCredits) return;
+        
         StopAllCoroutines();
     }
 
