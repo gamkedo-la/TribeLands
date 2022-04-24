@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693382628afddcd499d64bf7663bc599, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  scene: Forest
-  checkpointIndex: 1
+  scene: Dungeon
+  checkpointIndex: 2
   health: 100
   mana: 100
