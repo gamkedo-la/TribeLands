@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace Cinemachine{
+using UnityEngine.InputSystem;
+using Cinemachine;
 public class triggerimpulse : MonoBehaviour
 {
     
    public CinemachineImpulseSource ImpulseSource;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return)){
+           
+        if (Mouse.current.leftButton.isPressed){
            ImpulseSource.GenerateImpulse();
+        Debug.Log("impulse");
         }
-
+        
     }
-}}
+}

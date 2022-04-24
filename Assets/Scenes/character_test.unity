@@ -1693,7 +1693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c11265b855408d42af33d62691f5194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ChannelMask: 1
+  m_ChannelMask: 2147483647
   m_Gain: 1
   m_Use2DDistance: 0
 --- !u!1 &383942559
@@ -6055,7 +6055,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &1284048364
 BoxCollider:
@@ -7355,12 +7355,13 @@ GameObject:
   - component: {fileID: 1529036699}
   - component: {fileID: 1529036703}
   - component: {fileID: 1529036704}
+  - component: {fileID: 1529036705}
   m_Layer: 0
   m_Name: Cube - test impulse source
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!65 &1529036699
 BoxCollider:
@@ -7452,9 +7453,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ImpulseDefinition:
-    m_ImpulseChannel: 1
+    m_ImpulseChannel: 2147483647
     m_RawSignal: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
-    m_AmplitudeGain: 1
+    m_AmplitudeGain: 100
     m_FrequencyGain: 1
     m_RepeatMode: 0
     m_Randomize: 1
@@ -7472,14 +7473,14 @@ MonoBehaviour:
         m_PostInfinity: 2
         m_RotationOrder: 4
       m_AttackTime: 0
-      m_SustainTime: 0.2
+      m_SustainTime: 0.4
       m_DecayTime: 0.7
-      m_ScaleWithImpact: 1
+      m_ScaleWithImpact: 0
       m_HoldForever: 0
-    m_ImpactRadius: 100
+    m_ImpactRadius: 1000
     m_DirectionMode: 0
     m_DissipationMode: 2
-    m_DissipationDistance: 1000
+    m_DissipationDistance: 10000
     m_PropagationSpeed: 343
 --- !u!114 &1529036704
 MonoBehaviour:
@@ -7493,7 +7494,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c159d720662da9142ba86fd2059d0c86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ImpulseSource: {fileID: 0}
+  ImpulseSource: {fileID: 1529036703}
+--- !u!114 &1529036705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529036698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67265add0f064474baa654b67b08f3a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 43287825}
+  EventName: OnMeleeHit
+  activation: 1
+  RaycastMousePosition: 0
 --- !u!1 &1531439965
 GameObject:
   m_ObjectHideFlags: 0
