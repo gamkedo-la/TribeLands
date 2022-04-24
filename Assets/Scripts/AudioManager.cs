@@ -25,6 +25,8 @@ public class AudioManager : MonoBehaviour
 
     public void SetBackgroundMusic(AudioClip bgm)
     {
+        if (defaultAudioSource.clip == bgm) return;
+        
         defaultAudioSource.Stop();
         defaultAudioSource.clip = bgm;
         defaultAudioSource.Play();

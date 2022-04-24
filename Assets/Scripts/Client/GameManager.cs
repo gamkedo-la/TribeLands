@@ -107,6 +107,8 @@ public class GameManager : MonoBehaviour
             {
                 // Assign our LevelData to the main instance before getting destroyed.
                 instance.levelData = levelData;
+                // Update background music.
+                AudioManager.instance.SetBackgroundMusic(levelData.BackgroundMusic);
             }
             
             Destroy(gameObject);
@@ -119,6 +121,7 @@ public class GameManager : MonoBehaviour
         transform.parent = null;
         DontDestroyOnLoad(gameObject);
     }
+
     void Start()
     {
         if (levelData != null)
@@ -129,8 +132,5 @@ public class GameManager : MonoBehaviour
             var saveData = SaveSystem.LoadGame();
             playerData.Load(saveData);
         }
-    }
-    void Update(){
-        
     }
 }

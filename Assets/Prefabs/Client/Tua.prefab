@@ -35,6 +35,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 316fb8b23c977d047b39a2f8657d2ddb, type: 3}
   - {fileID: 8300000, guid: ecc9e6e3aa75aff459a39a3e0aa7508a, type: 3}
   - {fileID: 8300000, guid: 914ab7b4c3b0de34598f8b8be2676cc8, type: 3}
+  attackSound: {fileID: 0}
+  powerAttackSound: {fileID: 0}
 --- !u!114 &7636908810931890869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -56,6 +58,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 595
+  attackDamage: 40
   currentSpeed: 0
   timeBetweenAttacks: 0.66
   powerAttackEnergyCost: 50
@@ -214,6 +217,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.34
       objectReference: {fileID: 0}
+    - target: {fileID: 2288572362381038255, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 2f1343f6433ca394ba9cbdd282e87046, type: 2}
     - target: {fileID: 3941881863343208681, guid: 510d5ddfa58654544866927864c7c62c, type: 3}
       propertyPath: m_Name
       value: Tua
