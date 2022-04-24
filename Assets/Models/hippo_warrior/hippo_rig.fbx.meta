@@ -274,7 +274,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.6546392
+        functionName: CmdPowerAttack
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a9471378056542aaa34feac1f5562643, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

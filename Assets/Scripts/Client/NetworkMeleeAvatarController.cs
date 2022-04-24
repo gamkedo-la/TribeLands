@@ -9,6 +9,9 @@ namespace Client
         [SerializeField] private GameObject powerAttackEffect;
         [SerializeField] private Transform fireFrom;
         [SerializeField] private Vector3 meleeHurtbox;
+        [SerializeField] private float stompRadius = 2f;
+        [SerializeField] private float stompDamage = 20f;
+        [SerializeField] private float stompStunDuration = 2f;
         
         public override void BeginAttack()
         {
@@ -53,6 +56,11 @@ namespace Client
             var effect = Instantiate(powerAttackEffect, transform.position, effectRotation);
             NetworkServer.Spawn(effect);
             Destroy(effect, 1f);
+            
+            foreach (var enemy in Physics.OverlapSphere(transform.position, stompRadius, attackMask))
+            {
+                enemy.gameObject.SendMessageUpwards("TakeDamage", stompDamage, SendMessageOptions.DontRequireReceiver);
+            }
         }
 
         private void OnDrawGizmosSelected()
