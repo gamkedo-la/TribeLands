@@ -45,7 +45,7 @@ public class NetworkAvatar : NetworkBehaviour
 
     void Start()
     {
-        health = 1;
+        health = maxHealth;
         energy = maxEnergy;
         audioSource = GetComponent<AudioSource>();
 
