@@ -481,6 +481,17 @@ public class @NetworkPlayerInput : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""4130a5ba-cbbb-47e9-8f38-f3582c702754"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""a8f2096c-71e0-4b79-b42e-83437b04b95d"",
                     ""path"": ""<Keyboard>/m"",
                     ""interactions"": """",
