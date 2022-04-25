@@ -10,7 +10,7 @@ public class SaveData
     
     public SaveData()
     {
-        scene = "Dungeon";
+        scene = "Forest";
         checkpointIndex = 0;
         health = 100;
         mana = 100;
