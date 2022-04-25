@@ -1828,6 +1828,29 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1184451397076501405, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_text
+      value: 'Mouse & Keyboard
+
+
+        WASD - Move
+
+        Left click - Attack
+
+        Right
+        click - Power attack
+
+        Esc, P - Pause
+
+
+        1 - Switch to Tua
+        (turtle)
+
+        2 - Switch to Jasme (hippo)
+
+        3 - Switch to Support
+        (small)'
+      objectReference: {fileID: 0}
     - target: {fileID: 1435456095586522815, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1855,6 +1878,35 @@ PrefabInstance:
     - target: {fileID: 1821398555710935575, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130630490910303092, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_text
+      value: 'Gamepad
+
+
+        Left Stick - Move
+
+        Right Stick - Look
+
+        Button
+        west - Attack
+
+        Button north - Power attack
+
+        Start - Pause
+
+
+        Dpad
+        Up - Switch to Tua (turtle)
+
+        Dpad Right - Switch to Jasme (hippo)
+
+        Dpad
+        Down - Switch to Support (small)'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2130630490910303092, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
+      propertyPath: m_fontSize
+      value: 29.2
       objectReference: {fileID: 0}
     - target: {fileID: 2937175418844487378, guid: 20fa1a1dd1244784499ee58ed044916f, type: 3}
       propertyPath: m_AnchorMax.x
