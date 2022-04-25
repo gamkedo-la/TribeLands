@@ -18,9 +18,10 @@ public static class SaveSystem
 
     public static SaveData LoadGame()
     {
-        string path = SaveDataPersistentPath();
+        Debug.LogWarning("Bypassing save file for first release, without a way to reset progress Forest level got lost permanently once completed");
+        /*string path = SaveDataPersistentPath();
 
-        if (File.Exists(path))
+        if (File.Exists(path)) // bypass loading, no way to reset so losing forest level once passed
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream fs = new FileStream(path, FileMode.Open);
@@ -28,7 +29,7 @@ public static class SaveSystem
             fs.Close();
 
             return saveData;
-        }
+        }*/
 
         return new SaveData();
     }
