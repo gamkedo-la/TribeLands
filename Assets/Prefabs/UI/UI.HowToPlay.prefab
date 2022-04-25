@@ -83,10 +83,10 @@ MonoBehaviour:
     Dpad Up -
     Switch to Tua (turtle)
 
-    Dpad Right - Switch to Jasme (hippo)
+    Dpad Right - Switch to Support (small)
 
-    Dpad Down
-    - Switch to '
+    Dpad
+    Down - Switch to Jasme (hippo)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e6d6bbfec13aea4db3f5b92ac80c81a, type: 2}
   m_sharedMaterial: {fileID: -7800016220996223961, guid: 3e6d6bbfec13aea4db3f5b92ac80c81a, type: 2}
@@ -113,7 +113,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 31.2
+  m_fontSize: 29
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -236,9 +236,9 @@ MonoBehaviour:
     1 - Switch to Tua (turtle)
 
     2
-    - Switch to Jasme (hippo)
+    - Switch to Support (small)
 
-    3 - Switch to '
+    3 - Switch to Jasme (hippo)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3e6d6bbfec13aea4db3f5b92ac80c81a, type: 2}
   m_sharedMaterial: {fileID: -7800016220996223961, guid: 3e6d6bbfec13aea4db3f5b92ac80c81a, type: 2}
