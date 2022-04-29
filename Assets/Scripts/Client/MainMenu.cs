@@ -83,7 +83,7 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        playerInput.Enable();
+        playerInput?.Enable();
         creditsScrollView.verticalNormalizedPosition = 0;
     }
 
